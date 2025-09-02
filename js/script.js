@@ -1,59 +1,36 @@
-// Navigation function
+// Navigation
 function navigateTo(pageId) {
-  // Hide all pages
   document.querySelectorAll(".page").forEach(page => {
     page.classList.remove("active");
   });
-
-  // Show selected page
-  const targetPage = document.getElementById(pageId);
-  if (targetPage) {
-    targetPage.classList.add("active");
-  }
-
-  // Update active state in top nav
-  document.querySelectorAll(".top-nav li").forEach(li => {
-    li.classList.remove("active");
-  });
-  const topItem = document.querySelector(`.top-nav li[onclick="navigateTo('${pageId}')"]`);
-  if (topItem) {
-    topItem.classList.add("active");
-  }
-
-  // Update active state in bottom nav (mobile)
-  document.querySelectorAll(".bottom-nav li").forEach(li => {
-    li.classList.remove("active");
-  });
-  const bottomItem = document.querySelector(`.bottom-nav li[onclick="navigateTo('${pageId}')"]`);
-  if (bottomItem) {
-    bottomItem.classList.add("active");
-  }
+  const target = document.getElementById(pageId);
+  if (target) target.classList.add("active");
 }
 
 // Default page
 document.addEventListener("DOMContentLoaded", () => {
   navigateTo("tasks");
+  renderProgressCircles();
+  loadChart();
 });
 
-// Task form handler (sample functionality)
+// Task form handler
 document.addEventListener("submit", function (e) {
   if (e.target.classList.contains("task-form")) {
     e.preventDefault();
-
     const title = e.target.querySelector("input[placeholder='Task title']").value;
     const time = e.target.querySelector("input[type='time']").value;
-
     if (title.trim()) {
       const list = document.querySelector(".task-list");
-      const newItem = document.createElement("li");
-      newItem.innerHTML = `<input type="checkbox"> ${title} ${time ? "— " + time : ""}`;
-      list.appendChild(newItem);
+      const li = document.createElement("li");
+      li.innerHTML = `<input type="checkbox"> ${title} ${time ? "— " + time : ""}`;
+      list.appendChild(li);
       e.target.reset();
     }
   }
 });
 
-// Render progress circles for Goals page
+// Goals progress circles
 function renderProgressCircles() {
   document.querySelectorAll(".progress-circle").forEach(circle => {
     const progress = circle.dataset.progress;
@@ -62,13 +39,10 @@ function renderProgressCircles() {
   });
 }
 
-document.addEventListener("DOMContentLoaded", renderProgressCircles);
-
-// Dashboard Weekly Activity Chart
+// Dashboard chart
 function loadChart() {
   const ctx = document.getElementById("activityChart");
   if (!ctx) return;
-
   if (typeof Chart === "undefined") {
     const script = document.createElement("script");
     script.src = "https://cdn.jsdelivr.net/npm/chart.js";
@@ -77,7 +51,6 @@ function loadChart() {
   } else {
     renderChart();
   }
-
   function renderChart() {
     new Chart(ctx, {
       type: "bar",
@@ -98,25 +71,20 @@ function loadChart() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", loadChart);
-
-// Chat form handler (simple demo)
+// Chat form handler
 document.addEventListener("submit", function (e) {
   if (e.target.classList.contains("chat-form")) {
     e.preventDefault();
     const input = e.target.querySelector("input");
     const text = input.value.trim();
     if (!text) return;
-
     const chatBox = document.querySelector(".chat-box");
 
-    // User message
     const userMsg = document.createElement("div");
     userMsg.className = "chat-msg user";
     userMsg.textContent = text;
     chatBox.appendChild(userMsg);
 
-    // Fake AI response
     const aiMsg = document.createElement("div");
     aiMsg.className = "chat-msg ai";
     aiMsg.textContent = "Got it 👍 (this is a placeholder response)";
@@ -126,19 +94,3 @@ document.addEventListener("submit", function (e) {
     chatBox.scrollTop = chatBox.scrollHeight;
   }
 });
-
-// Invite form (demo only)
-document.addEventListener("submit", function (e) {
-  if (e.target.classList.contains("invite-form")) {
-    e.preventDefault();
-    const email = e.target.querySelector("input").value;
-    if (email.trim()) {
-      const list = document.querySelector(".collaborators");
-      const li = document.createElement("li");
-      li.textContent = email + " (Pending)";
-      list.appendChild(li);
-      e.target.reset();
-    }
-  }
-});
-

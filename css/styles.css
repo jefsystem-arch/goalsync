@@ -1,4 +1,3 @@
-/* Reset & Fonts */
 body, h1, h2, p, ul, li, button, input, select, textarea {
   margin: 0;
   padding: 0;
@@ -19,32 +18,14 @@ body {
   color: #fff;
   text-align: center;
   padding: 0.5rem 1rem;
-  position: relative;
 }
-
 .logo {
   font-size: 1.5rem;
   font-weight: 700;
 }
-
 .tagline {
   font-size: 0.9rem;
   opacity: 0.9;
-}
-
-.settings-btn {
-  position: absolute;
-  right: 1rem;
-  top: 0.8rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-}
-.settings-btn img {
-  width: 20px;
-  height: 20px;
 }
 
 /* Top Navigation */
@@ -71,29 +52,45 @@ body {
   height: 18px;
 }
 
-/* Main content */
-main {
-  flex: 1;
+/* Bottom Navigation (Mobile only) */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-top: 1px solid #eee;
+}
+.bottom-nav ul {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  padding: 0.6rem 0;
+}
+.bottom-nav li img {
+  width: 22px;
+  height: 22px;
+}
+
+/* Pages */
+.page {
+  display: none;
   padding: 1.5rem;
+  flex: 1;
+}
+.page.active {
+  display: block;
 }
 h2 {
   margin-bottom: 1rem;
 }
-.task-controls {
-  display: flex;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-}
-.task-controls select, .task-controls input {
-  padding: 0.5rem;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-}
+
+/* Tasks */
 .task-form {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 .task-form input, .task-form select, .task-form textarea {
   padding: 0.6rem;
@@ -124,71 +121,17 @@ h2 {
   gap: 0.5rem;
 }
 
-/* Footer */
-footer {
-  display: flex;
-  justify-content: space-between;
-  padding: 0.5rem 1rem;
-  font-size: 0.8rem;
-  border-top: 1px solid #eee;
-  background: #fafafa;
-}
-
-/* Bottom Nav (Mobile) */
-.bottom-nav {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: #fff;
-  border-top: 1px solid #eee;
-}
-.bottom-nav ul {
-  display: flex;
-  justify-content: space-around;
-  list-style: none;
-  padding: 0.6rem 0;
-}
-.bottom-nav li img {
-  width: 22px;
-  height: 22px;
-}
-
-/* Responsive rules */
-.mobile-only { display: none; }
-.desktop-only { display: flex; }
-
-@media (max-width: 768px) {
-  .desktop-only { display: none; }
-  .mobile-only { display: inline-flex; }
-  .top-nav ul { justify-content: space-around; }
-}
-
-/* Highlight active nav item */
-.top-nav li.active span {
-  border-bottom: 2px solid #2474f5;
-  padding-bottom: 2px;
-}
-
-.bottom-nav li.active img {
-  filter: invert(28%) sepia(94%) saturate(3205%) hue-rotate(211deg) brightness(97%) contrast(101%);
-}
-
-/* Goals Page */
+/* Goals */
 .goal-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 1rem;
-  margin-top: 1rem;
 }
 .goal-card {
   background: #f9f9f9;
   padding: 1rem;
   border-radius: 12px;
   text-align: center;
-}
-.goal-card h3 {
-  margin-bottom: 0.5rem;
 }
 .progress-circle {
   width: 80px;
@@ -271,73 +214,12 @@ footer {
   cursor: pointer;
 }
 
-/* Invite */
-.invite-form {
+/* Footer */
+.app-footer {
   display: flex;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-}
-.invite-form input {
-  flex: 1;
-  padding: 0.6rem;
-  border-radius: 8px;
-  border: 1px solid #ddd;
-}
-.invite-form button {
-  background: #2474f5;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  padding: 0.6rem 1rem;
-  cursor: pointer;
-}
-.invite-link {
-  background: #f9f9f9;
-  padding: 0.5rem;
-  border-radius: 6px;
-  margin-bottom: 1rem;
-}
-.collaborators {
-  list-style: none;
-  padding: 0;
-}
-.collaborators li {
-  background: #f1f1f1;
-  margin: 0.4rem 0;
-  padding: 0.6rem;
-  border-radius: 8px;
-}
-
-/* History */
-#history ul {
-  list-style: none;
-  padding: 0;
-}
-#history li {
-  background: #f9f9f9;
-  margin: 0.3rem 0;
-  padding: 0.6rem;
-  border-radius: 6px;
-}
-
-/* Assistant */
-.quick-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-  margin-top: 1rem;
-}
-.quick-actions button {
-  flex: 1;
-  padding: 0.6rem;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background: #f9f9f9;
-  cursor: pointer;
-}
-
-/* Settings */
-#settings label {
-  display: block;
-  margin-bottom: 0.8rem;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+  border-top: 1px solid #eee;
+  background: #fafafa;
 }
