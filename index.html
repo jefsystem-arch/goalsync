@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,35 +9,42 @@
 </head>
 <body>
   <!-- Header -->
-  <header class="header">
-    <div class="logo">
-      <h1>GoalSync</h1>
-      <p class="tagline">Plan smart. Stay on track. Achieve more.</p>
-    </div>
+  <header class="app-header">
+    <h1 class="logo">GoalSync</h1>
+    <p class="tagline">Plan smart. Stay on track. Achieve more.</p>
   </header>
 
   <!-- Desktop Navigation -->
   <nav class="nav-desktop">
-    <button data-page="tasks">📑 Tasks</button>
-    <button data-page="goals">🎯 Goals</button>
-    <button data-page="projects">📂 Projects</button>
-    <button data-page="chat">💬 Chat</button>
-    <button data-page="dashboard">📊 Dashboard</button>
-    <button data-page="invite">📨 Invite</button>
-    <button data-page="history">🕒 History</button>
-    <button data-page="assistant">🤖 Assistant</button>
-    <button data-page="settings">⚙️ Settings</button>
+    <button data-page="tasks"><img src="icons/tasks.svg" alt="" class="icon"> Tasks</button>
+    <button data-page="goals"><img src="icons/goals.svg" alt="" class="icon"> Goals</button>
+    <button data-page="projects"><img src="icons/projects.svg" alt="" class="icon"> Projects</button>
+    <button data-page="chat"><img src="icons/chat.svg" alt="" class="icon"> Chat</button>
+    <button data-page="dashboard"><img src="icons/dashboard.svg" alt="" class="icon"> Dashboard</button>
+    <button data-page="invite"><img src="icons/invite.svg" alt="" class="icon"> Invite</button>
+    <button data-page="history"><img src="icons/history.svg" alt="" class="icon"> History</button>
+    <button data-page="assistant"><img src="icons/assistant.svg" alt="" class="icon"> Assistant</button>
+    <button data-page="settings"><img src="icons/settings.svg" alt="" class="icon"> Settings</button>
   </nav>
 
   <!-- Mobile Top Navigation -->
   <nav class="nav-mobile-top">
-    <button data-page="tasks">📑</button>
-    <button data-page="goals">🎯</button>
-    <button data-page="projects">📂</button>
-    <button data-page="chat">💬</button>
+    <button data-page="tasks"><img src="icons/tasks.svg" alt="" class="icon"> Tasks</button>
+    <button data-page="goals"><img src="icons/goals.svg" alt="" class="icon"> Goals</button>
+    <button data-page="projects"><img src="icons/projects.svg" alt="" class="icon"> Projects</button>
+    <button data-page="chat"><img src="icons/chat.svg" alt="" class="icon"> Chat</button>
   </nav>
 
-  <!-- Main Pages -->
+  <!-- Mobile Bottom Navigation -->
+  <nav class="nav-mobile-bottom">
+    <button data-page="dashboard"><img src="icons/dashboard.svg" alt="" class="icon"> Dashboard</button>
+    <button data-page="invite"><img src="icons/invite.svg" alt="" class="icon"> Invite</button>
+    <button data-page="history"><img src="icons/history.svg" alt="" class="icon"> History</button>
+    <button data-page="assistant"><img src="icons/assistant.svg" alt="" class="icon"> Assistant</button>
+    <button data-page="settings"><img src="icons/settings.svg" alt="" class="icon"> Settings</button>
+  </nav>
+
+  <!-- Main Content -->
   <main>
     <!-- Tasks Page -->
     <section id="tasks" class="page active">
@@ -45,13 +52,12 @@
       <div class="task-controls">
         <select>
           <option>All Tasks</option>
-          <option>Completed</option>
-          <option>Pending</option>
         </select>
         <input type="text" placeholder="Search tasks">
       </div>
+
       <form class="task-form">
-        <input type="text" placeholder="Task title" required>
+        <input type="text" placeholder="Task title">
         <input type="date">
         <input type="time">
         <select>
@@ -59,15 +65,12 @@
           <option>Daily</option>
           <option>Weekly</option>
         </select>
-        <select>
-          <option>Assign to Goal</option>
-          <option>Health</option>
-          <option>Work</option>
-        </select>
+        <input type="text" placeholder="Assign to Goal">
         <textarea placeholder="Details (optional)"></textarea>
         <input type="text" placeholder="Participants (emails)">
-        <button type="submit" class="btn-primary">Add Task</button>
+        <button type="submit">Add Task</button>
       </form>
+
       <ul class="task-list">
         <li><input type="checkbox" checked> Work on presentation — 10:30 AM</li>
         <li><input type="checkbox" checked> Respond to emails — 9:00 AM</li>
@@ -75,124 +78,21 @@
       </ul>
     </section>
 
-    <!-- Goals Page -->
-    <section id="goals" class="page">
-      <h2>Your Goals</h2>
-      <div class="goal-grid">
-        <div class="goal-card">
-          <h3>Health</h3>
-          <div class="progress-circle" data-progress="50"></div>
-          <p>50% Complete</p>
-        </div>
-        <div class="goal-card">
-          <h3>Work</h3>
-          <div class="progress-circle" data-progress="70"></div>
-          <p>70% Complete</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Projects Page -->
-    <section id="projects" class="page">
-      <h2>Projects</h2>
-      <p>No projects yet.</p>
-      <button class="btn-primary">+ New Project</button>
-    </section>
-
-    <!-- Chat Page -->
-    <section id="chat" class="page">
-      <h2>Chat</h2>
-      <div class="chat-box">
-        <div class="chat-msg user">Hi Assistant!</div>
-        <div class="chat-msg ai">Hello Jeff 👋 How can I help today?</div>
-      </div>
-      <input type="text" placeholder="Type a message...">
-    </section>
-
-    <!-- Dashboard Page -->
-    <section id="dashboard" class="page">
-      <h2>Dashboard</h2>
-      <div class="dashboard-cards">
-        <div class="card">76% Tasks Completed</div>
-        <div class="card">2 Goals Achieved This Week</div>
-        <div class="card">5 Tasks Completed Today</div>
-      </div>
-      <canvas id="activityChart"></canvas>
-    </section>
-
-    <!-- Invite Page -->
-    <section id="invite" class="page">
-      <h2>Invite Collaborators</h2>
-      <input type="email" placeholder="Enter email">
-      <button class="btn-primary">Send Invite</button>
-      <p>Or share link: <span class="invite-link">goalsync.app/invite/xyz</span></p>
-      <ul class="collaborators">
-        <li>Sarah (Designer)</li>
-        <li>Mark (Developer)</li>
-      </ul>
-    </section>
-
-    <!-- History Page -->
-    <section id="history" class="page">
-      <h2>History</h2>
-      <h3>Today</h3>
-      <ul>
-        <li>✔ Responded to emails</li>
-        <li>✔ Team standup meeting</li>
-      </ul>
-      <h3>Yesterday</h3>
-      <ul>
-        <li>✔ Project kickoff call</li>
-      </ul>
-    </section>
-
-    <!-- Assistant Page -->
-    <section id="assistant" class="page">
-      <h2>Assistant</h2>
-      <div class="chat-box">
-        <div class="chat-msg ai">Hi Jeff, I’m here to assist you 🚀</div>
-      </div>
-      <div class="quick-actions">
-        <button>Add a Task</button>
-        <button>Show Goals</button>
-        <button>Weekly Summary</button>
-      </div>
-    </section>
-
-    <!-- Settings Page -->
-    <section id="settings" class="page">
-      <h2>Settings</h2>
-      <label><input type="checkbox"> Dark Mode</label><br>
-      <label><input type="checkbox"> Notifications</label><br>
-      <label>Theme Color:
-        <select>
-          <option>Blue</option>
-          <option>Green</option>
-          <option>Purple</option>
-        </select>
-      </label><br>
-      <label>Language:
-        <select>
-          <option>English</option>
-          <option>Spanish</option>
-        </select>
-      </label>
-    </section>
+    <!-- Placeholder Pages -->
+    <section id="goals" class="page">Goals Page</section>
+    <section id="projects" class="page">Projects Page</section>
+    <section id="chat" class="page">Chat Page</section>
+    <section id="dashboard" class="page">Dashboard Page</section>
+    <section id="invite" class="page">Invite Page</section>
+    <section id="history" class="page">History Page</section>
+    <section id="assistant" class="page">Assistant Page</section>
+    <section id="settings" class="page">Settings Page</section>
   </main>
 
-  <!-- Mobile Bottom Navigation -->
-  <nav class="nav-mobile-bottom">
-    <button data-page="dashboard">📊</button>
-    <button data-page="invite">📨</button>
-    <button data-page="history">🕒</button>
-    <button data-page="settings">⚙️</button>
-    <button data-page="assistant" class="assistant-btn">🤖</button>
-  </nav>
-
   <!-- Footer -->
-  <footer class="footer">
-    <span class="version">v2.3+</span>
-    <span class="credit">Project by Team Jeff & AI</span>
+  <footer>
+    <span>v2.3+</span>
+    <span>Project by Team Jeff & AI</span>
   </footer>
 </body>
 </html>
