@@ -7,48 +7,39 @@
   <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-  <main class="container">
-    <h1>⚙️ Settings</h1>
+  <header>
+    <nav class="navbar">
+      <div class="logo">⚡ GoalSync</div>
+      <ul class="nav-links">
+        <li><a href="../index.html"><img src="../icons/dashboard.svg" alt="Dashboard"> Dashboard</a></li>
+        <li><a href="tasks.html"><img src="../icons/tasks.svg" alt="Tasks"> Tasks</a></li>
+        <li><a href="goals.html"><img src="../icons/goals.svg" alt="Goals"> Goals</a></li>
+        <li><a href="projects.html"><img src="../icons/projects.svg" alt="Projects"> Projects</a></li>
+        <li><a href="assistant.html"><img src="../icons/chat.svg" alt="Assistant"> Assistant</a></li>
+        <li><a href="settings.html" class="active"><img src="../icons/settings.svg" alt="Settings"> Settings</a></li>
+        <li><a href="#" id="logoutBtn"><img src="../icons/logout.svg" alt="Logout"> Logout</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <!-- Profile -->
-    <section class="card">
-      <h2>Profile</h2>
-      <label for="profileName">Name</label>
-      <input type="text" id="profileName">
-      <label for="profileEmail">Email</label>
-      <input type="email" id="profileEmail">
-      <button class="btn save">Update Profile</button>
-    </section>
+  <main class="content">
+    <h1>Settings</h1>
 
-    <!-- Preferences -->
-    <section class="card">
-      <h2>Preferences</h2>
-      <label><input type="checkbox" id="darkMode"> Dark Mode 🌙</label>
-      <label><input type="checkbox" id="largeText"> Large Text 🔤</label>
-    </section>
+    <section class="appearance-settings">
+      <h2>Appearance</h2>
 
-    <!-- Notifications -->
-    <section class="card">
-      <h2>Notifications</h2>
-      <label><input type="checkbox" id="enableReminders"> Enable Reminders 🔔</label>
-      <label><input type="checkbox" id="dailySummary"> Daily Summary 📅</label>
-    </section>
+      <label class="toggle">
+        <input type="checkbox" id="theme-toggle">
+        Enable Dark Mode
+      </label>
 
-    <!-- Integrations -->
-    <section class="card">
-      <h2>Integrations</h2>
-      <label><input type="checkbox" id="googleCalendar"> Google Calendar 📆</label>
-      <label><input type="checkbox" id="slackIntegration"> Slack 💬</label>
-      <label><input type="checkbox" id="appleHealth"> Apple Health 🏃</label>
-    </section>
-
-    <!-- Account -->
-    <section class="card">
-      <h2>Account</h2>
-      <button class="btn cancel" id="logoutBtn">Logout</button>
+      <div class="theme-color">
+        <label for="color-picker">Theme Color:</label>
+        <input type="color" id="color-picker" value="#3b82f6">
+      </div>
     </section>
   </main>
 
-  <script type="module" src="../js/settings.js"></script>
+  <script src="../js/app.js"></script>
 </body>
 </html>

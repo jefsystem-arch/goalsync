@@ -1,46 +1,59 @@
-import { db, auth } from "./firebase-config.js";
-import { 
-  collection, addDoc, getDocs, updateDoc, deleteDoc, doc, query, where 
-} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+// app.js - Global Theme & Settings Handler + Logout
 
-const tasksCol = collection(db, "tasks");
+document.addEventListener("DOMContentLoaded", () => {
+  const root = document.documentElement;
 
-// --- Create Task ---
-export async function addTask(task) {
-  try {
-    await addDoc(tasksCol, {
-      ...task,
-      ownerId: auth.currentUser.uid   // ✅ Only owner can see/edit
+  // --- Load saved theme (light/dark) ---
+  const savedTheme = localStorage.getItem("theme") || "light";
+  if (savedTheme === "dark") {
+    root.classList.add("dark");
+  } else {
+    root.classList.remove("dark");
+  }
+
+  // --- Load saved accent color ---
+  const savedColor = localStorage.getItem("themeColor") || "#3b82f6"; // default blue
+  root.style.setProperty("--theme-color", savedColor);
+
+  // --- Settings Page Elements ---
+  const themeToggle = document.getElementById("theme-toggle");
+  const colorPicker = document.getElementById("color-picker");
+
+  if (themeToggle) {
+    // Set toggle state
+    themeToggle.checked = savedTheme === "dark";
+
+    // Listen for changes
+    themeToggle.addEventListener("change", () => {
+      if (themeToggle.checked) {
+        root.classList.add("dark");
+        localStorage.setItem("theme", "dark");
+      } else {
+        root.classList.remove("dark");
+        localStorage.setItem("theme", "light");
+      }
     });
-    console.log("✅ Task added");
-  } catch (err) {
-    console.error("❌ Error adding task:", err);
   }
-}
 
-// --- Read Tasks ---
-export async function getTasks() {
-  const q = query(tasksCol, where("ownerId", "==", auth.currentUser.uid));
-  const snapshot = await getDocs(q);
-  return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-}
+  if (colorPicker) {
+    // Set picker to saved color
+    colorPicker.value = savedColor;
 
-// --- Update Task ---
-export async function updateTask(id, updatedFields) {
-  try {
-    await updateDoc(doc(db, "tasks", id), updatedFields);
-    console.log("✅ Task updated");
-  } catch (err) {
-    console.error("❌ Error updating task:", err);
+    // Listen for changes
+    colorPicker.addEventListener("input", () => {
+      const newColor = colorPicker.value;
+      root.style.setProperty("--theme-color", newColor);
+      localStorage.setItem("themeColor", newColor);
+    });
   }
-}
 
-// --- Delete Task ---
-export async function deleteTask(id) {
-  try {
-    await deleteDoc(doc(db, "tasks", id));
-    console.log("✅ Task deleted");
-  } catch (err) {
-    console.error("❌ Error deleting task:", err);
+  // --- Logout Button Logic ---
+  const logoutBtn = document.getElementById("logoutBtn");
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", () => {
+      // Clear localStorage and redirect
+      localStorage.clear();
+      window.location.href = "../index.html";
+    });
   }
-}
+});
