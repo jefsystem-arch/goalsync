@@ -1,0 +1,172 @@
+From 3e2a9d9f9c2f9e5fdb58 Mon Sep 17 00:00:00 2001
+Subject: [PATCH] GoalSync v2.3: polished layout, navigation, settings, inner
+ pages
+
+---
+ index.html        | 25 ++++++++++++++++---------
+ css/styles.css    | 48 ++++++++++++++++++++++++++++++++++++++----------
+ js/app.js         | 20 ++++++++++++++++++--
+ pages/tasks.html  | 12 ++++++++----
+ pages/goals.html  | 12 ++++++++----
+ pages/projects.html | 12 ++++++++----
+ 6 files changed, 96 insertions(+), 33 deletions(-)
+
+diff --git a/index.html b/index.html
+index 3f2d12a..1b3a4f7 100644
+--- a/index.html
++++ b/index.html
+@@ -10,11 +10,22 @@
+   <body>
+-    <nav>
+-      <!-- old navigation placeholder -->
+-    </nav>
+-    <main>
+-      <h1>Welcome to GoalSync</h1>
+-    </main>
++    <header>
++      <nav class="navbar">
++        <div class="logo">⚡ GoalSync</div>
++        <ul class="nav-links">
++          <li><a href="pages/tasks.html">Tasks</a></li>
++          <li><a href="pages/goals.html">Goals</a></li>
++          <li><a href="pages/projects.html">Projects</a></li>
++          <li><a href="pages/dashboard.html">Dashboard</a></li>
++          <li><a href="pages/assistant.html">Assistant</a></li>
++          <li><a href="pages/settings.html">Settings</a></li>
++          <li><a href="login.html">Logout</a></li>
++        </ul>
++      </nav>
++    </header>
++
++    <main class="dashboard">
++      <div class="card"><h2>📋 Tasks</h2><p>3 active</p></div>
++      <div class="card"><h2>🎯 Goals</h2><p>1 in progress</p></div>
++      <div class="card"><h2>📂 Projects</h2><p>2 ongoing</p></div>
++    </main>
++    <footer>GoalSync v2.3</footer>
+   </body>
+ </html>
+diff --git a/css/styles.css b/css/styles.css
+--- a/css/styles.css
++++ b/css/styles.css
+@@ -1,6 +1,26 @@
+ body {
+-  background: #fff;
+-  color: #000;
++  margin: 0;
++  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
++  background: var(--bg-color);
++  color: var(--text-color);
++  transition: background 0.3s, color 0.3s;
+ }
++
++:root {
++  --bg-color: #f8f9fa;
++  --text-color: #222;
++  --card-bg: #fff;
++  --accent-color: var(--theme-color, #3b82f6);
++  --shadow-color: rgba(0,0,0,0.08);
++}
++.dark {
++  --bg-color: #121212;
++  --text-color: #f8f9fa;
++  --card-bg: #1e1e1e;
++  --accent-color: var(--theme-color, #4dabf7);
++  --shadow-color: rgba(0,0,0,0.5);
++}
++
++header { background: var(--card-bg); box-shadow: 0 2px 6px var(--shadow-color); padding: 1rem 2rem; }
++.navbar { display: flex; justify-content: space-between; align-items: center; }
++.nav-links { list-style: none; display: flex; gap: 1.5rem; margin: 0; padding: 0; }
++.nav-links a { text-decoration: none; color: var(--text-color); font-weight: 500; }
++.nav-links a:hover { color: var(--accent-color); }
++
++.dashboard { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; padding: 2rem; }
++.card { background: var(--card-bg); border-radius: 1rem; padding: 1.5rem; text-align: center; box-shadow: 0 2px 6px var(--shadow-color); }
++.card h2 { margin: 0.5rem 0; color: var(--accent-color); }
++
++footer { text-align: center; font-size: 0.8rem; padding: 1rem; color: var(--text-color); }
+diff --git a/js/app.js b/js/app.js
+--- a/js/app.js
++++ b/js/app.js
+@@ -1,6 +1,22 @@
+-document.addEventListener("DOMContentLoaded", () => {
+-  console.log("App loaded");
+-});
++document.addEventListener("DOMContentLoaded", () => {
++  const root = document.documentElement;
++  console.log("✅ GoalSync v2.3 loaded");
++
++  // Load saved theme
++  const savedTheme = localStorage.getItem("theme") || "light";
++  if (savedTheme === "dark") root.classList.add("dark");
++
++  const savedColor = localStorage.getItem("themeColor") || "#3b82f6";
++  root.style.setProperty("--theme-color", savedColor);
++
++  // Settings page logic
++  const themeToggle = document.getElementById("theme-toggle");
++  const colorPicker = document.getElementById("color-picker");
++
++  if (themeToggle) {
++    themeToggle.checked = savedTheme === "dark";
++    themeToggle.addEventListener("change", () => {
++      root.classList.toggle("dark", themeToggle.checked);
++      localStorage.setItem("theme", themeToggle.checked ? "dark" : "light");
++      console.log("🌙 Theme changed:", themeToggle.checked ? "dark" : "light");
++    });
++  }
++
++  if (colorPicker) {
++    colorPicker.value = savedColor;
++    colorPicker.addEventListener("input", () => {
++      root.style.setProperty("--theme-color", colorPicker.value);
++      localStorage.setItem("themeColor", colorPicker.value);
++      console.log("🎨 Theme color updated:", colorPicker.value);
++    });
++  }
++});
+diff --git a/pages/tasks.html b/pages/tasks.html
+--- a/pages/tasks.html
++++ b/pages/tasks.html
+@@ -5,7 +5,11 @@
+ <body>
+-  <h1>Tasks Page</h1>
++  <header><nav class="navbar"><div class="logo">⚡ GoalSync</div></nav></header>
++  <main class="content">
++    <h1>Tasks</h1>
++    <div class="card">No tasks yet</div>
++  </main>
++  <footer>GoalSync v2.3</footer>
+ </body>
+ </html>
+diff --git a/pages/goals.html b/pages/goals.html
+--- a/pages/goals.html
++++ b/pages/goals.html
+@@ -5,7 +5,11 @@
+ <body>
+-  <h1>Goals Page</h1>
++  <header><nav class="navbar"><div class="logo">⚡ GoalSync</div></nav></header>
++  <main class="content">
++    <h1>Goals</h1>
++    <div class="card">No goals yet</div>
++  </main>
++  <footer>GoalSync v2.3</footer>
+ </body>
+ </html>
+diff --git a/pages/projects.html b/pages/projects.html
+--- a/pages/projects.html
++++ b/pages/projects.html
+@@ -5,7 +5,11 @@
+ <body>
+-  <h1>Projects Page</h1>
++  <header><nav class="navbar"><div class="logo">⚡ GoalSync</div></nav></header>
++  <main class="content">
++    <h1>Projects</h1>
++    <div class="card">No projects yet</div>
++  </main>
++  <footer>GoalSync v2.3</footer>
+ </body>
+ </html>
+-- 
+2.34.1
