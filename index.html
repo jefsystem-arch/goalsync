@@ -1,43 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GoalSync</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/styles.css" />
+  <script defer src="js/script.js"></script>
 </head>
 <body>
+  <!-- Header -->
   <header>
-    <h1>GoalSync</h1>
-    <p>Plan smart. Stay on track. Achieve more.</p>
+    <div class="logo">GoalSync</div>
+    <p class="tagline">Plan smart. Stay on track. Achieve more.</p>
   </header>
 
   <!-- Top Navigation -->
   <nav class="top-nav">
-    <a href="#tasks" class="active"><img src="icons/tasks.svg" alt=""> Tasks</a>
-    <a href="#goals"><img src="icons/goals.svg" alt=""> Goals</a>
-    <a href="#projects"><img src="icons/projects.svg" alt=""> Projects</a>
-    <a href="#chat"><img src="icons/chat.svg" alt=""> Chat</a>
-    <a href="#settings"><img src="icons/settings.svg" alt=""> Settings</a>
+    <button data-page="tasks"><img src="icons/tasks.svg" alt="Tasks"> <span>Tasks</span></button>
+    <button data-page="goals"><img src="icons/goals.svg" alt="Goals"> <span>Goals</span></button>
+    <button data-page="projects"><img src="icons/projects.svg" alt="Projects"> <span>Projects</span></button>
+    <button data-page="chat"><img src="icons/chat.svg" alt="Chat"> <span>Chat</span></button>
+    <button class="desktop-only" data-page="settings"><img src="icons/settings.svg" alt="Settings"> <span>Settings</span></button>
   </nav>
 
-  <!-- Pages -->
+  <!-- Page Content -->
   <main>
-    <!-- Tasks -->
+    <!-- Tasks Page -->
     <section id="tasks" class="page active">
       <h2>Your Tasks</h2>
       <form id="task-form">
-        <input type="text" placeholder="Task title">
-        <input type="date">
-        <input type="time">
+        <input type="text" placeholder="Task title" required />
+        <input type="date" />
+        <input type="time" />
         <select>
           <option>No repeat</option>
           <option>Daily</option>
           <option>Weekly</option>
         </select>
-        <input type="text" placeholder="Assign to Goal">
+        <input type="text" placeholder="Assign to Goal" />
         <textarea placeholder="Details (optional)"></textarea>
-        <input type="text" placeholder="Participants (emails)">
+        <input type="text" placeholder="Participants (emails)" />
         <button type="submit">Add Task</button>
       </form>
       <ul id="task-list">
@@ -47,17 +49,67 @@
       </ul>
     </section>
 
-    <!-- Other pages hidden for now -->
-    <section id="goals" class="page"><h2>Goals Page</h2></section>
-    <section id="projects" class="page"><h2>Projects Page</h2></section>
-    <section id="chat" class="page"><h2>Chat Page</h2></section>
-    <section id="settings" class="page"><h2>Settings Page</h2></section>
+    <!-- Goals Page -->
+    <section id="goals" class="page">
+      <h2>Your Goals</h2>
+      <p>[Goals content placeholder]</p>
+    </section>
+
+    <!-- Projects Page -->
+    <section id="projects" class="page">
+      <h2>Your Projects</h2>
+      <p>[Projects content placeholder]</p>
+    </section>
+
+    <!-- Chat Page -->
+    <section id="chat" class="page">
+      <h2>Chat</h2>
+      <p>[Chat content placeholder]</p>
+    </section>
+
+    <!-- Settings Page (desktop only in nav, still here for mobile bottom nav) -->
+    <section id="settings" class="page">
+      <h2>Settings</h2>
+      <p>[Settings content placeholder]</p>
+    </section>
+
+    <!-- Dashboard -->
+    <section id="dashboard" class="page">
+      <h2>Dashboard</h2>
+      <p>[Dashboard content placeholder]</p>
+    </section>
+
+    <!-- Invite -->
+    <section id="invite" class="page">
+      <h2>Invite</h2>
+      <p>[Invite content placeholder]</p>
+    </section>
+
+    <!-- History -->
+    <section id="history" class="page">
+      <h2>History</h2>
+      <p>[History content placeholder]</p>
+    </section>
+
+    <!-- Assistant -->
+    <section id="assistant" class="page">
+      <h2>Assistant</h2>
+      <p>[Assistant content placeholder]</p>
+    </section>
   </main>
 
+  <!-- Bottom Navigation (mobile only) -->
+  <nav class="bottom-nav mobile-only">
+    <button data-page="dashboard"><img src="icons/dashboard.svg" alt="Dashboard"></button>
+    <button data-page="invite"><img src="icons/invite.svg" alt="Invite"></button>
+    <button class="assistant-btn" data-page="assistant"><img src="icons/assistant.svg" alt="Assistant"></button>
+    <button data-page="history"><img src="icons/history.svg" alt="History"></button>
+    <button data-page="settings"><img src="icons/settings.svg" alt="Settings"></button>
+  </nav>
+
+  <!-- Footer -->
   <footer>
     <p>v2.3+ • Project by Team Jeff & AI</p>
   </footer>
-
-  <script src="js/script.js"></script>
 </body>
 </html>

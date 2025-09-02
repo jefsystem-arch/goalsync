@@ -1,135 +1,199 @@
-body {
-  font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif;
+/* Reset & Fonts */
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+}
+
+body {
   background: #fff;
   color: #111;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
+/* Header */
 header {
-  background: #2563eb;
-  color: white;
+  background: #2575fc;
+  color: #fff;
   text-align: center;
-  padding: 10px 0;
+  padding: 0.75rem 1rem;
 }
 
-header h1 {
-  margin: 0;
-  font-size: 22px;
+header .logo {
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 
-header p {
-  margin: 0;
-  font-size: 14px;
+header .tagline {
+  font-size: 0.9rem;
+  opacity: 0.9;
 }
 
-/* Top nav */
+/* Top Navigation */
 .top-nav {
   display: flex;
   justify-content: center;
-  gap: 30px;
-  padding: 14px 0;
-  border-bottom: 1px solid #eee;
+  gap: 2rem;
+  border-bottom: 1px solid #e5e5e5;
+  position: relative;
 }
 
-.top-nav a {
+.top-nav button {
+  background: none;
+  border: none;
+  padding: 1rem 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #111;
   display: flex;
   align-items: center;
-  gap: 6px;
-  font-size: 16px;
-  font-weight: 500;
-  text-decoration: none;
-  color: #333;
+  gap: 0.35rem;
+  cursor: pointer;
 }
 
-.top-nav a.active {
-  color: #2563eb;
-  border-bottom: 2px solid #2563eb;
-}
-
-.top-nav img {
+.top-nav button img {
   width: 18px;
   height: 18px;
+  filter: invert(0); /* Monochrome black */
 }
 
-/* Pages */
+.top-nav button.active {
+  color: #2575fc;
+  font-weight: 600;
+}
+
+.top-nav::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  height: 2px;
+  width: var(--underline-width, 60px);
+  background: #2575fc;
+  left: var(--underline-left, 0);
+  transition: left 0.3s ease, width 0.3s ease;
+}
+
+/* Main Content */
+main {
+  flex: 1;
+  padding: 1.5rem;
+}
+
 .page {
   display: none;
-  padding: 20px;
 }
 
 .page.active {
   display: block;
 }
 
-/* Task form */
-form {
+/* Task Form */
+#task-form {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-bottom: 20px;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
 }
 
-form input,
-form select,
-form textarea,
-form button {
-  padding: 10px;
-  font-size: 14px;
+#task-form input,
+#task-form select,
+#task-form textarea,
+#task-form button {
+  padding: 0.65rem;
   border: 1px solid #ddd;
   border-radius: 6px;
+  font-size: 0.95rem;
 }
 
-form button {
-  background: #2563eb;
-  color: white;
-  border: none;
+#task-form button {
+  background: #2575fc;
+  color: #fff;
+  font-weight: 500;
   cursor: pointer;
+  border: none;
+  transition: background 0.3s ease;
 }
 
-form button:hover {
-  background: #1e4ed8;
+#task-form button:hover {
+  background: #1d5ecf;
 }
 
-/* Task list */
 #task-list {
   list-style: none;
-  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 #task-list li {
-  padding: 10px;
-  margin-bottom: 8px;
-  border: 1px solid #eee;
+  background: #f8f8f8;
+  padding: 0.75rem;
   border-radius: 6px;
-  background: #f9f9f9;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-/* Desktop layout */
-@media (min-width: 768px) {
-  main {
-    max-width: 900px;
-    margin: 20px auto;
-  }
-
-  .top-nav {
-    gap: 40px;
-    padding: 16px 0;
-  }
-
-  .top-nav a {
-    font-size: 17px;
-  }
-
-  .top-nav img {
-    width: 20px;
-    height: 20px;
-  }
+/* Bottom Navigation (Mobile Only) */
+.bottom-nav {
+  display: none;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-top: 1px solid #e5e5e5;
+  background: #fff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
+.bottom-nav button {
+  background: none;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  color: #111;
+  cursor: pointer;
+}
+
+.bottom-nav button img {
+  width: 22px;
+  height: 22px;
+  filter: invert(0);
+}
+
+.bottom-nav .assistant-btn img {
+  width: 32px;
+  height: 32px;
+}
+
+/* Footer */
 footer {
   text-align: center;
-  font-size: 12px;
-  padding: 10px;
-  color: #555;
+  font-size: 0.8rem;
+  color: #666;
+  padding: 0.5rem;
+  border-top: 1px solid #e5e5e5;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none;
+  }
+
+  .bottom-nav {
+    display: flex;
+  }
+
+  main {
+    padding-bottom: 4rem; /* Leave space for bottom nav */
+  }
 }
