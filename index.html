@@ -1,48 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GoalSync Dashboard</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GoalSync</title>
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
   <header>
-    <div class="logo">⚡ GoalSync</div>
-    <nav>
-      <a href="index.html"><img src="icons/dashboard.svg" alt=""> Dashboard</a>
-      <a href="pages/tasks.html"><img src="icons/tasks.svg" alt=""> Tasks</a>
-      <a href="pages/goals.html"><img src="icons/goals.svg" alt=""> Goals</a>
-      <a href="pages/projects.html"><img src="icons/projects.svg" alt=""> Projects</a>
-      <a href="pages/assistant.html"><img src="icons/assistant.svg" alt=""> Assistant</a>
-      <a href="pages/settings.html"><img src="icons/settings.svg" alt=""> Settings</a>
+    <nav class="navbar">
+      <div class="logo">⚡ GoalSync</div>
+      <ul class="nav-links">
+        <li><a href="pages/tasks.html">Tasks</a></li>
+        <li><a href="pages/goals.html">Goals</a></li>
+        <li><a href="pages/projects.html">Projects</a></li>
+        <li><a href="pages/dashboard.html">Dashboard</a></li>
+        <li><a href="pages/assistant.html">Assistant</a></li>
+        <li><a href="pages/settings.html">Settings</a></li>
+        <li><a href="login.html">Logout</a></li>
+      </ul>
     </nav>
-    <div class="actions">
-      <button id="themeToggle">🌙</button>
-      <button id="logoutBtn"><img src="icons/logout.svg" alt=""> Logout</button>
-    </div>
   </header>
 
   <main>
-    <section class="dashboard">
-      <div class="card">
-        <img src="icons/tasks.svg" alt="">
-        <h2>Tasks</h2>
-        <p id="tasksSummary">Loading...</p>
-      </div>
-      <div class="card">
-        <img src="icons/goals.svg" alt="">
-        <h2>Goals</h2>
-        <p id="goalsSummary">Loading...</p>
-      </div>
-      <div class="card">
-        <img src="icons/projects.svg" alt="">
-        <h2>Projects</h2>
-        <p id="projectsSummary">Loading...</p>
-      </div>
-    </section>
+    <h1>Welcome back 👋</h1>
+    <div class="cards">
+      <div class="card">📋 Tasks</div>
+      <div class="card">🎯 Goals</div>
+      <div class="card">📂 Projects</div>
+    </div>
   </main>
 
-  <script type="module" src="js/app.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>
