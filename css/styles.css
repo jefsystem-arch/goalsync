@@ -4,11 +4,6 @@
   --text: #111;
 }
 
-[data-theme="dark"] {
-  --bg: #1c1c1e;
-  --text: #f5f5f7;
-}
-
 body {
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
   margin: 0;
@@ -22,9 +17,6 @@ body {
   color: #fff;
   text-align: center;
   padding: 1rem;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
 }
 
 .logo h1 {
@@ -42,9 +34,8 @@ body {
 .nav-desktop {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
   gap: 1.2rem;
-  padding: 0.5rem;
+  padding: 0.75rem;
   background: var(--bg);
   border-bottom: 1px solid #eee;
 }
@@ -56,94 +47,13 @@ body {
   font-weight: 500;
   color: var(--text);
   cursor: pointer;
-}
-
-/* Mobile Nav */
-.nav-mobile-top,
-.nav-mobile-bottom {
-  display: none;
-}
-
-.nav-mobile-top {
   display: flex;
-  justify-content: space-around;
-  padding: 0.5rem;
-  background: var(--bg);
-  border-bottom: 1px solid #eee;
-}
-
-.nav-mobile-top button {
-  background: none;
-  border: none;
-  font-size: 1.3rem;
-  cursor: pointer;
-}
-
-.nav-mobile-bottom {
-  display: flex;
-  justify-content: space-around;
   align-items: center;
-  padding: 0.75rem;
-  background: var(--bg);
-  border-top: 1px solid #eee;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
+  gap: 0.4rem;
 }
 
-.nav-mobile-bottom button {
-  background: none;
-  border: none;
-  font-size: 1.3rem;
-  cursor: pointer;
-}
-
-.assistant-btn {
-  font-size: 1.6rem;
-  color: var(--blue);
-}
-
-/* Pages */
+/* Page */
 .page {
-  display: none;
   padding: 2rem;
   text-align: center;
-  min-height: 70vh;
-  font-size: 1.25rem;
-}
-
-.page.active {
-  display: block;
-}
-
-/* Footer */
-.footer {
-  text-align: center;
-  padding: 1rem;
-  border-top: 1px solid #eee;
-  margin-bottom: 3rem; /* space above mobile nav */
-}
-
-.footer .version {
-  display: block;
-  margin-top: 0.25rem;
-  font-size: 0.85rem;
-  color: #666;
-}
-
-/* Active nav */
-nav button.active {
-  color: var(--blue);
-  font-weight: 600;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .nav-desktop {
-    display: none;
-  }
-  .nav-mobile-top,
-  .nav-mobile-bottom {
-    display: flex;
-  }
 }
