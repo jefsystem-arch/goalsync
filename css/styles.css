@@ -1,94 +1,135 @@
 body {
+  font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+  padding: 0;
   background: #fff;
   color: #111;
+}
+
+header {
+  background: #2563eb;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 22px;
+}
+
+header p {
+  margin: 0;
+  font-size: 14px;
+}
+
+/* Top nav */
+.top-nav {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 14px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.top-nav a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  color: #333;
+}
+
+.top-nav a.active {
+  color: #2563eb;
+  border-bottom: 2px solid #2563eb;
+}
+
+.top-nav img {
+  width: 18px;
+  height: 18px;
+}
+
+/* Pages */
+.page {
+  display: none;
+  padding: 20px;
+}
+
+.page.active {
+  display: block;
+}
+
+/* Task form */
+form {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
-/* Header */
-.app-header {
-  background: #2a73ff;
-  color: #fff;
+form input,
+form select,
+form textarea,
+form button {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+form button {
+  background: #2563eb;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+form button:hover {
+  background: #1e4ed8;
+}
+
+/* Task list */
+#task-list {
+  list-style: none;
+  padding: 0;
+}
+
+#task-list li {
+  padding: 10px;
+  margin-bottom: 8px;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  background: #f9f9f9;
+}
+
+/* Desktop layout */
+@media (min-width: 768px) {
+  main {
+    max-width: 900px;
+    margin: 20px auto;
+  }
+
+  .top-nav {
+    gap: 40px;
+    padding: 16px 0;
+  }
+
+  .top-nav a {
+    font-size: 17px;
+  }
+
+  .top-nav img {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+footer {
   text-align: center;
-  padding: 1rem;
-}
-.logo { margin: 0; font-size: 1.8rem; font-weight: 600; }
-.tagline { margin: 0; font-size: 0.9rem; }
-
-/* Top Nav */
-.top-nav {
-  display: flex; justify-content: center; gap: 1.2rem;
-  border-bottom: 1px solid #eee; padding: 0.5rem;
-  flex-wrap: wrap;
-}
-.top-nav a {
-  text-decoration: none; color: #111; font-weight: 500;
-  display: flex; align-items: center; gap: 0.3rem; font-size: 0.95rem;
-}
-.top-nav a img { width: 18px; height: 18px; }
-.top-nav a.active { border-bottom: 2px solid #2a73ff; color: #2a73ff; }
-
-/* Container */
-.container { flex: 1; padding: 1.5rem; max-width: 960px; margin: 0 auto; }
-
-/* Tasks */
-.task-form { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1rem; }
-.task-form input, .task-form select, .task-form textarea {
-  padding: 0.6rem; border: 1px solid #ccc; border-radius: 8px;
-}
-.task-form button { background: #2a73ff; color: #fff; border: none; border-radius: 8px; padding: 0.7rem; font-weight: 600; cursor: pointer; }
-.task-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem; }
-.task-list li { background: #f7f7f7; border-radius: 8px; padding: 0.8rem; display: flex; align-items: center; gap: 0.5rem; }
-
-/* Goals */
-.goal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; }
-.goal-card { background: #f9f9f9; padding: 1rem; border-radius: 12px; text-align: center; }
-.progress-circle { width: 80px; height: 80px; border-radius: 50%; margin: 0.5rem auto; position: relative; }
-.progress-circle::after { content: attr(data-progress) '%'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 0.9rem; font-weight: 600; }
-
-/* Dashboard */
-.dashboard-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
-.card { background: #f9f9f9; padding: 1rem; border-radius: 12px; text-align: center; font-weight: 500; }
-#activityChart { max-width: 600px; margin: 0 auto; }
-
-/* Chat */
-.chat-box { background: #f9f9f9; padding: 1rem; border-radius: 12px; margin-bottom: 1rem; display: flex; flex-direction: column; gap: 0.6rem; }
-.chat-msg { padding: 0.6rem 1rem; border-radius: 12px; max-width: 70%; font-size: 0.9rem; }
-.chat-msg.user { background: #2a73ff; color: #fff; margin-left: auto; }
-.chat-msg.ai { background: #e5e5ea; color: #111; margin-right: auto; }
-.chat-form { display: flex; gap: 0.5rem; }
-.chat-form input { flex: 1; padding: 0.6rem; border: 1px solid #ddd; border-radius: 8px; }
-.chat-form button { background: #2a73ff; color: #fff; border: none; border-radius: 8px; padding: 0.6rem 1rem; cursor: pointer; }
-
-/* Invite */
-.invite-form { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
-.invite-form input { flex: 1; padding: 0.6rem; border-radius: 8px; border: 1px solid #ddd; }
-.invite-form button { background: #2a73ff; color: #fff; border: none; border-radius: 8px; padding: 0.6rem 1rem; cursor: pointer; }
-.invite-link { background: #f9f9f9; padding: 0.5rem; border-radius: 6px; margin-bottom: 1rem; }
-.collaborators { list-style: none; padding: 0; }
-
-/* Assistant */
-.quick-actions { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1rem; }
-.quick-actions button { flex: 1; padding: 0.6rem; border: 1px solid #ddd; border-radius: 8px; background: #f9f9f9; cursor: pointer; }
-
-/* Settings */
-#settings label { display: block; margin-bottom: 0.8rem; }
-
-/* Footer */
-.footer { display: flex; justify-content: space-between; padding: 0.5rem 1rem; font-size: 0.8rem; border-top: 1px solid #eee; background: #fafafa; }
-
-/* Bottom Nav */
-.bottom-nav { display: none; border-top: 1px solid #eee; background: #fff; }
-.bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; padding: 0.3rem 0; }
-.bottom-nav a { text-decoration: none; color: #111; display: flex; justify-content: center; }
-.bottom-nav img { width: 22px; height: 22px; }
-.bottom-nav .assistant-btn img { width: 30px; height: 30px; }
-
-/* Mobile Rules */
-@media (max-width: 768px) {
-  .top-nav a:nth-child(n+5) { display: none; } /* hide extra pages */
-  .bottom-nav { display: flex; justify-content: space-around; }
+  font-size: 12px;
+  padding: 10px;
+  color: #555;
 }
