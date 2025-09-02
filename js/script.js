@@ -1,19 +1,26 @@
-// Highlight active nav link
-const sections = document.querySelectorAll("section");
-const navLinks = document.querySelectorAll("nav a");
+// Handle tab navigation
+const sections = document.querySelectorAll(".page");
+const navButtons = document.querySelectorAll("nav button");
 
-window.addEventListener("scroll", () => {
-  let current = "";
+function showPage(pageId) {
   sections.forEach(section => {
-    const sectionTop = section.offsetTop - 80;
-    if (scrollY >= sectionTop) {
-      current = section.getAttribute("id");
-    }
+    section.classList.remove("active");
+    if (section.id === pageId) section.classList.add("active");
   });
-  navLinks.forEach(link => {
-    link.classList.remove("active");
-    if (link.getAttribute("href") === `#${current}`) {
-      link.classList.add("active");
-    }
+
+  navButtons.forEach(btn => {
+    btn.classList.remove("active");
+    if (btn.dataset.page === pageId) btn.classList.add("active");
+  });
+}
+
+// Default page
+showPage("tasks");
+
+// Event listeners
+navButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    const target = btn.dataset.page;
+    showPage(target);
   });
 });
