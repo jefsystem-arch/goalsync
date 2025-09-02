@@ -1,21 +1,20 @@
-From 3e2a9d9f9c2f9e5fdb58 Mon Sep 17 00:00:00 2001
-Subject: [PATCH] GoalSync v2.3: polished layout, navigation, settings, inner
- pages
+From 1234567890abcdef1234567890abcdef12345678 Mon Sep 17 00:00:00 2001
+Subject: [PATCH] GoalSync v2.3: polished layout, navigation, inner pages, release bump
 
 ---
- index.html        | 25 ++++++++++++++++---------
- css/styles.css    | 48 ++++++++++++++++++++++++++++++++++++++----------
- js/app.js         | 20 ++++++++++++++++++--
- pages/tasks.html  | 12 ++++++++----
- pages/goals.html  | 12 ++++++++----
- pages/projects.html | 12 ++++++++----
- 6 files changed, 96 insertions(+), 33 deletions(-)
+ index.html         | 27 +++++++++++++++++++++++----
+ css/styles.css     | 52 ++++++++++++++++++++++++++++++++++++++++++++------
+ js/app.js          | 20 ++++++++++++++++++--
+ pages/tasks.html   | 12 ++++++++++--
+ pages/goals.html   | 12 ++++++++++--
+ pages/projects.html| 12 ++++++++++--
+ 6 files changed, 115 insertions(+), 20 deletions(-)
 
 diff --git a/index.html b/index.html
 index 3f2d12a..1b3a4f7 100644
 --- a/index.html
 +++ b/index.html
-@@ -10,11 +10,22 @@
+@@ -10,11 +10,30 @@
    <body>
 -    <nav>
 -      <!-- old navigation placeholder -->
@@ -49,16 +48,18 @@ index 3f2d12a..1b3a4f7 100644
 diff --git a/css/styles.css b/css/styles.css
 --- a/css/styles.css
 +++ b/css/styles.css
-@@ -1,6 +1,26 @@
- body {
+@@ -1,6 +1,30 @@
+-body {
 -  background: #fff;
 -  color: #000;
+-}
++body {
 +  margin: 0;
 +  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 +  background: var(--bg-color);
 +  color: var(--text-color);
 +  transition: background 0.3s, color 0.3s;
- }
++}
 +
 +:root {
 +  --bg-color: #f8f9fa;
@@ -129,8 +130,7 @@ diff --git a/js/app.js b/js/app.js
 diff --git a/pages/tasks.html b/pages/tasks.html
 --- a/pages/tasks.html
 +++ b/pages/tasks.html
-@@ -5,7 +5,11 @@
- <body>
+@@ -5,7 +5,13 @@
 -  <h1>Tasks Page</h1>
 +  <header><nav class="navbar"><div class="logo">⚡ GoalSync</div></nav></header>
 +  <main class="content">
@@ -143,8 +143,7 @@ diff --git a/pages/tasks.html b/pages/tasks.html
 diff --git a/pages/goals.html b/pages/goals.html
 --- a/pages/goals.html
 +++ b/pages/goals.html
-@@ -5,7 +5,11 @@
- <body>
+@@ -5,7 +5,13 @@
 -  <h1>Goals Page</h1>
 +  <header><nav class="navbar"><div class="logo">⚡ GoalSync</div></nav></header>
 +  <main class="content">
@@ -157,8 +156,7 @@ diff --git a/pages/goals.html b/pages/goals.html
 diff --git a/pages/projects.html b/pages/projects.html
 --- a/pages/projects.html
 +++ b/pages/projects.html
-@@ -5,7 +5,11 @@
- <body>
+@@ -5,7 +5,13 @@
 -  <h1>Projects Page</h1>
 +  <header><nav class="navbar"><div class="logo">⚡ GoalSync</div></nav></header>
 +  <main class="content">
