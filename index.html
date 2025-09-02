@@ -8,54 +8,56 @@
   <script defer src="js/script.js"></script>
 </head>
 <body>
-  <!-- Top Navigation -->
-  <header class="navbar">
-    <div class="logo">GoalSync</div>
-    <nav class="nav-links">
-      <a href="#">Home</a>
-      <a href="#">Features</a>
-      <a href="#">Pricing</a>
-      <a href="#">About</a>
-    </nav>
-    <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
-    <button class="hamburger" aria-label="Menu">
-      ☰
-    </button>
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">
+      <h1>GoalSync</h1>
+      <p class="tagline">Plan smart. Stay on track. Achieve more.</p>
+    </div>
   </header>
 
-  <!-- Mobile Navigation Drawer -->
-  <nav class="mobile-nav hidden">
-    <a href="#">Home</a>
-    <a href="#">Features</a>
-    <a href="#">Pricing</a>
-    <a href="#">About</a>
+  <!-- Desktop Top Navigation -->
+  <nav class="nav-desktop">
+    <a href="#tasks">✅ Tasks</a>
+    <a href="#goals">🎯 Goals</a>
+    <a href="#projects">📂 Projects</a>
+    <a href="#chat">💬 Chat</a>
+    <a href="#dashboard">📊 Dashboard</a>
+    <a href="#invite">📨 Invite</a>
+    <a href="#history">🕒 History</a>
+    <a href="#assistant">🤖 Assistant</a>
+    <a href="#settings">⚙️ Settings</a>
   </nav>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <h1>Your Intelligent Daily Planner</h1>
-    <p>Stay organized, track progress, and reach your goals effortlessly.</p>
-    <div class="hero-actions">
-      <a href="#" class="btn primary">Get Started</a>
-      <a href="#" class="btn secondary">Learn More</a>
-    </div>
-  </section>
+  <!-- Mobile Top Navigation -->
+  <nav class="nav-mobile-top">
+    <a href="#tasks">✅</a>
+    <a href="#goals">🎯</a>
+    <a href="#projects">📂</a>
+    <a href="#chat">💬</a>
+  </nav>
 
-  <!-- Features Section -->
-  <section class="features">
-    <div class="feature-card">
-      <h2>Plan</h2>
-      <p>Organize your day with clarity and focus.</p>
-    </div>
-    <div class="feature-card">
-      <h2>Track</h2>
-      <p>Measure your progress with intuitive tools.</p>
-    </div>
-    <div class="feature-card">
-      <h2>Achieve</h2>
-      <p>Turn your goals into reality with GoalSync.</p>
-    </div>
-  </section>
+  <!-- Page Sections -->
+  <main>
+    <section id="tasks" class="page">📑 Tasks Page</section>
+    <section id="goals" class="page">🎯 Goals Page</section>
+    <section id="projects" class="page">📂 Projects Page</section>
+    <section id="chat" class="page">💬 Chat Page</section>
+    <section id="dashboard" class="page">📊 Dashboard Page</section>
+    <section id="invite" class="page">📨 Invite Page</section>
+    <section id="history" class="page">🕒 History Page</section>
+    <section id="assistant" class="page">🤖 Assistant Page</section>
+    <section id="settings" class="page">⚙️ Settings Page</section>
+  </main>
+
+  <!-- Mobile Bottom Navigation -->
+  <nav class="nav-mobile-bottom">
+    <a href="#dashboard">📊</a>
+    <a href="#invite">📨</a>
+    <a href="#history">🕒</a>
+    <a href="#settings">⚙️</a>
+    <a href="#assistant" class="assistant-btn">🤖</a>
+  </nav>
 
   <!-- Footer -->
   <footer class="footer">
