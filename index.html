@@ -16,30 +16,24 @@
 
   <!-- Top Navigation -->
   <nav class="top-nav">
-    <ul>
-      <li><a href="#" class="active"><img src="icons/tasks.svg" alt=""> Tasks</a></li>
-      <li><a href="#"><img src="icons/goals.svg" alt=""> Goals</a></li>
-      <li><a href="#"><img src="icons/projects.svg" alt=""> Projects</a></li>
-      <li><a href="#"><img src="icons/chat.svg" alt=""> Chat</a></li>
-      <li><a href="#"><img src="icons/settings.svg" alt=""> Settings</a></li>
-    </ul>
+    <a href="#" onclick="navigateTo('tasks')"><img src="icons/tasks.svg" alt=""> Tasks</a>
+    <a href="#" onclick="navigateTo('goals')"><img src="icons/goals.svg" alt=""> Goals</a>
+    <a href="#" onclick="navigateTo('projects')"><img src="icons/projects.svg" alt=""> Projects</a>
+    <a href="#" onclick="navigateTo('chat')"><img src="icons/chat.svg" alt=""> Chat</a>
+    <a href="#" onclick="navigateTo('dashboard')"><img src="icons/dashboard.svg" alt=""> Dashboard</a>
+    <a href="#" onclick="navigateTo('invite')"><img src="icons/invite.svg" alt=""> Invite</a>
+    <a href="#" onclick="navigateTo('history')"><img src="icons/history.svg" alt=""> History</a>
+    <a href="#" onclick="navigateTo('assistant')"><img src="icons/assistant.svg" alt=""> Assistant</a>
+    <a href="#" onclick="navigateTo('settings')"><img src="icons/settings.svg" alt=""> Settings</a>
   </nav>
 
   <!-- Main Content -->
-  <main class="page-content">
-    <section id="tasks">
+  <main class="container">
+    <!-- Tasks -->
+    <section id="tasks" class="page active">
       <h2>Your Tasks</h2>
-      <div class="task-controls">
-        <select>
-          <option>All Tasks</option>
-          <option>Completed</option>
-          <option>Pending</option>
-        </select>
-        <input type="text" placeholder="Search tasks" />
-      </div>
-
       <form class="task-form">
-        <input type="text" placeholder="Task title" />
+        <input type="text" placeholder="Task title" required />
         <input type="date" />
         <input type="time" />
         <select>
@@ -52,12 +46,95 @@
         <input type="text" placeholder="Participants (emails)" />
         <button type="submit">Add Task</button>
       </form>
-
       <ul class="task-list">
-        <li><input type="checkbox" checked> Work on presentation — 10:30 AM</li>
-        <li><input type="checkbox" checked> Respond to emails — 9:00 AM</li>
-        <li><input type="checkbox"> Exercise at gym — 5:30 PM</li>
+        <li><input type="checkbox" checked /> Work on presentation — 10:30 AM</li>
+        <li><input type="checkbox" checked /> Respond to emails — 9:00 AM</li>
+        <li><input type="checkbox" /> Exercise at gym — 5:30 PM</li>
       </ul>
+    </section>
+
+    <!-- Goals -->
+    <section id="goals" class="page">
+      <h2>Your Goals</h2>
+      <div class="goal-grid">
+        <div class="goal-card"><h3>Health</h3><div class="progress-circle" data-progress="50"></div></div>
+        <div class="goal-card"><h3>Work</h3><div class="progress-circle" data-progress="70"></div></div>
+        <div class="goal-card"><h3>Personal</h3><div class="progress-circle" data-progress="30"></div></div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="page">
+      <h2>Projects</h2>
+      <p>[Project cards go here]</p>
+    </section>
+
+    <!-- Chat -->
+    <section id="chat" class="page">
+      <h2>Chat</h2>
+      <div class="chat-box">
+        <div class="chat-msg ai">Hello Jeff 👋 How can I help today?</div>
+      </div>
+      <form class="chat-form">
+        <input type="text" placeholder="Type a message..." required />
+        <button type="submit">Send</button>
+      </form>
+    </section>
+
+    <!-- Dashboard -->
+    <section id="dashboard" class="page">
+      <h2>Dashboard</h2>
+      <div class="dashboard-cards">
+        <div class="card">76% Tasks Completed</div>
+        <div class="card">2 Goals Achieved This Week</div>
+        <div class="card">5 Tasks Completed Today</div>
+      </div>
+      <canvas id="activityChart"></canvas>
+    </section>
+
+    <!-- Invite -->
+    <section id="invite" class="page">
+      <h2>Invite Collaborators</h2>
+      <form class="invite-form">
+        <input type="email" placeholder="Enter email" required />
+        <button type="submit">Send Invite</button>
+      </form>
+      <p>Or share link:</p>
+      <div class="invite-link">goalsync.app/invite/xyz</div>
+      <ul class="collaborators"></ul>
+    </section>
+
+    <!-- History -->
+    <section id="history" class="page">
+      <h2>History</h2>
+      <h3>Today</h3>
+      <ul><li>✔ Responded to emails</li><li>✔ Team standup meeting</li></ul>
+      <h3>Yesterday</h3>
+      <ul><li>✔ Project kickoff call</li></ul>
+    </section>
+
+    <!-- Assistant -->
+    <section id="assistant" class="page">
+      <h2>Assistant</h2>
+      <div class="chat-box"><div class="chat-msg ai">Hi Jeff, I’m here to assist you 🚀</div></div>
+      <div class="quick-actions">
+        <button onclick="navigateTo('tasks')">Add a Task</button>
+        <button onclick="navigateTo('goals')">Show Goals</button>
+        <button onclick="navigateTo('dashboard')">Weekly Summary</button>
+      </div>
+    </section>
+
+    <!-- Settings -->
+    <section id="settings" class="page">
+      <h2>Settings</h2>
+      <label><input type="checkbox" /> Dark Mode</label><br />
+      <label><input type="checkbox" /> Notifications</label><br />
+      <label>Theme Color:
+        <select><option>Blue</option><option>Green</option><option>Purple</option></select>
+      </label><br />
+      <label>Language:
+        <select><option>English</option><option>Spanish</option></select>
+      </label>
     </section>
   </main>
 
@@ -67,15 +144,15 @@
     <span>Project by Team Jeff & AI</span>
   </footer>
 
-  <!-- Mobile Bottom Navigation -->
+  <!-- Bottom Navigation (mobile only) -->
   <nav class="bottom-nav">
-    <ul>
-      <li><a href="#"><img src="icons/dashboard.svg" alt="Dashboard"></a></li>
-      <li><a href="#"><img src="icons/invite.svg" alt="Invite"></a></li>
-      <li><a href="#"><img src="icons/history.svg" alt="History"></a></li>
-      <li><a href="#"><img src="icons/assistant.svg" alt="Assistant"></a></li>
-      <li><a href="#"><img src="icons/settings.svg" alt="Settings"></a></li>
-    </ul>
+    <a href="#" onclick="navigateTo('dashboard')"><img src="icons/dashboard.svg" alt="Dashboard"></a>
+    <a href="#" onclick="navigateTo('invite')"><img src="icons/invite.svg" alt="Invite"></a>
+    <a href="#" onclick="navigateTo('assistant')" class="assistant-btn"><img src="icons/assistant.svg" alt="Assistant"></a>
+    <a href="#" onclick="navigateTo('history')"><img src="icons/history.svg" alt="History"></a>
+    <a href="#" onclick="navigateTo('settings')"><img src="icons/settings.svg" alt="Settings"></a>
   </nav>
+
+  <script src="js/script.js"></script>
 </body>
 </html>
