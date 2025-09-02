@@ -4,7 +4,8 @@
   --blue: #007aff;
   --bg: #fff;
   --text: #111;
-  --border: #e5e5ea;
+  --gray: #f2f2f7;
+  --border: #ddd;
 }
 
 body {
@@ -36,7 +37,8 @@ body {
 .nav-desktop {
   display: flex;
   justify-content: center;
-  gap: 2rem;
+  flex-wrap: wrap;
+  gap: 1.5rem;
   padding: 0.75rem 1rem;
   background: var(--bg);
   border-bottom: 1px solid var(--border);
@@ -52,23 +54,248 @@ body {
   align-items: center;
   gap: 0.4rem;
 }
-.nav-desktop svg {
-  stroke: var(--text);
-  width: 18px;
-  height: 18px;
+.nav-desktop button.active {
+  color: var(--blue);
+  font-weight: 600;
+}
+
+/* Mobile Nav */
+.nav-mobile-top,
+.nav-mobile-bottom {
+  display: none;
+}
+.nav-mobile-top {
+  display: flex;
+  justify-content: space-around;
+  padding: 0.5rem;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+.nav-mobile-bottom {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0.75rem;
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+.nav-mobile-bottom button {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+.assistant-btn {
+  font-size: 1.6rem;
+  color: var(--blue);
 }
 
 /* Pages */
 .page {
   display: none;
   padding: 2rem;
+  min-height: 70vh;
 }
 .page.active {
   display: block;
 }
+h2 {
+  margin-top: 0;
+}
 
-/* Mobile nav hidden for desktop */
-.nav-mobile-top,
-.nav-mobile-bottom {
-  display: none !important;
+/* ---- Tasks Page ---- */
+.task-controls {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.task-controls select,
+.task-controls input {
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+.task-form {
+  display: grid;
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+.task-form input,
+.task-form select,
+.task-form textarea {
+  padding: 0.6rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  font-size: 0.95rem;
+}
+.btn-primary {
+  background: var(--blue);
+  color: #fff;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.task-list {
+  list-style: none;
+  padding: 0;
+}
+.task-list li {
+  background: var(--gray);
+  padding: 0.8rem;
+  margin-bottom: 0.5rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ---- Goals Page ---- */
+.goal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+.goal-card {
+  background: var(--gray);
+  padding: 1rem;
+  border-radius: 12px;
+  text-align: center;
+}
+.progress-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 6px solid var(--border);
+  margin: 0.5rem auto;
+  position: relative;
+}
+.progress-circle::after {
+  content: attr(data-progress) '%';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* ---- Dashboard ---- */
+.dashboard-cards {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  margin-bottom: 2rem;
+}
+.card {
+  background: var(--gray);
+  padding: 1rem;
+  border-radius: 12px;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* ---- Chat Page ---- */
+.chat-box {
+  background: var(--gray);
+  padding: 1rem;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+}
+.chat-msg {
+  margin: 0.5rem 0;
+  padding: 0.6rem 1rem;
+  border-radius: 12px;
+  max-width: 70%;
+}
+.chat-msg.user {
+  background: var(--blue);
+  color: #fff;
+  margin-left: auto;
+}
+.chat-msg.ai {
+  background: #e5e5ea;
+  color: var(--text);
+}
+
+/* ---- Invite ---- */
+.invite-link {
+  background: var(--gray);
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+}
+.collaborators {
+  list-style: none;
+  padding: 0;
+}
+.collaborators li {
+  background: var(--gray);
+  margin: 0.4rem 0;
+  padding: 0.6rem;
+  border-radius: 8px;
+}
+
+/* ---- History ---- */
+#history ul {
+  list-style: none;
+  padding: 0;
+}
+#history li {
+  background: var(--gray);
+  margin: 0.4rem 0;
+  padding: 0.6rem;
+  border-radius: 8px;
+}
+
+/* ---- Assistant ---- */
+.quick-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+.quick-actions button {
+  flex: 1;
+  padding: 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--gray);
+  cursor: pointer;
+}
+
+/* ---- Settings ---- */
+#settings label {
+  display: block;
+  margin-bottom: 0.8rem;
+}
+
+/* Footer */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.85rem;
+  color: #555;
+}
+.footer .version {
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nav-desktop {
+    display: none;
+  }
+  .nav-mobile-top,
+  .nav-mobile-bottom {
+    display: flex;
+  }
+  .task-controls {
+    flex-direction: column;
+  }
 }

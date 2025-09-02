@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GoalSync Test – SVG Nav</title>
+  <title>GoalSync</title>
   <link rel="stylesheet" href="css/styles.css">
+  <script defer src="js/script.js"></script>
 </head>
 <body>
   <!-- Header -->
@@ -15,39 +16,183 @@
     </div>
   </header>
 
-  <!-- Desktop Navigation (Test: Tasks + Goals only) -->
+  <!-- Desktop Navigation -->
   <nav class="nav-desktop">
-    <button data-page="tasks">
-      <!-- Tasks SVG -->
-      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-        <line x1="9" y1="9" x2="15" y2="9"></line>
-        <line x1="9" y1="15" x2="15" y2="15"></line>
-      </svg>
-      <span>Tasks</span>
-    </button>
-
-    <button data-page="goals">
-      <!-- Goals SVG -->
-      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-        <circle cx="12" cy="12" r="10"></circle>
-        <circle cx="12" cy="12" r="3"></circle>
-        <line x1="22" y1="2" x2="15" y2="9"></line>
-      </svg>
-      <span>Goals</span>
-    </button>
+    <button data-page="tasks">📑 Tasks</button>
+    <button data-page="goals">🎯 Goals</button>
+    <button data-page="projects">📂 Projects</button>
+    <button data-page="chat">💬 Chat</button>
+    <button data-page="dashboard">📊 Dashboard</button>
+    <button data-page="invite">📨 Invite</button>
+    <button data-page="history">🕒 History</button>
+    <button data-page="assistant">🤖 Assistant</button>
+    <button data-page="settings">⚙️ Settings</button>
   </nav>
 
-  <!-- Pages -->
+  <!-- Mobile Top Navigation -->
+  <nav class="nav-mobile-top">
+    <button data-page="tasks">📑</button>
+    <button data-page="goals">🎯</button>
+    <button data-page="projects">📂</button>
+    <button data-page="chat">💬</button>
+  </nav>
+
+  <!-- Main Pages -->
   <main>
+    <!-- Tasks Page -->
     <section id="tasks" class="page active">
-      <h2>Tasks Page</h2>
-      <p>Testing Apple-style font + SVG icons.</p>
+      <h2>Your Tasks</h2>
+      <div class="task-controls">
+        <select>
+          <option>All Tasks</option>
+          <option>Completed</option>
+          <option>Pending</option>
+        </select>
+        <input type="text" placeholder="Search tasks">
+      </div>
+      <form class="task-form">
+        <input type="text" placeholder="Task title" required>
+        <input type="date">
+        <input type="time">
+        <select>
+          <option>No repeat</option>
+          <option>Daily</option>
+          <option>Weekly</option>
+        </select>
+        <select>
+          <option>Assign to Goal</option>
+          <option>Health</option>
+          <option>Work</option>
+        </select>
+        <textarea placeholder="Details (optional)"></textarea>
+        <input type="text" placeholder="Participants (emails)">
+        <button type="submit" class="btn-primary">Add Task</button>
+      </form>
+      <ul class="task-list">
+        <li><input type="checkbox" checked> Work on presentation — 10:30 AM</li>
+        <li><input type="checkbox" checked> Respond to emails — 9:00 AM</li>
+        <li><input type="checkbox"> Exercise at gym — 5:30 PM</li>
+      </ul>
     </section>
+
+    <!-- Goals Page -->
     <section id="goals" class="page">
-      <h2>Goals Page</h2>
-      <p>This is a placeholder for goals.</p>
+      <h2>Your Goals</h2>
+      <div class="goal-grid">
+        <div class="goal-card">
+          <h3>Health</h3>
+          <div class="progress-circle" data-progress="50"></div>
+          <p>50% Complete</p>
+        </div>
+        <div class="goal-card">
+          <h3>Work</h3>
+          <div class="progress-circle" data-progress="70"></div>
+          <p>70% Complete</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Page -->
+    <section id="projects" class="page">
+      <h2>Projects</h2>
+      <p>No projects yet.</p>
+      <button class="btn-primary">+ New Project</button>
+    </section>
+
+    <!-- Chat Page -->
+    <section id="chat" class="page">
+      <h2>Chat</h2>
+      <div class="chat-box">
+        <div class="chat-msg user">Hi Assistant!</div>
+        <div class="chat-msg ai">Hello Jeff 👋 How can I help today?</div>
+      </div>
+      <input type="text" placeholder="Type a message...">
+    </section>
+
+    <!-- Dashboard Page -->
+    <section id="dashboard" class="page">
+      <h2>Dashboard</h2>
+      <div class="dashboard-cards">
+        <div class="card">76% Tasks Completed</div>
+        <div class="card">2 Goals Achieved This Week</div>
+        <div class="card">5 Tasks Completed Today</div>
+      </div>
+      <canvas id="activityChart"></canvas>
+    </section>
+
+    <!-- Invite Page -->
+    <section id="invite" class="page">
+      <h2>Invite Collaborators</h2>
+      <input type="email" placeholder="Enter email">
+      <button class="btn-primary">Send Invite</button>
+      <p>Or share link: <span class="invite-link">goalsync.app/invite/xyz</span></p>
+      <ul class="collaborators">
+        <li>Sarah (Designer)</li>
+        <li>Mark (Developer)</li>
+      </ul>
+    </section>
+
+    <!-- History Page -->
+    <section id="history" class="page">
+      <h2>History</h2>
+      <h3>Today</h3>
+      <ul>
+        <li>✔ Responded to emails</li>
+        <li>✔ Team standup meeting</li>
+      </ul>
+      <h3>Yesterday</h3>
+      <ul>
+        <li>✔ Project kickoff call</li>
+      </ul>
+    </section>
+
+    <!-- Assistant Page -->
+    <section id="assistant" class="page">
+      <h2>Assistant</h2>
+      <div class="chat-box">
+        <div class="chat-msg ai">Hi Jeff, I’m here to assist you 🚀</div>
+      </div>
+      <div class="quick-actions">
+        <button>Add a Task</button>
+        <button>Show Goals</button>
+        <button>Weekly Summary</button>
+      </div>
+    </section>
+
+    <!-- Settings Page -->
+    <section id="settings" class="page">
+      <h2>Settings</h2>
+      <label><input type="checkbox"> Dark Mode</label><br>
+      <label><input type="checkbox"> Notifications</label><br>
+      <label>Theme Color:
+        <select>
+          <option>Blue</option>
+          <option>Green</option>
+          <option>Purple</option>
+        </select>
+      </label><br>
+      <label>Language:
+        <select>
+          <option>English</option>
+          <option>Spanish</option>
+        </select>
+      </label>
     </section>
   </main>
+
+  <!-- Mobile Bottom Navigation -->
+  <nav class="nav-mobile-bottom">
+    <button data-page="dashboard">📊</button>
+    <button data-page="invite">📨</button>
+    <button data-page="history">🕒</button>
+    <button data-page="settings">⚙️</button>
+    <button data-page="assistant" class="assistant-btn">🤖</button>
+  </nav>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <span class="version">v2.3+</span>
+    <span class="credit">Project by Team Jeff & AI</span>
+  </footer>
 </body>
 </html>
