@@ -24,3 +24,20 @@ navButtons.forEach(btn => {
     showPage(target);
   });
 });
+
+// Handle task form submission (for demo)
+const taskForm = document.querySelector(".task-form");
+const taskList = document.querySelector(".task-list");
+
+if (taskForm) {
+  taskForm.addEventListener("submit", e => {
+    e.preventDefault();
+    const title = taskForm.querySelector("input[type='text']").value;
+    if (title.trim() !== "") {
+      const li = document.createElement("li");
+      li.innerHTML = `<input type="checkbox"> ${title}`;
+      taskList.appendChild(li);
+      taskForm.reset();
+    }
+  });
+}
