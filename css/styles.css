@@ -1,13 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
 :root {
   --blue: #007aff;
   --bg: #fff;
   --text: #111;
-  --gray: #f2f2f7;
-  --border: #ddd;
+  --border: #e5e5ea;
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", Inter, "Segoe UI", Roboto, sans-serif;
   margin: 0;
   background: var(--bg);
   color: var(--text);
@@ -35,9 +36,8 @@ body {
 .nav-desktop {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
-  gap: 1.2rem;
-  padding: 0.75rem;
+  gap: 2rem;
+  padding: 0.75rem 1rem;
   background: var(--bg);
   border-bottom: 1px solid var(--border);
 }
@@ -48,125 +48,27 @@ body {
   font-weight: 500;
   color: var(--text);
   cursor: pointer;
-}
-
-/* Mobile Nav */
-.nav-mobile-top,
-.nav-mobile-bottom {
-  display: none;
-}
-.nav-mobile-top {
   display: flex;
-  justify-content: space-around;
-  padding: 0.5rem;
-  background: var(--bg);
-  border-bottom: 1px solid var(--border);
-}
-.nav-mobile-bottom {
-  display: flex;
-  justify-content: space-around;
   align-items: center;
-  padding: 0.75rem;
-  background: var(--bg);
-  border-top: 1px solid var(--border);
-  position: fixed;
-  bottom: 0;
-  width: 100%;
+  gap: 0.4rem;
 }
-.nav-mobile-bottom button {
-  background: none;
-  border: none;
-  font-size: 1.3rem;
-  cursor: pointer;
-}
-.assistant-btn {
-  font-size: 1.6rem;
-  color: var(--blue);
+.nav-desktop svg {
+  stroke: var(--text);
+  width: 18px;
+  height: 18px;
 }
 
-/* Page Sections */
+/* Pages */
 .page {
   display: none;
   padding: 2rem;
-  min-height: 70vh;
 }
 .page.active {
   display: block;
 }
 
-/* Tasks Page */
-.task-controls {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-.task-controls select,
-.task-controls input {
-  padding: 0.5rem;
-  border-radius: 8px;
-  border: 1px solid var(--border);
-}
-.task-form {
-  display: grid;
-  gap: 0.8rem;
-  margin-bottom: 1.5rem;
-}
-.task-form input,
-.task-form select,
-.task-form textarea {
-  padding: 0.6rem;
-  border-radius: 8px;
-  border: 1px solid var(--border);
-  font-size: 0.95rem;
-}
-.btn-primary {
-  background: var(--blue);
-  color: #fff;
-  padding: 0.75rem;
-  border: none;
-  border-radius: 10px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-}
-.task-list {
-  list-style: none;
-  padding: 0;
-}
-.task-list li {
-  background: var(--gray);
-  padding: 0.8rem;
-  margin-bottom: 0.5rem;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-/* Footer */
-.footer {
-  text-align: center;
-  padding: 1rem;
-  border-top: 1px solid var(--border);
-  margin-bottom: 3rem;
-}
-.footer .version {
-  display: block;
-  margin-top: 0.25rem;
-  font-size: 0.85rem;
-  color: #666;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .nav-desktop {
-    display: none;
-  }
-  .nav-mobile-top,
-  .nav-mobile-bottom {
-    display: flex;
-  }
-  .task-controls {
-    flex-direction: column;
-  }
+/* Mobile nav hidden for desktop */
+.nav-mobile-top,
+.nav-mobile-bottom {
+  display: none !important;
 }
