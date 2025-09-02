@@ -1,119 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GoalSync</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" href="icons/logo.svg" type="image/svg+xml" />
 </head>
 <body>
   <!-- Header -->
   <header class="app-header">
-    <h1>GoalSync</h1>
+    <h1 class="logo">GoalSync</h1>
     <p class="tagline">Plan smart. Stay on track. Achieve more.</p>
   </header>
 
-  <!-- Top Navigation (desktop + mobile top) -->
+  <!-- Top Navigation -->
   <nav class="top-nav">
     <ul>
-      <li onclick="navigateTo('tasks')"><img src="icons/tasks.svg" alt=""> <span>Tasks</span></li>
-      <li onclick="navigateTo('goals')"><img src="icons/goals.svg" alt=""> <span>Goals</span></li>
-      <li onclick="navigateTo('projects')"><img src="icons/projects.svg" alt=""> <span>Projects</span></li>
-      <li onclick="navigateTo('chat')"><img src="icons/chat.svg" alt=""> <span>Chat</span></li>
-      <li onclick="navigateTo('settings')"><img src="icons/settings.svg" alt=""> <span>Settings</span></li>
+      <li><a href="#" class="active"><img src="icons/tasks.svg" alt=""> Tasks</a></li>
+      <li><a href="#"><img src="icons/goals.svg" alt=""> Goals</a></li>
+      <li><a href="#"><img src="icons/projects.svg" alt=""> Projects</a></li>
+      <li><a href="#"><img src="icons/chat.svg" alt=""> Chat</a></li>
+      <li><a href="#"><img src="icons/settings.svg" alt=""> Settings</a></li>
     </ul>
   </nav>
 
   <!-- Main Content -->
-  <main>
-    <!-- Tasks -->
-    <section id="tasks" class="page active">
+  <main class="page-content">
+    <section id="tasks">
       <h2>Your Tasks</h2>
+      <div class="task-controls">
+        <select>
+          <option>All Tasks</option>
+          <option>Completed</option>
+          <option>Pending</option>
+        </select>
+        <input type="text" placeholder="Search tasks" />
+      </div>
+
       <form class="task-form">
-        <input type="text" placeholder="Task title" required>
-        <input type="date">
-        <input type="time">
+        <input type="text" placeholder="Task title" />
+        <input type="date" />
+        <input type="time" />
         <select>
           <option>No repeat</option>
           <option>Daily</option>
           <option>Weekly</option>
         </select>
-        <input type="text" placeholder="Assign to Goal">
+        <input type="text" placeholder="Assign to Goal" />
         <textarea placeholder="Details (optional)"></textarea>
-        <input type="text" placeholder="Participants (emails)">
+        <input type="text" placeholder="Participants (emails)" />
         <button type="submit">Add Task</button>
       </form>
+
       <ul class="task-list">
         <li><input type="checkbox" checked> Work on presentation — 10:30 AM</li>
         <li><input type="checkbox" checked> Respond to emails — 9:00 AM</li>
         <li><input type="checkbox"> Exercise at gym — 5:30 PM</li>
       </ul>
     </section>
-
-    <!-- Goals -->
-    <section id="goals" class="page">
-      <h2>Your Goals</h2>
-      <div class="goal-grid">
-        <div class="goal-card">
-          <h3>Health</h3>
-          <div class="progress-circle" data-progress="50"></div>
-          <p>50% Complete</p>
-        </div>
-        <div class="goal-card">
-          <h3>Work</h3>
-          <div class="progress-circle" data-progress="70"></div>
-          <p>70% Complete</p>
-        </div>
-        <div class="goal-card">
-          <h3>Personal</h3>
-          <div class="progress-circle" data-progress="30"></div>
-          <p>30% Complete</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Dashboard -->
-    <section id="dashboard" class="page">
-      <h2>Dashboard</h2>
-      <div class="dashboard-cards">
-        <div class="card">76% Tasks Completed</div>
-        <div class="card">2 Goals Achieved This Week</div>
-        <div class="card">5 Tasks Completed Today</div>
-      </div>
-      <canvas id="activityChart"></canvas>
-    </section>
-
-    <!-- Chat -->
-    <section id="chat" class="page">
-      <h2>Chat</h2>
-      <div class="chat-box">
-        <div class="chat-msg ai">Hello Jeff 👋 How can I help today?</div>
-        <div class="chat-msg user">Hi Assistant! Show me today’s tasks.</div>
-        <div class="chat-msg ai">You have 3 tasks scheduled today ✅</div>
-      </div>
-      <form class="chat-form">
-        <input type="text" placeholder="Type a message..." required>
-        <button type="submit">Send</button>
-      </form>
-    </section>
   </main>
 
-  <!-- Bottom Navigation (mobile only) -->
-  <nav class="bottom-nav">
-    <ul>
-      <li onclick="navigateTo('dashboard')"><img src="icons/dashboard.svg" alt="Dashboard"></li>
-      <li onclick="navigateTo('invite')"><img src="icons/invite.svg" alt="Invite"></li>
-      <li onclick="navigateTo('history')"><img src="icons/history.svg" alt="History"></li>
-      <li onclick="navigateTo('assistant')"><img src="icons/assistant.svg" alt="Assistant"></li>
-    </ul>
-  </nav>
-
   <!-- Footer -->
-  <footer class="app-footer">
+  <footer class="footer">
     <span>v2.3+</span>
     <span>Project by Team Jeff & AI</span>
   </footer>
 
-  <script src="js/script.js"></script>
+  <!-- Mobile Bottom Navigation -->
+  <nav class="bottom-nav">
+    <ul>
+      <li><a href="#"><img src="icons/dashboard.svg" alt="Dashboard"></a></li>
+      <li><a href="#"><img src="icons/invite.svg" alt="Invite"></a></li>
+      <li><a href="#"><img src="icons/history.svg" alt="History"></a></li>
+      <li><a href="#"><img src="icons/assistant.svg" alt="Assistant"></a></li>
+      <li><a href="#"><img src="icons/settings.svg" alt="Settings"></a></li>
+    </ul>
+  </nav>
 </body>
 </html>
