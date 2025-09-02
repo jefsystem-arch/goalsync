@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tasks - GoalSync</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <main class="container">
+    <h1>📋 Tasks</h1>
+
+    <!-- New Task Form -->
+    <section class="card">
+      <h2>New Task</h2>
+      <form id="taskForm">
+        <label>Task Name</label>
+        <input type="text" id="taskTitle" required>
+
+        <div class="form-row">
+          <span class="pill work">Work</span>
+          <span class="pill personal">Personal</span>
+          <span class="pill fitness">Fitness</span>
+        </div>
+
+        <div class="form-row">
+          <input type="date" id="taskDate">
+          <input type="time" id="taskTime">
+        </div>
+
+        <label><input type="checkbox" id="priority"> Priority</label>
+        <label><input type="checkbox" id="reminder"> Reminder</label>
+
+        <label>Invite Participants</label>
+        <input type="text" id="participants" placeholder="Enter emails, comma separated">
+
+        <label>Description</label>
+        <textarea id="taskDesc"></textarea>
+
+        <div style="margin-top:1rem;">
+          <button class="btn save" type="submit">Save</button>
+          <button class="btn cancel" type="reset">Cancel</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Task List -->
+    <section class="card">
+      <h2>My Tasks</h2>
+      <ul id="taskList"></ul>
+    </section>
+  </main>
+
+  <script type="module" src="../js/app.js"></script>
+</body>
+</html>

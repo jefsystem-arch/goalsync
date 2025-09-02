@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Goals - GoalSync</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <main class="container">
+    <h1>🎯 Goals</h1>
+
+    <!-- New Goal -->
+    <section class="card">
+      <h2>New Goal</h2>
+      <form id="goalForm">
+        <label>Goal Title</label>
+        <input type="text" id="goalTitle" required>
+
+        <label>Due Date</label>
+        <input type="date" id="goalDue">
+
+        <label>Invite Participants</label>
+        <input type="text" id="goalParticipants" placeholder="Enter emails">
+
+        <label>Description</label>
+        <textarea id="goalDesc"></textarea>
+
+        <div style="margin-top:1rem;">
+          <button class="btn save" type="submit">Save</button>
+          <button class="btn cancel" type="reset">Cancel</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Goal List -->
+    <section class="card">
+      <h2>My Goals</h2>
+      <ul id="goalList"></ul>
+    </section>
+  </main>
+
+  <script type="module" src="../js/goals.js"></script>
+</body>
+</html>

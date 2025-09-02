@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects - GoalSync</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <main class="container">
+    <h1>📁 Projects</h1>
+
+    <!-- New Project -->
+    <section class="card">
+      <h2>New Project</h2>
+      <form id="projectForm">
+        <label>Project Name</label>
+        <input type="text" id="projectTitle" required>
+
+        <label>Deadline</label>
+        <input type="date" id="projectDeadline">
+
+        <label>Invite Participants</label>
+        <input type="text" id="projectParticipants" placeholder="Enter emails">
+
+        <label>Description</label>
+        <textarea id="projectDesc"></textarea>
+
+        <div style="margin-top:1rem;">
+          <button class="btn save" type="submit">Save</button>
+          <button class="btn cancel" type="reset">Cancel</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Project List -->
+    <section class="card">
+      <h2>My Projects</h2>
+      <ul id="projectList"></ul>
+    </section>
+  </main>
+
+  <script type="module" src="../js/projects.js"></script>
+</body>
+</html>

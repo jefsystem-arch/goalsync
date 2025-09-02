@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings - GoalSync</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <main class="container">
+    <h1>⚙️ Settings</h1>
+
+    <!-- Profile -->
+    <section class="card">
+      <h2>Profile</h2>
+      <label for="profileName">Name</label>
+      <input type="text" id="profileName">
+      <label for="profileEmail">Email</label>
+      <input type="email" id="profileEmail">
+      <button class="btn save">Update Profile</button>
+    </section>
+
+    <!-- Preferences -->
+    <section class="card">
+      <h2>Preferences</h2>
+      <label><input type="checkbox" id="darkMode"> Dark Mode 🌙</label>
+      <label><input type="checkbox" id="largeText"> Large Text 🔤</label>
+    </section>
+
+    <!-- Notifications -->
+    <section class="card">
+      <h2>Notifications</h2>
+      <label><input type="checkbox" id="enableReminders"> Enable Reminders 🔔</label>
+      <label><input type="checkbox" id="dailySummary"> Daily Summary 📅</label>
+    </section>
+
+    <!-- Integrations -->
+    <section class="card">
+      <h2>Integrations</h2>
+      <label><input type="checkbox" id="googleCalendar"> Google Calendar 📆</label>
+      <label><input type="checkbox" id="slackIntegration"> Slack 💬</label>
+      <label><input type="checkbox" id="appleHealth"> Apple Health 🏃</label>
+    </section>
+
+    <!-- Account -->
+    <section class="card">
+      <h2>Account</h2>
+      <button class="btn cancel" id="logoutBtn">Logout</button>
+    </section>
+  </main>
+
+  <script type="module" src="../js/settings.js"></script>
+</body>
+</html>

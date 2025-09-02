@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - GoalSync</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <main class="container">
+    <h1>🔑 Login</h1>
+    <form id="loginForm" class="card">
+      <label>Email</label>
+      <input type="email" id="email" required>
+      <label>Password</label>
+      <input type="password" id="password" required>
+      <button class="btn save" type="submit">Login</button>
+    </form>
+
+    <section class="card" style="text-align:center; margin-top:1rem;">
+      <p>Or sign in with:</p>
+      <button id="googleLoginBtn" class="btn save" style="background:#db4437;">Google</button>
+    </section>
+  </main>
+
+  <script type="module">
+    import { auth } from "./js/firebase-config.js";
+    import { 
+      signInWithEmailAndPassword, 
+      GoogleAuthProvider, 
+      signInWithPopup 
+    } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+    // Email/Password Login
+    const form = document.getElementById("loginForm");
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      try {
+        await signInWithEmailAndPassword(auth, email, password);
+        alert("✅ Logged in successfully");
+        window.location.href = "index.html";
+      } catch (err) {
+        alert("❌ Error: " + err.message);
+      }
+    });
+
+    // Google Login
+    const googleBtn = document.getElementById("googleLoginBtn");
+    const provider = new GoogleAuthProvider();
+
+    googleBtn.addEventListener("click", async () => {
+      try {
+        await signInWithPopup(auth, provider);
+        alert("✅ Logged in with Google");
+        window.location.href = "index.html";
+      } catch (err) {
+        alert("❌ Google login error: " + err.message);
+      }
+    });
+  </script>
+</body>
+</html>

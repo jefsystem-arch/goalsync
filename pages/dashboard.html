@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - GoalSync</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <main class="container">
+    <h1>📊 Dashboard</h1>
+
+    <!-- Summary -->
+    <section class="card">
+      <h2>Summary</h2>
+      <p>Tasks: <span id="summaryTasks">0</span></p>
+      <p>Goals: <span id="summaryGoals">0%</span></p>
+      <p>Projects: <span id="summaryProjects">0%</span></p>
+    </section>
+
+    <!-- Charts Placeholder -->
+    <section class="card dashboard-charts">
+      <h2>Progress Charts</h2>
+      <canvas id="tasksChart"></canvas>
+      <canvas id="goalsChart"></canvas>
+      <canvas id="projectsChart"></canvas>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script type="module" src="../js/dashboard.js"></script>
+</body>
+</html>

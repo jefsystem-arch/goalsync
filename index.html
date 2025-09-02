@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="manifest" href="manifest.json">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GoalSync v2.1</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #f8f9fa;
+      margin: 0;
+      color: #333;
+    }
+    header {
+      background: #ffffff;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #e0e0e0;
+      position: sticky;
+      top: 0;
+    }
+    header h1 {
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    nav {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+    nav a, nav button {
+      text-decoration: none;
+      color: #0366d6;
+      font-weight: 500;
+      background: none;
+      border: none;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    nav a:hover, nav button:hover {
+      text-decoration: underline;
+    }
+    main {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+    .card h2 {
+      margin-top: 0;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .icon {
+      height: 18px;
+      width: 18px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>
+      <img src="icons/dashboard.svg" alt="GoalSync" class="icon">
+      GoalSync
+    </h1>
+    <nav>
+      <a href="pages/tasks.html"><img src="icons/tasks.svg" class="icon"> Tasks</a>
+      <a href="pages/goals.html"><img src="icons/goals.svg" class="icon"> Goals</a>
+      <a href="pages/projects.html"><img src="icons/projects.svg" class="icon"> Projects</a>
+      <a href="pages/dashboard.html"><img src="icons/dashboard.svg" class="icon"> Dashboard</a>
+      <a href="pages/assistant.html"><img src="icons/assistant.svg" class="icon"> Assistant</a>
+      <a href="pages/settings.html"><img src="icons/settings.svg" class="icon"> Settings</a>
+      <button id="logoutBtn"><img src="icons/logout.svg" class="icon"> Logout</button>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Welcome back 👋</h2>
+    <p>Here’s your quick overview:</p>
+
+    <div class="dashboard-grid">
+      <div class="card">
+        <h2><img src="icons/tasks.svg" class="icon"> Tasks</h2>
+        <p id="summaryTasks">Loading...</p>
+      </div>
+      <div class="card">
+        <h2><img src="icons/goals.svg" class="icon"> Goals</h2>
+        <p id="summaryGoals">Loading...</p>
+      </div>
+      <div class="card">
+        <h2><img src="icons/projects.svg" class="icon"> Projects</h2>
+        <p id="summaryProjects">Loading...</p>
+      </div>
+    </div>
+  </main>
+
+  <script type="module">
+    import { auth } from "./js/firebase-config.js";
+    import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+    import { db } from "./js/firebase-config.js";
+    import { collection, getDocs, query, where } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+    const logoutBtn = document.getElementById("logoutBtn");
+
+    // Show user data
+    async function loadSummary(uid) {
+      const tasksQ = query(collection(db, "tasks"), where("ownerId", "==", uid));
+      const goalsQ = query(collection(db, "goals"), where("ownerId", "==", uid));
+      const projectsQ = query(collection(db, "projects"), where("ownerId", "==", uid));
+
+      const tasksSnap = await getDocs(tasksQ);
+      const goalsSnap = await getDocs(goalsQ);
+      const projectsSnap = await getDocs(projectsQ);
+
+      const tasks = tasksSnap.docs.map(d => d.data());
+      const goals = goalsSnap.docs.map(d => d.data());
+      const projects = projectsSnap.docs.map(d => d.data());
+
+      document.getElementById("summaryTasks").textContent = `${tasks.filter(t => t.completed).length}/${tasks.length} completed`;
+      document.getElementById("summaryGoals").textContent = `${Math.round(goals.reduce((sum, g) => sum + (g.progress || 0), 0) / (goals.length || 1))}% complete`;
+      document.getElementById("summaryProjects").textContent = `${Math.round(projects.reduce((sum, p) => sum + (p.progress || 0), 0) / (projects.length || 1))}% progress`;
+    }
+
+    // Auth state
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        loadSummary(user.uid);
+      } else {
+        window.location.href = "login.html";
+      }
+    });
+
+    // Logout
+    logoutBtn.addEventListener("click", async () => {
+      await signOut(auth);
+      window.location.href = "login.html";
+    });
+  </script>
+</body>
+</html>
