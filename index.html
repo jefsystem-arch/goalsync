@@ -1,36 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GoalSync</title>
-  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/styles.css">
+  <script defer src="js/script.js"></script>
 </head>
 <body>
-  <header>
-    <nav class="navbar">
-      <div class="logo">⚡ GoalSync</div>
-      <ul class="nav-links">
-        <li><a href="pages/tasks.html">Tasks</a></li>
-        <li><a href="pages/goals.html">Goals</a></li>
-        <li><a href="pages/projects.html">Projects</a></li>
-        <li><a href="pages/dashboard.html">Dashboard</a></li>
-        <li><a href="pages/assistant.html">Assistant</a></li>
-        <li><a href="pages/settings.html">Settings</a></li>
-        <li><a href="login.html">Logout</a></li>
-      </ul>
+  <!-- Top Navigation -->
+  <header class="navbar">
+    <div class="logo">GoalSync</div>
+    <nav class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">Features</a>
+      <a href="#">Pricing</a>
+      <a href="#">About</a>
     </nav>
+    <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
+    <button class="hamburger" aria-label="Menu">
+      ☰
+    </button>
   </header>
 
-  <main>
-    <h1>Welcome back 👋</h1>
-    <div class="cards">
-      <div class="card">📋 Tasks</div>
-      <div class="card">🎯 Goals</div>
-      <div class="card">📂 Projects</div>
-    </div>
-  </main>
+  <!-- Mobile Navigation Drawer -->
+  <nav class="mobile-nav hidden">
+    <a href="#">Home</a>
+    <a href="#">Features</a>
+    <a href="#">Pricing</a>
+    <a href="#">About</a>
+  </nav>
 
-  <script src="js/app.js"></script>
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Your Intelligent Daily Planner</h1>
+    <p>Stay organized, track progress, and reach your goals effortlessly.</p>
+    <div class="hero-actions">
+      <a href="#" class="btn primary">Get Started</a>
+      <a href="#" class="btn secondary">Learn More</a>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <div class="feature-card">
+      <h2>Plan</h2>
+      <p>Organize your day with clarity and focus.</p>
+    </div>
+    <div class="feature-card">
+      <h2>Track</h2>
+      <p>Measure your progress with intuitive tools.</p>
+    </div>
+    <div class="feature-card">
+      <h2>Achieve</h2>
+      <p>Turn your goals into reality with GoalSync.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2025 GoalSync</p>
+    <span class="version">v2.3+</span>
+  </footer>
 </body>
 </html>
