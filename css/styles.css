@@ -15,24 +15,18 @@
 /* Mobile layout */
 @media (max-width: 767px) {
   body {
-    padding-top: 56px;   /* space for top nav */
-    padding-bottom: 64px; /* space for bottom nav */
+    padding-top: 64px;   /* space for top nav */
+    padding-bottom: 70px; /* space for bottom nav */
+    background: #f9f9f9;
   }
 
   /* Top Nav (mobile) */
   .top-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 56px;
+    height: 64px;
+    padding: 4px 0;
     background: #fff;
     border-bottom: 1px solid #e5e5e5;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
   }
 
   .top-nav .logo {
@@ -59,12 +53,14 @@
     list-style: none;
     margin: 0;
     padding: 0;
+    height: 100%;
   }
 
   .top-nav li {
     text-align: center;
     flex: 1;
-    font-size: 0.7rem;
+    font-size: 0.75rem;
+    color: #666;
   }
 
   .top-nav li img {
@@ -76,19 +72,16 @@
 
   .top-nav li.active {
     color: #007bff;
+    font-weight: 600;
     border-bottom: 2px solid #007bff;
   }
 
   /* Bottom Nav (mobile only) */
   .bottom-nav {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 64px;
+    height: 70px;
     background: #fff;
     border-top: 1px solid #e5e5e5;
-    z-index: 1000;
+    box-shadow: 0 -1px 6px rgba(0,0,0,0.08);
   }
 
   .bottom-nav ul {
@@ -104,24 +97,25 @@
   .bottom-nav li {
     flex: 1;
     text-align: center;
-    font-size: 0.7rem;
-    color: #555;
+    font-size: 0.75rem;
+    color: #666;
   }
 
   .bottom-nav li img {
     display: block;
-    margin: 0 auto 2px;
-    width: 22px;
-    height: 22px;
+    margin: 0 auto 3px;
+    width: 24px;
+    height: 24px;
   }
 
   .bottom-nav li.active {
     color: #007bff;
+    font-weight: 600;
   }
 
-  /* Assistant special (icon-only) */
+  /* Assistant with label now visible */
   .bottom-nav li.assistant span {
-    display: none;
+    display: block;
   }
 
   /* Content area adjustments */
@@ -130,18 +124,39 @@
   }
 
   .task-card {
-    width: 100%;
-    margin-bottom: 1rem;
+    padding: 12px;
+    margin-bottom: 14px;
     border-radius: 12px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-    padding: 0.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    background: #fff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
 
+  .task-card label {
+    font-size: 0.9rem;
+    color: #333;
+  }
+
+  /* Form elements */
   form input,
   form select,
   form textarea,
   form button {
-    width: 100%;
-    margin-bottom: 12px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    font-size: 0.9rem;
+    background: #fff;
+  }
+
+  form button {
+    background: #007bff;
+    color: #fff;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   }
 }
