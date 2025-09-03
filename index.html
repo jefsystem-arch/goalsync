@@ -1,115 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GoalSync</title>
-  <link rel="stylesheet" href="css/styles.css">
-  <script defer src="js/script.js"></script>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- Header -->
   <header>
     <h1>GoalSync</h1>
     <p>Plan smart. Stay on track. Achieve more.</p>
+    <nav class="nav-links">
+      <a href="#" class="active" data-page="tasks">Tasks</a>
+      <a href="#" data-page="goals">Goals</a>
+      <a href="#" data-page="projects">Projects</a>
+      <a href="#" data-page="chat">Chat</a>
+      <a href="#" data-page="dashboard">Dashboard</a>
+      <a href="#" data-page="invite">Invite</a>
+      <a href="#" data-page="history">History</a>
+      <a href="#" data-page="assistant">Assistant</a>
+      <a href="#" data-page="settings">Settings</a>
+      <div class="nav-underline"></div>
+    </nav>
   </header>
 
-  <!-- Desktop Top Navigation -->
-  <nav class="top-nav">
-    <ul>
-      <li data-page="tasks" class="active"><img src="icons/tasks.svg" alt=""> Tasks</li>
-      <li data-page="goals"><img src="icons/goals.svg" alt=""> Goals</li>
-      <li data-page="projects"><img src="icons/projects.svg" alt=""> Projects</li>
-      <li data-page="chat"><img src="icons/chat.svg" alt=""> Chat</li>
-      <li data-page="dashboard"><img src="icons/dashboard.svg" alt=""> Dashboard</li>
-      <li data-page="invite"><img src="icons/invite.svg" alt=""> Invite</li>
-      <li data-page="history"><img src="icons/history.svg" alt=""> History</li>
-      <li data-page="assistant"><img src="icons/assistant.svg" alt=""> Assistant</li>
-      <li data-page="settings"><img src="icons/settings.svg" alt=""> Settings</li>
-    </ul>
-  </nav>
-
-  <!-- Main Content -->
-  <main>
-    <!-- Tasks -->
+  <main id="content">
+    <!-- Default page is Tasks -->
     <section id="tasks" class="page active">
       <h2>Your Tasks</h2>
-      <form id="taskForm" class="task-form">
-        <input id="taskTitle" type="text" placeholder="Task title">
-        <input id="taskDate" type="date">
-        <input id="taskTime" type="time">
+      <form class="task-form">
+        <input type="text" placeholder="Task title" />
+        <input type="date" />
+        <input type="time" />
         <button type="submit">Add Task</button>
       </form>
-      <ul id="taskList" class="task-list">
-        <li><input type="checkbox" checked> Work on presentation — 10:30 AM</li>
-        <li><input type="checkbox" checked> Respond to emails — 9:00 AM</li>
-        <li><input type="checkbox"> Exercise at gym — 5:30 PM</li>
+      <ul class="task-list">
+        <li><input type="checkbox" checked /> Work on presentation — 10:30 AM</li>
+        <li><input type="checkbox" checked /> Respond to emails — 9:00 AM</li>
+        <li><input type="checkbox" /> Exercise at gym — 5:30 PM</li>
       </ul>
     </section>
-
-    <!-- Goals -->
-    <section id="goals" class="page">
-      <h2>Your Goals</h2>
-      <p>[Goals content]</p>
-    </section>
-
-    <!-- Projects -->
-    <section id="projects" class="page">
-      <h2>Your Projects</h2>
-      <p>[Projects content]</p>
-    </section>
-
-    <!-- Chat -->
-    <section id="chat" class="page">
-      <h2>Chat</h2>
-      <p>[Chat content]</p>
-    </section>
-
-    <!-- Dashboard -->
-    <section id="dashboard" class="page">
-      <h2>Dashboard</h2>
-      <p>[Dashboard content]</p>
-    </section>
-
-    <!-- Invite -->
-    <section id="invite" class="page">
-      <h2>Invite</h2>
-      <p>[Invite content]</p>
-    </section>
-
-    <!-- History -->
-    <section id="history" class="page">
-      <h2>History</h2>
-      <p>[History content]</p>
-    </section>
-
-    <!-- Assistant -->
-    <section id="assistant" class="page">
-      <h2>Assistant</h2>
-      <p>[Assistant content]</p>
-    </section>
-
-    <!-- Settings -->
-    <section id="settings" class="page">
-      <h2>Settings</h2>
-      <p>[Settings content]</p>
-    </section>
+    <!-- Placeholder for other pages -->
+    <section id="goals" class="page"><h2>Your Goals</h2></section>
+    <section id="projects" class="page"><h2>Your Projects</h2></section>
+    <section id="chat" class="page"><h2>Chat</h2></section>
+    <section id="dashboard" class="page"><h2>Dashboard</h2></section>
+    <section id="invite" class="page"><h2>Invite</h2></section>
+    <section id="history" class="page"><h2>History</h2></section>
+    <section id="assistant" class="page"><h2>Assistant</h2></section>
+    <section id="settings" class="page"><h2>Settings</h2></section>
   </main>
 
-  <!-- Mobile Bottom Navigation -->
-  <nav class="bottom-nav">
-    <ul>
-      <li data-page="dashboard"><img src="icons/dashboard.svg" alt="Dashboard"></li>
-      <li data-page="invite"><img src="icons/invite.svg" alt="Invite"></li>
-      <li data-page="history"><img src="icons/history.svg" alt="History"></li>
-      <li data-page="assistant"><img src="icons/assistant.svg" alt="Assistant"></li>
-      <li data-page="settings"><img src="icons/settings.svg" alt="Settings"></li>
-    </ul>
-  </nav>
-
-  <!-- Footer -->
   <footer>
     <p>v2.3+ • Project by Team Jeff & AI</p>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
