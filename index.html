@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GoalSync</title>
   <link rel="stylesheet" href="css/styles.css" />
+  <script defer src="js/script.js"></script>
 </head>
 <body>
   <!-- Header -->
@@ -13,18 +14,23 @@
     <p class="tagline">Plan smart. Stay on track. Achieve more.</p>
   </header>
 
-  <!-- Top Navigation (Desktop + Mobile top) -->
+  <!-- Top Navigation -->
   <nav class="top-nav">
-    <a href="#" class="active"><img src="icons/tasks.svg" alt="Tasks"> Tasks</a>
-    <a href="#"><img src="icons/goals.svg" alt="Goals"> Goals</a>
-    <a href="#"><img src="icons/projects.svg" alt="Projects"> Projects</a>
-    <a href="#"><img src="icons/chat.svg" alt="Chat"> Chat</a>
-    <a href="#"><img src="icons/settings.svg" alt="Settings" class="desktop-only"> Settings</a>
+    <button data-page="tasks" class="active"><img src="icons/tasks.svg" alt="">Tasks</button>
+    <button data-page="goals"><img src="icons/goals.svg" alt="">Goals</button>
+    <button data-page="projects"><img src="icons/projects.svg" alt="">Projects</button>
+    <button data-page="chat"><img src="icons/chat.svg" alt="">Chat</button>
+    <button data-page="dashboard"><img src="icons/dashboard.svg" alt="">Dashboard</button>
+    <button data-page="invite"><img src="icons/invite.svg" alt="">Invite</button>
+    <button data-page="history"><img src="icons/history.svg" alt="">History</button>
+    <button data-page="assistant"><img src="icons/assistant.svg" alt="">Assistant</button>
+    <button data-page="settings"><img src="icons/settings.svg" alt="">Settings</button>
   </nav>
 
   <!-- Main Content -->
   <main class="content">
-    <section id="tasks">
+    <!-- Tasks -->
+    <section id="tasks" class="page active">
       <h2>Your Tasks</h2>
       <div class="task-controls">
         <select>
@@ -48,27 +54,94 @@
         <input type="text" placeholder="Participants (emails)" />
         <button type="submit">Add Task</button>
       </form>
+      <ul class="task-list"></ul>
+    </section>
 
-      <ul class="task-list">
-        <li><input type="checkbox" checked> Work on presentation — 10:30 AM</li>
-        <li><input type="checkbox" checked> Respond to emails — 9:00 AM</li>
-        <li><input type="checkbox"> Exercise at gym — 5:30 PM</li>
-      </ul>
+    <!-- Goals -->
+    <section id="goals" class="page">
+      <h2>Your Goals</h2>
+      <div class="goals-grid"></div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="page">
+      <h2>Your Projects</h2>
+      <div class="projects-board"></div>
+    </section>
+
+    <!-- Chat -->
+    <section id="chat" class="page">
+      <h2>Chat</h2>
+      <div class="chat-window"></div>
+      <form class="chat-form">
+        <input type="text" placeholder="Type your message..." />
+        <button type="submit">Send</button>
+      </form>
+    </section>
+
+    <!-- Dashboard -->
+    <section id="dashboard" class="page">
+      <h2>Dashboard</h2>
+      <div class="dashboard-cards"></div>
+      <canvas id="dashboardChart" width="400" height="200"></canvas>
+    </section>
+
+    <!-- Invite -->
+    <section id="invite" class="page">
+      <h2>Invite Team Members</h2>
+      <form id="invite-form">
+        <input type="email" placeholder="Enter email" />
+        <button type="submit">Invite</button>
+      </form>
+      <ul class="invite-list"></ul>
+    </section>
+
+    <!-- History -->
+    <section id="history" class="page">
+      <h2>History</h2>
+      <div class="history-list"></div>
+    </section>
+
+    <!-- Assistant -->
+    <section id="assistant" class="page">
+      <h2>Assistant</h2>
+      <div class="assistant-window"></div>
+      <form class="assistant-form">
+        <input type="text" placeholder="Ask GoalSync Assistant..." />
+        <button type="submit">Ask</button>
+      </form>
+    </section>
+
+    <!-- Settings -->
+    <section id="settings" class="page">
+      <h2>Settings</h2>
+      <label><input type="checkbox"> Enable Dark Mode</label><br />
+      <label><input type="checkbox"> Notifications</label><br />
+      <label>Theme Color:
+        <input type="color" value="#2f6df6" />
+      </label><br />
+      <label>Language:
+        <select>
+          <option>English</option>
+          <option>Spanish</option>
+          <option>French</option>
+        </select>
+      </label>
     </section>
   </main>
 
   <!-- Bottom Nav (Mobile only, icons only) -->
-  <nav class="bottom-nav mobile-only">
-    <a href="#"><img src="icons/dashboard.svg" alt="Dashboard"></a>
-    <a href="#"><img src="icons/invite.svg" alt="Invite"></a>
-    <a href="#"><img src="icons/history.svg" alt="History"></a>
-    <a href="#"><img src="icons/assistant.svg" alt="Assistant"></a>
-    <a href="#"><img src="icons/settings.svg" alt="Settings"></a>
+  <nav class="bottom-nav">
+    <button data-page="dashboard"><img src="icons/dashboard.svg" alt="Dashboard"></button>
+    <button data-page="invite"><img src="icons/invite.svg" alt="Invite"></button>
+    <button data-page="assistant" class="assistant-btn"><img src="icons/assistant.svg" alt="Assistant"></button>
+    <button data-page="history"><img src="icons/history.svg" alt="History"></button>
+    <button data-page="settings"><img src="icons/settings.svg" alt="Settings"></button>
   </nav>
 
   <!-- Footer -->
   <footer class="footer">
-    <span>v2.3+ • Project by Team Jeff & AI</span>
+    <p>v2.3+ • Project by Team Jeff & AI</p>
   </footer>
 </body>
 </html>

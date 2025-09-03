@@ -35,35 +35,42 @@ body {
   display: flex;
   justify-content: center;
   gap: 1.5rem;
-  padding: 0.75rem;
   border-bottom: 1px solid #eee;
+  position: relative;
 }
-.top-nav a {
-  text-decoration: none;
-  color: #111;
+.top-nav button {
+  background: none;
+  border: none;
+  padding: 1rem 0.5rem;
   font-size: 0.95rem;
+  font-weight: 500;
+  color: #111;
   display: flex;
   align-items: center;
   gap: 0.35rem;
+  cursor: pointer;
 }
-.top-nav a.active {
-  border-bottom: 2px solid #2f6df6;
-  padding-bottom: 0.25rem;
-}
-.top-nav img {
+.top-nav button img {
   width: 18px;
   height: 18px;
+  filter: invert(0); /* Monochrome */
+}
+.top-nav button.active {
+  color: #2f6df6;
+  font-weight: 600;
+}
+.top-nav::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  height: 2px;
+  width: var(--underline-width, 60px);
+  background: #2f6df6;
+  left: var(--underline-left, 0);
+  transition: left 0.3s ease, width 0.3s ease;
 }
 
-/* Desktop only */
-.desktop-only {
-  display: inline-block;
-}
-.mobile-only {
-  display: none;
-}
-
-/* Content */
+/* Main Content */
 .content {
   flex: 1;
   display: flex;
@@ -72,7 +79,7 @@ body {
 }
 .content section {
   width: 100%;
-  max-width: 700px;
+  max-width: 900px;
 }
 
 /* Task form */
@@ -125,7 +132,116 @@ body {
   gap: 0.5rem;
 }
 
-/* Bottom Nav (Mobile only) */
+/* Goals */
+.goals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+/* Projects */
+.projects-board {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Chat */
+.chat-window {
+  background: #f8f8f8;
+  padding: 1rem;
+  border-radius: 6px;
+  height: 250px;
+  overflow-y: auto;
+  margin-bottom: 1rem;
+}
+.chat-form {
+  display: flex;
+  gap: 0.5rem;
+}
+.chat-form input {
+  flex: 1;
+  padding: 0.65rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+.chat-form button {
+  background: #2f6df6;
+  color: white;
+  border: none;
+  padding: 0.65rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Dashboard */
+.dashboard-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.dashboard-cards div {
+  background: #f7f7f7;
+  padding: 1rem;
+  border-radius: 6px;
+  text-align: center;
+}
+
+/* Invite */
+.invite-list {
+  list-style: none;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.invite-list li {
+  padding: 0.5rem;
+  background: #f8f8f8;
+  border-radius: 6px;
+}
+
+/* History */
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.history-list div {
+  padding: 0.75rem;
+  border-radius: 6px;
+  background: #f7f7f7;
+}
+
+/* Assistant */
+.assistant-window {
+  background: #f8f8f8;
+  padding: 1rem;
+  border-radius: 6px;
+  height: 250px;
+  overflow-y: auto;
+  margin-bottom: 1rem;
+}
+.assistant-form {
+  display: flex;
+  gap: 0.5rem;
+}
+.assistant-form input {
+  flex: 1;
+  padding: 0.65rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+.assistant-form button {
+  background: #2f6df6;
+  color: white;
+  border: none;
+  padding: 0.65rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Bottom Nav (Mobile) */
 .bottom-nav {
   position: fixed;
   bottom: 0;
@@ -137,9 +253,18 @@ body {
   justify-content: space-around;
   padding: 0.6rem 0;
 }
+.bottom-nav button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
 .bottom-nav img {
   width: 22px;
   height: 22px;
+}
+.bottom-nav .assistant-btn img {
+  width: 32px;
+  height: 32px;
 }
 
 /* Footer */
@@ -148,21 +273,59 @@ body {
   font-size: 0.8rem;
   padding: 0.6rem;
   color: #666;
+  border-top: 1px solid #eee;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-  .desktop-only {
-    display: none;
-  }
-  .mobile-only {
-    display: flex;
-  }
   .top-nav {
     justify-content: space-around;
     gap: 0.5rem;
   }
-  .top-nav a {
-    font-size: 0.85rem;
+  .top-nav button span {
+    display: none; /* Hide labels on small screens */
   }
+}
+
+/* Dark Mode */
+body.dark-mode {
+  background: #111;
+  color: #eee;
+}
+body.dark-mode .app-header {
+  background: #000;
+  color: #fff;
+}
+body.dark-mode .top-nav {
+  border-bottom: 1px solid #444;
+}
+body.dark-mode .top-nav button {
+  color: #eee;
+}
+body.dark-mode .footer {
+  border-top: 1px solid #444;
+  color: #aaa;
+}
+body.dark-mode .page {
+  background: #222;
+  border-radius: 6px;
+  padding: 1rem;
+}
+
+/* Theme color variable */
+:root {
+  --accent-color: #2f6df6;
+}
+.top-nav::after {
+  background: var(--accent-color);
+}
+.task-form button,
+.chat-form button,
+.assistant-form button {
+  background: var(--accent-color);
+}
+.task-form button:hover,
+.chat-form button:hover,
+.assistant-form button:hover {
+  background: #2456c9;
 }
