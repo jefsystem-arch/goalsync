@@ -1,18 +1,26 @@
-/* Existing styles remain above */
-
 /* ------------------------- */
 /* GoalSync v2.3+ Responsive */
 /* ------------------------- */
 
-/* Tablet adjustments */
-@media (max-width: 1023px) {
+/* Tablet adjustments (768–1023px) */
+@media (max-width: 1023px) and (min-width: 768px) {
   .top-nav ul {
-    gap: 1.2rem;
-    font-size: 0.9rem;
+    gap: 1.5rem;
+    font-size: 0.85rem;
+  }
+  .top-nav li img {
+    width: 22px;
+    height: 22px;
+  }
+  .bottom-nav {
+    display: none; /* no bottom nav on tablet */
+  }
+  .assistant-fab {
+    display: none; /* no FAB on tablet */
   }
 }
 
-/* Mobile layout */
+/* Mobile layout (≤767px) */
 @media (max-width: 767px) {
   body {
     padding-top: 124px;   /* space for header + nav */
@@ -79,8 +87,12 @@
     text-align: center;
     flex: 1;
     font-size: 0.75rem;
-    color: #555; /* darker label color */
+    color: #555;
     position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .top-nav li img {
@@ -95,7 +107,7 @@
     font-weight: 600;
   }
 
-  /* Underline sits at bottom of nav bar */
+  /* Underline at bottom of nav bar */
   .top-nav li.active::after {
     content: "";
     position: absolute;
@@ -133,7 +145,7 @@
     flex: 1;
     text-align: center;
     font-size: 0.7rem;
-    color: #555; /* match top nav label color */
+    color: #555;
   }
 
   .bottom-nav li img {
@@ -148,52 +160,27 @@
     font-weight: 600;
   }
 
-  .bottom-nav li.assistant span {
-    display: block;
-  }
-
-  /* Content */
-  main {
-    padding: 1rem 14px 6rem;
-  }
-
-  .task-card {
-    padding: 14px;
-    margin-bottom: 14px;
-    border-radius: 14px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    background: #fff;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .task-card label {
-    font-size: 0.95rem;
-    color: #333;
-    font-weight: 500;
-  }
-
-  form input,
-  form select,
-  form textarea,
-  form button {
-    border-radius: 12px;
-    border: 1px solid #ddd;
-    padding: 12px;
-    font-size: 0.9rem;
-    background: #fff;
-    margin-bottom: 12px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-  }
-
-  form button {
+  /* Assistant FAB */
+  .assistant-fab {
+    position: fixed;
+    bottom: 90px; /* above bottom nav */
+    right: 20px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
     background: #007bff;
-    color: #fff;
-    font-weight: 600;
     border: none;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1100;
     cursor: pointer;
-    width: 100%;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+
+  .assistant-fab img {
+    width: 28px;
+    height: 28px;
+    filter: brightness(0) invert(1); /* make icon white */
   }
 }
