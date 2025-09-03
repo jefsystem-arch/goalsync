@@ -1,209 +1,207 @@
 document.addEventListener("DOMContentLoaded", () => {
   const pages = document.querySelectorAll(".page");
-  const navButtons = document.querySelectorAll("[data-page]");
-  const navBar = document.querySelector(".top-nav");
-  const taskList = document.querySelector(".task-list");
-  const goalsGrid = document.querySelector(".goals-grid");
-  const projectsBoard = document.querySelector(".projects-board");
-  const chatWindow = document.querySelector(".chat-window");
-  const dashboardCards = document.querySelector(".dashboard-cards");
-  const inviteList = document.querySelector(".invite-list");
-  const historyList = document.querySelector(".history-list");
-  const assistantWindow = document.querySelector(".assistant-window");
+  const topNavLinks = document.querySelectorAll(".top-nav li");
+  const bottomNavLinks = document.querySelectorAll(".bottom-nav li");
 
-  // --- Sample Data ---
-  const sampleTasks = [
-    { title: "Work on presentation", time: "10:30 AM", done: true },
-    { title: "Respond to emails", time: "9:00 AM", done: true },
-    { title: "Exercise at gym", time: "5:30 PM", done: false }
-  ];
+  // Create underline for top nav
+  const underline = document.createElement("div");
+  underline.classList.add("nav-underline");
+  document.querySelector(".top-nav ul").appendChild(underline);
 
-  const sampleGoals = [
-    { name: "Fitness", progress: 70 },
-    { name: "Career", progress: 45 },
-    { name: "Learning", progress: 90 }
-  ];
+  /* ---------------- PAGE SWITCHING ---------------- */
+  function showPage(pageId) {
+    // Hide all pages
+    pages.forEach((p) => p.classList.remove("active"));
+    document.getElementById(pageId).classList.add("active");
 
-  const sampleProjects = {
-    todo: ["Landing page design", "API integration"],
-    inprogress: ["Mobile app prototype"],
-    done: ["Project kickoff"]
-  };
+    // Update active nav state
+    topNavLinks.forEach((li) => li.classList.remove("active"));
+    bottomNavLinks.forEach((li) => li.classList.remove("active"));
 
-  const sampleChat = [
-    { sender: "AI", text: "Welcome back Jeff! Ready to achieve your goals today?" },
-    { sender: "You", text: "Yes, let’s do this!" }
-  ];
+    const topLink = document.querySelector(`.top-nav li[data-page="${pageId}"]`);
+    const bottomLink = document.querySelector(`.bottom-nav li[data-page="${pageId}"]`);
 
-  const sampleDashboard = [
-    { title: "Tasks Completed", value: 24 },
-    { title: "Goals Progress", value: "65%" },
-    { title: "Active Projects", value: 3 }
-  ];
-
-  const sampleInvites = ["alice@example.com (Pending)", "bob@example.com (Accepted)"];
-
-  const sampleHistory = [
-    "Completed: Respond to emails — 9:00 AM",
-    "Completed: Read 20 pages — Yesterday",
-    "Goal Achieved: Weekly Exercise Streak — Last week"
-  ];
-
-  const sampleAssistant = [
-    { sender: "AI", text: "Your top priority today is the Project Presentation at 10:30 AM." },
-    { sender: "You", text: "Can you also remind me to call Sarah at 3 PM?" },
-    { sender: "AI", text: "Got it! Added ‘Call Sarah’ to your tasks." }
-  ];
-
-  // --- Populate Pages ---
-  // Tasks
-  taskList.innerHTML = "";
-  sampleTasks.forEach(t => {
-    const li = document.createElement("li");
-    li.innerHTML = `<input type="checkbox" ${t.done ? "checked" : ""}> ${t.title} — ${t.time}`;
-    taskList.appendChild(li);
-  });
-
-  // Goals
-  goalsGrid.innerHTML = "";
-  sampleGoals.forEach(g => {
-    const div = document.createElement("div");
-    div.style.background = "#f7f7f7";
-    div.style.padding = "1rem";
-    div.style.borderRadius = "6px";
-    div.innerHTML = `<strong>${g.name}</strong><br>
-      <progress value="${g.progress}" max="100"></progress> ${g.progress}%`;
-    goalsGrid.appendChild(div);
-  });
-
-  // Projects
-  projectsBoard.innerHTML = "";
-  ["todo", "inprogress", "done"].forEach(col => {
-    const div = document.createElement("div");
-    div.style.flex = "1";
-    div.style.background = "#f8f8f8";
-    div.style.padding = "1rem";
-    div.style.borderRadius = "6px";
-    div.innerHTML = `<h4>${col.toUpperCase()}</h4>`;
-    sampleProjects[col].forEach(p => {
-      const task = document.createElement("p");
-      task.textContent = p;
-      div.appendChild(task);
-    });
-    projectsBoard.appendChild(div);
-  });
-
-  // Chat
-  chatWindow.innerHTML = "";
-  sampleChat.forEach(m => {
-    const msg = document.createElement("div");
-    msg.style.margin = "0.5rem 0";
-    msg.style.textAlign = m.sender === "You" ? "right" : "left";
-    msg.innerHTML = `<span><strong>${m.sender}:</strong> ${m.text}</span>`;
-    chatWindow.appendChild(msg);
-  });
-
-  // Dashboard
-  dashboardCards.innerHTML = "";
-  sampleDashboard.forEach(d => {
-    const card = document.createElement("div");
-    card.innerHTML = `<h3>${d.title}</h3><p>${d.value}</p>`;
-    dashboardCards.appendChild(card);
-  });
-
-  // Invite
-  inviteList.innerHTML = "";
-  sampleInvites.forEach(i => {
-    const li = document.createElement("li");
-    li.textContent = i;
-    inviteList.appendChild(li);
-  });
-
-  // History
-  historyList.innerHTML = "";
-  sampleHistory.forEach(h => {
-    const div = document.createElement("div");
-    div.textContent = h;
-    historyList.appendChild(div);
-  });
-
-  // Assistant
-  assistantWindow.innerHTML = "";
-  sampleAssistant.forEach(m => {
-    const msg = document.createElement("div");
-    msg.style.margin = "0.5rem 0";
-    msg.style.textAlign = m.sender === "You" ? "right" : "left";
-    msg.innerHTML = `<span><strong>${m.sender}:</strong> ${m.text}</span>`;
-    assistantWindow.appendChild(msg);
-  });
-
-  // --- Navigation Logic ---
-  function navigateTo(pageId) {
-    // Hide all
-    pages.forEach(p => p.classList.remove("active"));
-    // Show selected
-    const activePage = document.getElementById(pageId);
-    if (activePage) activePage.classList.add("active");
-
-    // Update nav button states
-    navButtons.forEach(btn => btn.classList.remove("active"));
-    const activeButtons = [...navButtons].filter(btn => btn.dataset.page === pageId);
-    activeButtons.forEach(btn => btn.classList.add("active"));
-
-    // Animate underline (desktop only)
-    const activeTop = document.querySelector(`.top-nav button[data-page="${pageId}"]`);
-    if (activeTop && navBar) {
-      const rect = activeTop.getBoundingClientRect();
-      const navRect = navBar.getBoundingClientRect();
-      const underlineLeft = rect.left - navRect.left;
-      const underlineWidth = rect.width;
-      navBar.style.setProperty("--underline-left", underlineLeft + "px");
-      navBar.style.setProperty("--underline-width", underlineWidth + "px");
+    if (topLink) {
+      topLink.classList.add("active");
+      moveUnderline(topLink);
     }
+    if (bottomLink) bottomLink.classList.add("active");
   }
 
-  // Attach click handlers
-  navButtons.forEach(button => {
-    button.addEventListener("click", () => {
-      const pageId = button.dataset.page;
-      navigateTo(pageId);
-    });
-  });
+  // Animate underline
+  function moveUnderline(activeLink) {
+    const rect = activeLink.getBoundingClientRect();
+    const navRect = activeLink.parentElement.getBoundingClientRect();
+
+    underline.style.width = `${rect.width}px`;
+    underline.style.transform = `translateX(${rect.left - navRect.left}px)`;
+  }
+
+  // Nav click events
+  topNavLinks.forEach((li) => li.addEventListener("click", () => showPage(li.dataset.page)));
+  bottomNavLinks.forEach((li) => li.addEventListener("click", () => showPage(li.dataset.page)));
 
   // Default page
-  navigateTo("tasks");
+  showPage("tasks");
 
-  // --- Settings Page Demo ---
-  const darkModeToggle = document.querySelector('#settings input[type="checkbox"]');
-  const notificationToggle = document.querySelectorAll('#settings input[type="checkbox"]')[1];
-  const colorPicker = document.querySelector('#settings input[type="color"]');
-  const languageSelect = document.querySelector('#settings select');
+  /* ---------------- TASKS PAGE ---------------- */
+  const taskForm = document.getElementById("taskForm");
+  const taskList = document.getElementById("taskList");
 
-  if (darkModeToggle) {
-    darkModeToggle.addEventListener("change", () => {
-      document.body.classList.toggle("dark-mode", darkModeToggle.checked);
+  if (taskForm) {
+    taskForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const title = document.getElementById("taskTitle").value.trim();
+      const date = document.getElementById("taskDate").value;
+      const time = document.getElementById("taskTime").value;
+
+      if (!title) return;
+
+      const li = document.createElement("li");
+      li.innerHTML = `
+        <input type="checkbox">
+        <span>${title}${date ? " — " + date : ""}${time ? " " + time : ""}</span>
+      `;
+      taskList.appendChild(li);
+      taskForm.reset();
     });
   }
 
-  if (notificationToggle) {
-    notificationToggle.addEventListener("change", () => {
-      alert(notificationToggle.checked ? "Notifications Enabled" : "Notifications Disabled");
-    });
+  /* ---------------- SAMPLE DATA ---------------- */
+  // Goals
+  const goalsPage = document.getElementById("goals");
+  if (goalsPage) {
+    goalsPage.innerHTML = `
+      <h2>Your Goals</h2>
+      <div style="display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(180px,1fr))">
+        <div style="background:#f9f9f9;padding:1rem;border-radius:12px;box-shadow:0 2px 6px rgba(0,0,0,0.06)">
+          <strong>Fitness</strong><br><progress value="70" max="100"></progress> 70%
+        </div>
+        <div style="background:#f9f9f9;padding:1rem;border-radius:12px;box-shadow:0 2px 6px rgba(0,0,0,0.06)">
+          <strong>Career</strong><br><progress value="45" max="100"></progress> 45%
+        </div>
+        <div style="background:#f9f9f9;padding:1rem;border-radius:12px;box-shadow:0 2px 6px rgba(0,0,0,0.06)">
+          <strong>Learning</strong><br><progress value="90" max="100"></progress> 90%
+        </div>
+      </div>
+    `;
   }
 
-  if (colorPicker) {
-    colorPicker.addEventListener("input", () => {
-      document.documentElement.style.setProperty("--accent-color", colorPicker.value);
-      navBar.style.setProperty("color", colorPicker.value);
-    });
+  // Projects
+  const projectsPage = document.getElementById("projects");
+  if (projectsPage) {
+    projectsPage.innerHTML = `
+      <h2>Your Projects</h2>
+      <div style="display:flex;gap:1rem">
+        <div style="flex:1;background:#f9f9f9;padding:1rem;border-radius:12px">
+          <h4>TODO</h4>
+          <p>Landing page design</p>
+          <p>API integration</p>
+        </div>
+        <div style="flex:1;background:#f9f9f9;padding:1rem;border-radius:12px">
+          <h4>In Progress</h4>
+          <p>Mobile app prototype</p>
+        </div>
+        <div style="flex:1;background:#f9f9f9;padding:1rem;border-radius:12px">
+          <h4>Done</h4>
+          <p>Project kickoff</p>
+        </div>
+      </div>
+    `;
   }
 
-  if (languageSelect) {
-    languageSelect.addEventListener("change", () => {
-      const tagline = document.querySelector(".tagline");
-      if (languageSelect.value === "Spanish") tagline.textContent = "Planifica inteligentemente. Mantente en camino. Logra más.";
-      if (languageSelect.value === "French") tagline.textContent = "Planifiez intelligemment. Restez sur la bonne voie. Réalisez plus.";
-      if (languageSelect.value === "English") tagline.textContent = "Plan smart. Stay on track. Achieve more.";
-    });
+  // Chat
+  const chatPage = document.getElementById("chat");
+  if (chatPage) {
+    chatPage.innerHTML = `
+      <h2>Chat</h2>
+      <div style="background:#f8f8f8;padding:1rem;border-radius:12px;height:250px;overflow-y:auto;margin-bottom:1rem">
+        <div><strong>AI:</strong> Welcome back Jeff! Ready to achieve your goals today?</div>
+        <div style="text-align:right"><strong>You:</strong> Yes, let’s do this!</div>
+      </div>
+      <form style="display:flex;gap:0.5rem">
+        <input type="text" placeholder="Type your message..." style="flex:1;padding:0.7rem;border-radius:12px;border:1px solid #ddd">
+        <button style="background:var(--blue);color:white;border:none;border-radius:12px;padding:0.7rem 1rem;cursor:pointer">Send</button>
+      </form>
+    `;
+  }
+
+  // Dashboard
+  const dashboardPage = document.getElementById("dashboard");
+  if (dashboardPage) {
+    dashboardPage.innerHTML = `
+      <h2>Dashboard</h2>
+      <div style="display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));margin-bottom:1rem">
+        <div style="background:#f9f9f9;padding:1rem;border-radius:12px;text-align:center">Tasks Completed<br><strong>24</strong></div>
+        <div style="background:#f9f9f9;padding:1rem;border-radius:12px;text-align:center">Goals Progress<br><strong>65%</strong></div>
+        <div style="background:#f9f9f9;padding:1rem;border-radius:12px;text-align:center">Active Projects<br><strong>3</strong></div>
+      </div>
+    `;
+  }
+
+  // Invite
+  const invitePage = document.getElementById("invite");
+  if (invitePage) {
+    invitePage.innerHTML = `
+      <h2>Invite Team Members</h2>
+      <form style="margin-bottom:1rem">
+        <input type="email" placeholder="Enter email" style="padding:0.7rem;border-radius:12px;border:1px solid #ddd">
+        <button style="margin-left:0.5rem;background:var(--blue);color:white;border:none;border-radius:12px;padding:0.7rem 1rem;cursor:pointer">Invite</button>
+      </form>
+      <ul style="list-style:none;padding:0">
+        <li>alice@example.com (Pending)</li>
+        <li>bob@example.com (Accepted)</li>
+      </ul>
+    `;
+  }
+
+  // History
+  const historyPage = document.getElementById("history");
+  if (historyPage) {
+    historyPage.innerHTML = `
+      <h2>History</h2>
+      <div style="display:flex;flex-direction:column;gap:0.6rem">
+        <div style="background:#f9f9f9;padding:0.8rem;border-radius:12px">Completed: Respond to emails — 9:00 AM</div>
+        <div style="background:#f9f9f9;padding:0.8rem;border-radius:12px">Completed: Read 20 pages — Yesterday</div>
+        <div style="background:#f9f9f9;padding:0.8rem;border-radius:12px">Goal Achieved: Weekly Exercise Streak — Last week</div>
+      </div>
+    `;
+  }
+
+  // Assistant
+  const assistantPage = document.getElementById("assistant");
+  if (assistantPage) {
+    assistantPage.innerHTML = `
+      <h2>Assistant</h2>
+      <div style="background:#f8f8f8;padding:1rem;border-radius:12px;height:250px;overflow-y:auto;margin-bottom:1rem">
+        <div><strong>AI:</strong> Your top priority today is the Project Presentation at 10:30 AM.</div>
+        <div style="text-align:right"><strong>You:</strong> Can you also remind me to call Sarah at 3 PM?</div>
+        <div><strong>AI:</strong> Got it! Added ‘Call Sarah’ to your tasks.</div>
+      </div>
+      <form style="display:flex;gap:0.5rem">
+        <input type="text" placeholder="Ask GoalSync Assistant..." style="flex:1;padding:0.7rem;border-radius:12px;border:1px solid #ddd">
+        <button style="background:var(--blue);color:white;border:none;border-radius:12px;padding:0.7rem 1rem;cursor:pointer">Ask</button>
+      </form>
+    `;
+  }
+
+  // Settings
+  const settingsPage = document.getElementById("settings");
+  if (settingsPage) {
+    settingsPage.innerHTML = `
+      <h2>Settings</h2>
+      <label><input type="checkbox"> Enable Dark Mode</label><br>
+      <label><input type="checkbox"> Notifications</label><br>
+      <label>Theme Color:
+        <input type="color" value="#2979ff">
+      </label><br>
+      <label>Language:
+        <select>
+          <option>English</option>
+          <option>Spanish</option>
+          <option>French</option>
+        </select>
+      </label>
+    `;
   }
 });

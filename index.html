@@ -1,146 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GoalSync</title>
-  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/styles.css">
   <script defer src="js/script.js"></script>
 </head>
 <body>
   <!-- Header -->
-  <header class="app-header">
-    <h1 class="logo">GoalSync</h1>
-    <p class="tagline">Plan smart. Stay on track. Achieve more.</p>
+  <header>
+    <h1>GoalSync</h1>
+    <p>Plan smart. Stay on track. Achieve more.</p>
   </header>
 
-  <!-- Top Navigation -->
+  <!-- Desktop Top Navigation -->
   <nav class="top-nav">
-    <button data-page="tasks" class="active"><img src="icons/tasks.svg" alt="">Tasks</button>
-    <button data-page="goals"><img src="icons/goals.svg" alt="">Goals</button>
-    <button data-page="projects"><img src="icons/projects.svg" alt="">Projects</button>
-    <button data-page="chat"><img src="icons/chat.svg" alt="">Chat</button>
-    <button data-page="dashboard"><img src="icons/dashboard.svg" alt="">Dashboard</button>
-    <button data-page="invite"><img src="icons/invite.svg" alt="">Invite</button>
-    <button data-page="history"><img src="icons/history.svg" alt="">History</button>
-    <button data-page="assistant"><img src="icons/assistant.svg" alt="">Assistant</button>
-    <button data-page="settings"><img src="icons/settings.svg" alt="">Settings</button>
+    <ul>
+      <li data-page="tasks" class="active"><img src="icons/tasks.svg" alt=""> Tasks</li>
+      <li data-page="goals"><img src="icons/goals.svg" alt=""> Goals</li>
+      <li data-page="projects"><img src="icons/projects.svg" alt=""> Projects</li>
+      <li data-page="chat"><img src="icons/chat.svg" alt=""> Chat</li>
+      <li data-page="dashboard"><img src="icons/dashboard.svg" alt=""> Dashboard</li>
+      <li data-page="invite"><img src="icons/invite.svg" alt=""> Invite</li>
+      <li data-page="history"><img src="icons/history.svg" alt=""> History</li>
+      <li data-page="assistant"><img src="icons/assistant.svg" alt=""> Assistant</li>
+      <li data-page="settings"><img src="icons/settings.svg" alt=""> Settings</li>
+    </ul>
   </nav>
 
   <!-- Main Content -->
-  <main class="content">
+  <main>
     <!-- Tasks -->
     <section id="tasks" class="page active">
       <h2>Your Tasks</h2>
-      <div class="task-controls">
-        <select>
-          <option>All Tasks</option>
-          <option>Completed</option>
-          <option>Pending</option>
-        </select>
-        <input type="text" placeholder="Search tasks" />
-      </div>
-      <form class="task-form">
-        <input type="text" placeholder="Task title" />
-        <input type="date" />
-        <input type="time" />
-        <select>
-          <option>No repeat</option>
-          <option>Daily</option>
-          <option>Weekly</option>
-        </select>
-        <input type="text" placeholder="Assign to Goal" />
-        <textarea placeholder="Details (optional)"></textarea>
-        <input type="text" placeholder="Participants (emails)" />
+      <form id="taskForm" class="task-form">
+        <input id="taskTitle" type="text" placeholder="Task title">
+        <input id="taskDate" type="date">
+        <input id="taskTime" type="time">
         <button type="submit">Add Task</button>
       </form>
-      <ul class="task-list"></ul>
+      <ul id="taskList" class="task-list">
+        <li><input type="checkbox" checked> Work on presentation — 10:30 AM</li>
+        <li><input type="checkbox" checked> Respond to emails — 9:00 AM</li>
+        <li><input type="checkbox"> Exercise at gym — 5:30 PM</li>
+      </ul>
     </section>
 
     <!-- Goals -->
     <section id="goals" class="page">
       <h2>Your Goals</h2>
-      <div class="goals-grid"></div>
+      <p>[Goals content]</p>
     </section>
 
     <!-- Projects -->
     <section id="projects" class="page">
       <h2>Your Projects</h2>
-      <div class="projects-board"></div>
+      <p>[Projects content]</p>
     </section>
 
     <!-- Chat -->
     <section id="chat" class="page">
       <h2>Chat</h2>
-      <div class="chat-window"></div>
-      <form class="chat-form">
-        <input type="text" placeholder="Type your message..." />
-        <button type="submit">Send</button>
-      </form>
+      <p>[Chat content]</p>
     </section>
 
     <!-- Dashboard -->
     <section id="dashboard" class="page">
       <h2>Dashboard</h2>
-      <div class="dashboard-cards"></div>
-      <canvas id="dashboardChart" width="400" height="200"></canvas>
+      <p>[Dashboard content]</p>
     </section>
 
     <!-- Invite -->
     <section id="invite" class="page">
-      <h2>Invite Team Members</h2>
-      <form id="invite-form">
-        <input type="email" placeholder="Enter email" />
-        <button type="submit">Invite</button>
-      </form>
-      <ul class="invite-list"></ul>
+      <h2>Invite</h2>
+      <p>[Invite content]</p>
     </section>
 
     <!-- History -->
     <section id="history" class="page">
       <h2>History</h2>
-      <div class="history-list"></div>
+      <p>[History content]</p>
     </section>
 
     <!-- Assistant -->
     <section id="assistant" class="page">
       <h2>Assistant</h2>
-      <div class="assistant-window"></div>
-      <form class="assistant-form">
-        <input type="text" placeholder="Ask GoalSync Assistant..." />
-        <button type="submit">Ask</button>
-      </form>
+      <p>[Assistant content]</p>
     </section>
 
     <!-- Settings -->
     <section id="settings" class="page">
       <h2>Settings</h2>
-      <label><input type="checkbox"> Enable Dark Mode</label><br />
-      <label><input type="checkbox"> Notifications</label><br />
-      <label>Theme Color:
-        <input type="color" value="#2f6df6" />
-      </label><br />
-      <label>Language:
-        <select>
-          <option>English</option>
-          <option>Spanish</option>
-          <option>French</option>
-        </select>
-      </label>
+      <p>[Settings content]</p>
     </section>
   </main>
 
-  <!-- Bottom Nav (Mobile only, icons only) -->
+  <!-- Mobile Bottom Navigation -->
   <nav class="bottom-nav">
-    <button data-page="dashboard"><img src="icons/dashboard.svg" alt="Dashboard"></button>
-    <button data-page="invite"><img src="icons/invite.svg" alt="Invite"></button>
-    <button data-page="assistant" class="assistant-btn"><img src="icons/assistant.svg" alt="Assistant"></button>
-    <button data-page="history"><img src="icons/history.svg" alt="History"></button>
-    <button data-page="settings"><img src="icons/settings.svg" alt="Settings"></button>
+    <ul>
+      <li data-page="dashboard"><img src="icons/dashboard.svg" alt="Dashboard"></li>
+      <li data-page="invite"><img src="icons/invite.svg" alt="Invite"></li>
+      <li data-page="history"><img src="icons/history.svg" alt="History"></li>
+      <li data-page="assistant"><img src="icons/assistant.svg" alt="Assistant"></li>
+      <li data-page="settings"><img src="icons/settings.svg" alt="Settings"></li>
+    </ul>
   </nav>
 
   <!-- Footer -->
-  <footer class="footer">
+  <footer>
     <p>v2.3+ • Project by Team Jeff & AI</p>
   </footer>
 </body>
