@@ -7,90 +7,64 @@
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-  <!-- Header -->
   <header>
     <h1>GoalSync</h1>
     <p>Plan smart. Stay on track. Achieve more.</p>
+    <nav class="top-nav">
+      <ul>
+        <li class="active" data-page="tasks"><img src="icons/tasks.svg" alt=""> <span>Tasks</span></li>
+        <li data-page="goals"><img src="icons/goals.svg" alt=""> <span>Goals</span></li>
+        <li data-page="projects"><img src="icons/projects.svg" alt=""> <span>Projects</span></li>
+        <li data-page="chat"><img src="icons/chat.svg" alt=""> <span>Chat</span></li>
+        <li data-page="dashboard"><img src="icons/dashboard.svg" alt=""> <span>Dashboard</span></li>
+        <li data-page="invite"><img src="icons/invite.svg" alt=""> <span>Invite</span></li>
+        <li data-page="history"><img src="icons/history.svg" alt=""> <span>History</span></li>
+        <li data-page="assistant"><img src="icons/assistant.svg" alt=""> <span>Assistant</span></li>
+        <li data-page="settings"><img src="icons/settings.svg" alt=""> <span>Settings</span></li>
+      </ul>
+      <div class="nav-underline"></div>
+    </nav>
   </header>
 
-  <!-- Top Navigation -->
-  <nav class="top-nav">
-    <a href="#tasks" class="active">
-      <img src="icons/tasks.svg" alt="Tasks" /> Tasks
-    </a>
-    <a href="#goals">
-      <img src="icons/goals.svg" alt="Goals" /> Goals
-    </a>
-    <a href="#projects">
-      <img src="icons/projects.svg" alt="Projects" /> Projects
-    </a>
-    <a href="#chat">
-      <img src="icons/chat.svg" alt="Chat" /> Chat
-    </a>
-    <a href="#dashboard">
-      <img src="icons/dashboard.svg" alt="Dashboard" /> Dashboard
-    </a>
-    <a href="#invite">
-      <img src="icons/invite.svg" alt="Invite" /> Invite
-    </a>
-    <a href="#history">
-      <img src="icons/history.svg" alt="History" /> History
-    </a>
-    <a href="#assistant">
-      <img src="icons/assistant.svg" alt="Assistant" /> Assistant
-    </a>
-    <a href="#settings">
-      <img src="icons/settings.svg" alt="Settings" /> Settings
-    </a>
-  </nav>
-
-  <!-- Main Content -->
-  <main id="content">
+  <main>
     <!-- Tasks Page -->
     <section id="tasks" class="page active">
       <h2>Your Tasks</h2>
       <form id="task-form">
-        <input type="text" id="task-title" placeholder="Task title" required />
-        <input type="date" id="task-date" />
-        <input type="time" id="task-time" />
-        <select id="task-repeat">
-          <option value="none">No repeat</option>
-          <option value="daily">Daily</option>
-          <option value="weekly">Weekly</option>
+        <input type="text" placeholder="Task title" required />
+        <input type="date" />
+        <input type="time" />
+        <select>
+          <option>No repeat</option>
+          <option>Daily</option>
+          <option>Weekly</option>
+          <option>Monthly</option>
         </select>
-        <input type="text" id="task-goal" placeholder="Assign to Goal" />
-        <textarea id="task-details" placeholder="Details (optional)"></textarea>
-        <input type="email" id="task-participants" placeholder="Participants (emails)" />
+        <input type="text" placeholder="Assign to Goal" />
+        <textarea placeholder="Details (optional)"></textarea>
+        <input type="email" placeholder="Participants (emails)" />
         <button type="submit">Add Task</button>
       </form>
-
-      <div id="task-list">
-        <div class="task-item">
-          <input type="checkbox" checked /> Work on presentation — 10:30 AM
-        </div>
-        <div class="task-item">
-          <input type="checkbox" checked /> Respond to emails — 9:00 AM
-        </div>
-        <div class="task-item">
-          <input type="checkbox" /> Exercise at gym — 5:30 PM
-        </div>
-      </div>
+      <ul id="task-list">
+        <li><input type="checkbox" checked /> Work on presentation — 10:30 AM</li>
+        <li><input type="checkbox" checked /> Respond to emails — 9:00 AM</li>
+        <li><input type="checkbox" /> Exercise at gym — 5:30 PM</li>
+      </ul>
     </section>
 
-    <!-- Placeholder for other pages -->
-    <section id="goals" class="page"><h2>Your Goals</h2></section>
-    <section id="projects" class="page"><h2>Your Projects</h2></section>
-    <section id="chat" class="page"><h2>Chat</h2></section>
-    <section id="dashboard" class="page"><h2>Dashboard</h2></section>
-    <section id="invite" class="page"><h2>Invite</h2></section>
-    <section id="history" class="page"><h2>History</h2></section>
-    <section id="assistant" class="page"><h2>Assistant</h2></section>
-    <section id="settings" class="page"><h2>Settings</h2></section>
+    <!-- Other pages (no titles now, just content placeholders) -->
+    <section id="goals" class="page"> </section>
+    <section id="projects" class="page"> </section>
+    <section id="chat" class="page"> </section>
+    <section id="dashboard" class="page"> </section>
+    <section id="invite" class="page"> </section>
+    <section id="history" class="page"> </section>
+    <section id="assistant" class="page"> </section>
+    <section id="settings" class="page"> </section>
   </main>
 
-  <!-- Footer -->
   <footer>
-    v2.3+ • Project by Team Jeff & AI
+    <p>v2.3+ • Project by Team Jeff & AI</p>
   </footer>
 
   <script src="js/script.js"></script>
