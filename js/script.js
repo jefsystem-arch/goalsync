@@ -1,36 +1,59 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const navLinks = document.querySelectorAll(".top-nav a");
-  const pages = document.querySelectorAll(".page");
-  const underline = document.querySelector(".nav-underline");
+// ===== Task Management =====
+const taskForm = document.querySelector(".task-form");
+const taskList = document.querySelector(".task-list");
 
-  // Handle nav click
-  navLinks.forEach(link => {
-    link.addEventListener("click", e => {
-      e.preventDefault();
+if (taskForm) {
+  taskForm.addEventListener("submit", (e) => {
+    e.preventDefault();
 
-      // Deactivate all
-      navLinks.forEach(l => l.classList.remove("active"));
-      pages.forEach(p => p.classList.remove("active"));
+    const title = taskForm.querySelector('input[name="title"]').value.trim();
+    if (!title) return;
 
-      // Activate current
-      link.classList.add("active");
-      const pageId = link.getAttribute("data-page");
-      document.getElementById(pageId).classList.add("active");
+    const li = document.createElement("div");
+    li.classList.add("task-item");
 
-      // Move underline
-      const linkRect = link.getBoundingClientRect();
-      const navRect = link.parentElement.parentElement.getBoundingClientRect();
-      underline.style.width = `${linkRect.width}px`;
-      underline.style.left = `${linkRect.left - navRect.left}px`;
-    });
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+
+    const span = document.createElement("span");
+    span.textContent = title;
+
+    li.appendChild(checkbox);
+    li.appendChild(span);
+
+    taskList.appendChild(li);
+    taskForm.reset();
+  });
+}
+
+// ===== Navigation Switching =====
+const navLinks = document.querySelectorAll("nav a");
+const sections = document.querySelectorAll(".page-section");
+
+function showSection(id) {
+  sections.forEach((section) => {
+    section.style.display = section.id === id ? "block" : "none";
   });
 
-  // Init underline position on load
-  const activeLink = document.querySelector(".top-nav a.active");
-  if (activeLink) {
-    const linkRect = activeLink.getBoundingClientRect();
-    const navRect = activeLink.parentElement.parentElement.getBoundingClientRect();
-    underline.style.width = `${linkRect.width}px`;
-    underline.style.left = `${linkRect.left - navRect.left}px`;
-  }
+  navLinks.forEach((link) => {
+    if (link.getAttribute("href") === `#${id}`) {
+      link.classList.add("active");
+    } else {
+      link.classList.remove("active");
+    }
+  });
+}
+
+// Default page: Tasks
+if (sections.length > 0) {
+  showSection("tasks");
+}
+
+// Handle clicks
+navLinks.forEach((link) => {
+  link.addEventListener("click", (e) => {
+    e.preventDefault();
+    const target = link.getAttribute("href").substring(1);
+    showSection(target);
+  });
 });

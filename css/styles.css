@@ -1,122 +1,168 @@
-/* General Layout */
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+/* ===== Global Reset ===== */
+* {
   margin: 0;
-  background: #fff;
-  color: #111;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  background: #ffffff;
+  color: #111;
+  line-height: 1.5;
+}
+
+/* ===== Header ===== */
 header {
   background: #2979ff;
   color: #fff;
   text-align: center;
-  padding: 10px 0;
+  padding: 1rem 0;
 }
 
-.top-nav ul {
+header h1 {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+header p {
+  font-size: 0.9rem;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+/* ===== Navigation ===== */
+nav {
+  background: #fff;
+  border-bottom: 1px solid #eee;
   display: flex;
   justify-content: center;
-  gap: 20px;
-  list-style: none;
-  padding: 0;
-  margin: 10px 0 0 0;
+  gap: 2rem;
+  padding: 0.6rem 1rem;
 }
 
-.top-nav ul li a {
+nav a {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 0.35rem;
   text-decoration: none;
-  color: #000;
+  font-size: 0.95rem;
   font-weight: 500;
-  padding: 6px 8px;
+  color: #333;
   position: relative;
+  transition: color 0.2s ease;
 }
 
-.top-nav ul li a.active {
+nav a img {
+  width: 18px;
+  height: 18px;
+}
+
+nav a:hover {
   color: #2979ff;
 }
 
-.nav-underline {
+/* Active underline animation */
+nav a.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
   height: 2px;
   background: #2979ff;
-  width: 60px;
+  transition: transform 0.3s ease;
+  transform: scaleX(1);
+}
+
+nav a::after {
+  content: "";
   position: absolute;
-  bottom: 0;
-  transition: all 0.3s ease;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 2px;
+  background: #2979ff;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
 }
 
-/* ✅ Content Wrapper */
+nav a:hover::after {
+  transform: scaleX(1);
+}
+
+/* ===== Main Content Wrapper ===== */
+main {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
 .content {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 20px;
+  width: 100%;
+  max-width: 800px; /* keeps content centered and neat */
 }
 
-/* Task Form */
-#task-form {
+/* ===== Tasks Page ===== */
+.task-form {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
 }
 
-#task-form input,
-#task-form select,
-#task-form textarea,
-#task-form button {
-  padding: 10px;
-  border: 1px solid #ddd;
+.task-form input,
+.task-form select,
+.task-form textarea {
+  padding: 0.6rem;
+  border: 1px solid #ccc;
   border-radius: 6px;
-  font-size: 14px;
+  font-size: 0.9rem;
 }
 
-#task-form button {
+.task-form button {
+  padding: 0.75rem;
   background: #2979ff;
   color: #fff;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-#task-form button:hover {
-  background: #1565d8;
-}
-
-#task-list {
-  margin-top: 20px;
-  list-style: none;
-  padding: 0;
-}
-
-#task-list li {
-  background: #f9f9f9;
-  padding: 12px;
+  border: none;
   border-radius: 6px;
-  margin-bottom: 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+.task-form button:hover {
+  background: #1a5fd1;
+}
+
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.task-item {
+  background: #f9f9f9;
+  padding: 0.75rem;
+  border-radius: 6px;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 0.6rem;
+  font-size: 0.9rem;
+  border: 1px solid #eee;
 }
 
-/* Footer */
+.task-item input[type="checkbox"] {
+  transform: scale(1.2);
+}
+
+/* ===== Footer ===== */
 footer {
   text-align: center;
-  padding: 12px;
-  font-size: 12px;
-  color: #666;
+  padding: 0.8rem;
+  font-size: 0.8rem;
+  color: #777;
   border-top: 1px solid #eee;
-  margin-top: 20px;
-}
-
-/* ✅ Responsive */
-@media (max-width: 768px) {
-  .content {
-    max-width: 100%;
-    padding: 10px;
-  }
-
-  .top-nav ul {
-    flex-wrap: wrap;
-    gap: 12px;
-  }
 }
