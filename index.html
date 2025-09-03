@@ -7,84 +7,80 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <!-- Top Header with Logo + Tagline -->
+  <!-- Top Header -->
   <div class="top-header">
     <h1>GoalSync</h1>
     <p>Plan smart. Stay on track. Achieve more.</p>
   </div>
 
-  <!-- Top Navigation -->
-  <header class="top-nav">
+  <!-- Top Nav -->
+  <nav class="top-nav">
     <ul>
-      <li class="nav-item">
-        <img src="icons/goals.svg" alt="Goals">
-        <span>Goals</span>
-      </li>
-      <li class="nav-item active">
+      <li class="active">
         <img src="icons/tasks.svg" alt="Tasks">
         <span>Tasks</span>
       </li>
-      <li class="nav-item">
+      <li>
+        <img src="icons/goals.svg" alt="Goals">
+        <span>Goals</span>
+      </li>
+      <li>
         <img src="icons/projects.svg" alt="Projects">
         <span>Projects</span>
       </li>
-      <li class="nav-item">
+      <li>
         <img src="icons/chat.svg" alt="Chat">
         <span>Chat</span>
       </li>
     </ul>
-  </header>
+  </nav>
 
   <!-- Main Content -->
   <main>
-    <section class="tasks">
-      <h2>Your Tasks</h2>
-      <form>
-        <input type="text" placeholder="Task title">
-        <input type="date" placeholder="dd/mm/yyyy">
-        <input type="time" placeholder="--:--">
-        <select>
-          <option>No repeat</option>
-          <option>Daily</option>
-          <option>Weekly</option>
-        </select>
-        <input type="text" placeholder="Assign to Goal">
-        <textarea placeholder="Details (optional)"></textarea>
-        <input type="email" placeholder="Participants (emails)">
-        <button type="submit">Add Task</button>
-      </form>
+    <h2>Your Tasks</h2>
+    <form>
+      <input type="text" placeholder="Task title">
+      <input type="date" placeholder="dd/mm/yyyy">
+      <input type="time" placeholder="--:--">
+      <select>
+        <option>No repeat</option>
+      </select>
+      <input type="text" placeholder="Assign to Goal">
+      <textarea placeholder="Details (optional)"></textarea>
+      <input type="text" placeholder="Participants (emails)">
+      <button type="submit">Add Task</button>
+    </form>
 
-      <div class="task-card">
-        <input type="checkbox" checked>
-        <label>Work on presentation — 10:30 AM</label>
-      </div>
-      <div class="task-card">
-        <input type="checkbox" checked>
-        <label>Respond to emails — 9:00 AM</label>
-      </div>
-      <div class="task-card">
-        <input type="checkbox">
-        <label>Exercise at gym — 5:30 PM</label>
-      </div>
-    </section>
+    <div class="task-card">
+      <input type="checkbox" checked>
+      <label>Work on presentation — 10:30 AM</label>
+    </div>
+    <div class="task-card">
+      <input type="checkbox" checked>
+      <label>Respond to emails — 9:00 AM</label>
+    </div>
+    <div class="task-card">
+      <input type="checkbox">
+      <label>Exercise at gym — 5:30 PM</label>
+    </div>
   </main>
 
-  <!-- Bottom Navigation (Mobile Only) -->
+  <!-- Bottom Nav (Mobile only) -->
   <nav class="bottom-nav">
     <ul>
-      <li class="nav-item">
+      <li>
         <img src="icons/dashboard.svg" alt="Dashboard">
         <span>Dashboard</span>
       </li>
-      <li class="nav-item">
+      <li>
         <img src="icons/history.svg" alt="History">
         <span>History</span>
       </li>
-      <li class="nav-item assistant">
+      <li class="assistant">
         <img src="icons/assistant.svg" alt="Assistant">
         <span>Assistant</span>
       </li>
-      <li class="nav-item">
+      <li>
         <img src="icons/settings.svg" alt="Settings">
         <span>Settings</span>
       </li>
@@ -92,9 +88,7 @@
   </nav>
 
   <footer>
-    <p>v2.3+ • Project by Team Jeff &amp; AI</p>
+    <p>v2.3+ • Project by Team Jeff & AI</p>
   </footer>
-
-  <script src="js/script.js"></script>
 </body>
 </html>
