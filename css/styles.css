@@ -1,321 +1,159 @@
-/* ================================
-   GoalSync v2.3 Locked Styles
-   (Desktop & Tablet ≥768px)
-   ================================ */
-
-/* Base reset and typography */
-body {
+/* Base Reset */
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  background-color: #f9f9f9;
-  color: #333;
-}
-
-/* Top header */
-.top-header {
-  text-align: center;
-  margin-top: 20px;
-}
-.top-header h1 {
-  font-size: 2rem;
-  font-weight: 700;
-  margin: 0;
-  color: #222;
-}
-.top-header p {
-  margin: 4px 0 20px;
-  font-size: 1rem;
-  color: #666;
-}
-
-/* Top navigation */
-.top-nav {
-  display: flex;
-  justify-content: center;
-  border-bottom: 1px solid #e5e5e5;
   background: #fff;
+  color: #111;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* Header */
+.app-header {
+  background: #1e73f0;
+  color: white;
+  padding: 16px 0;
+}
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.tagline {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+/* Top Navigation */
+.top-nav {
+  background: #fff;
+  border-bottom: 1px solid #eee;
 }
 .top-nav ul {
   display: flex;
+  justify-content: center;
+  gap: 24px;
+  padding: 12px 0;
   list-style: none;
-  margin: 0;
-  padding: 0;
 }
-.top-nav li {
-  padding: 12px 20px;
+.top-nav a {
+  text-decoration: none;
+  color: #333;
   font-size: 0.95rem;
-  color: #555;
-  cursor: pointer;
   position: relative;
-  display: flex;
-  align-items: center;
-  gap: 6px;
+  padding-bottom: 6px;
 }
-.top-nav li img {
-  width: 20px;
-  height: 20px;
+.top-nav .active a {
+  color: #1e73f0;
 }
-.top-nav li.active {
-  color: #007bff;
-  font-weight: 600;
-}
-.top-nav li.active::after {
+.top-nav .active a::after {
   content: "";
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
   height: 2px;
-  background: #007bff;
+  background: #1e73f0;
+  transition: width 0.3s ease;
 }
 
-/* Main content */
-main {
-  max-width: 800px;
-  margin: 40px auto;
-  padding: 0 20px;
+/* Content */
+.content {
+  max-width: 600px;
+  margin: 32px auto;
+  padding: 0 16px;
+  text-align: left;
 }
-main h2 {
-  font-size: 1.5rem;
-  margin-bottom: 20px;
+h2 {
+  margin-bottom: 16px;
+  font-size: 1.4rem;
+  font-weight: bold;
 }
-
-/* Form */
-form input,
-form select,
-form textarea,
-form button {
-  display: block;
-  width: 100%;
-  margin-bottom: 12px;
-  padding: 12px;
-  border-radius: 8px;
+.task-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.task-form input,
+.task-form select,
+.task-form textarea {
+  padding: 10px;
   border: 1px solid #ddd;
-  font-size: 1rem;
-  box-sizing: border-box;
+  border-radius: 8px;
+  font-size: 0.95rem;
 }
-form button {
-  background: #007bff;
-  color: #fff;
-  font-weight: 600;
-  cursor: pointer;
+.task-form button {
+  background: #1e73f0;
+  color: white;
+  padding: 12px;
   border: none;
-  transition: background 0.2s;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
 }
-form button:hover {
-  background: #0069d9;
+.task-form button:hover {
+  background: #155ac6;
 }
-
-/* Task cards */
-.task-card {
-  background: #fff;
-  padding: 14px 16px;
-  margin-bottom: 12px;
+.task-list {
+  margin-top: 20px;
+  list-style: none;
+}
+.task-list li {
+  background: #f9f9f9;
   border-radius: 10px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  padding: 12px;
+  margin-bottom: 10px;
   display: flex;
   align-items: center;
   gap: 10px;
-}
-.task-card label {
-  font-size: 1rem;
-  color: #333;
+  font-size: 0.95rem;
 }
 
 /* Footer */
-footer {
-  text-align: center;
-  margin: 40px 0 20px;
+.app-footer {
+  margin: 24px 0;
   font-size: 0.8rem;
-  color: #999;
+  color: #555;
 }
 
-/* ================================
-   GoalSync v2.3+ Responsive
-   (Mobile ≤767px only)
-   ================================ */
+/* Bottom Navigation (hidden on desktop) */
+.bottom-nav {
+  display: none;
+}
 
+/* --- Mobile Overrides Start --- */
 @media (max-width: 767px) {
-  body {
-    padding-top: 124px;   /* space for header + top nav */
-    padding-bottom: 80px; /* space for bottom nav */
-  }
-
-  /* Top header */
-  .top-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    margin: 0;
-    padding: 10px 0 8px;
-    background: #007bff;
-    color: #fff;
-    z-index: 1100;
-    box-shadow: 0 1px 6px rgba(0,0,0,0.08);
-  }
-  .top-header h1 {
-    font-size: 1.35rem;
-    color: #fff;
-    margin: 0;
-  }
-  .top-header p {
-    font-size: 0.8rem;
-    color: rgba(255,255,255,0.95);
-    margin: 2px 0 0;
-  }
-
-  /* Top nav */
-  .top-nav {
-    position: fixed;
-    top: 56px;
-    left: 0;
-    width: 100%;
-    height: 64px;
-    background: #fff;
-    border-bottom: 1px solid #e5e5e5;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
-    z-index: 1050;
-  }
   .top-nav ul {
-    display: flex;
     justify-content: space-around;
-    align-items: center;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-  .top-nav li {
-    flex: 1;
-    text-align: center;
-    font-size: 0.75rem;
-    color: #555;
-    position: relative;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .top-nav li img {
-    display: block;
-    margin: 0 auto 3px;
-    width: 22px;
-    height: 22px;
-  }
-  .top-nav li.active {
-    color: #007bff;
-    font-weight: 600;
-  }
-  .top-nav li.active::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0; /* underline flush with nav bottom */
-    width: 100%;
-    height: 3px;
-    background-color: #007bff;
+    gap: 0;
   }
 
-  /* Bottom nav */
   .bottom-nav {
+    display: block;
     position: fixed;
     bottom: 0;
-    left: 0;
     width: 100%;
-    height: 75px;
     background: #fff;
-    border-top: 1px solid #e5e5e5;
-    box-shadow: 0 -1px 8px rgba(0,0,0,0.1);
-    z-index: 1000;
+    border-top: 1px solid #eee;
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.05);
   }
   .bottom-nav ul {
     display: flex;
     justify-content: space-around;
-    align-items: center;
-    height: 100%;
-    margin: 0;
-    padding: 0;
+    padding: 10px 0;
     list-style: none;
   }
-  .bottom-nav li {
-    flex: 1;
-    text-align: center;
-    font-size: 0.7rem;
-    color: #555;
-  }
-  .bottom-nav li img {
-    display: block;
-    margin: 0 auto 3px;
-    width: 26px;
-    height: 26px;
-  }
-  .bottom-nav li.active {
-    color: #007bff;
-    font-weight: 600;
-  }
-
-  /* Assistant FAB */
-  .assistant-fab {
-    position: fixed;
-    bottom: 90px; /* above bottom nav */
-    right: 20px;
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    background: #007bff;
-    border: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1100;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    cursor: pointer;
-  }
-  .assistant-fab img {
-    width: 28px;
-    height: 28px;
-    filter: brightness(0) invert(1);
-  }
-
-  /* Main content adjustments */
-  main {
-    margin: 20px auto;
-    padding: 0 14px 6rem;
-  }
-
-  form input,
-  form select,
-  form textarea,
-  form button {
-    width: 100%;
-    margin-bottom: 10px;
-    border-radius: 10px;
-    border: 1px solid #ddd;
-    padding: 10px;
-    font-size: 0.9rem;
-    box-sizing: border-box;
-  }
-  form button {
-    background: #007bff;
-    color: #fff;
-    border: none;
-    font-weight: 600;
-  }
-
-  .task-card {
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-    padding: 12px;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-  }
-  .task-card label {
-    margin-left: 10px;
-    font-size: 0.9rem;
+  .bottom-nav a {
+    font-size: 0.85rem;
     color: #333;
+    text-decoration: none;
+  }
+  .bottom-nav a.active {
+    color: #1e73f0;
   }
 }
