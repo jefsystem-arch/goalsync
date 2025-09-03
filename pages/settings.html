@@ -3,43 +3,77 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Settings - GoalSync</title>
+  <title>GoalSync – Settings</title>
   <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-  <header>
-    <nav class="navbar">
-      <div class="logo">⚡ GoalSync</div>
-      <ul class="nav-links">
-        <li><a href="../index.html"><img src="../icons/dashboard.svg" alt="Dashboard"> Dashboard</a></li>
-        <li><a href="tasks.html"><img src="../icons/tasks.svg" alt="Tasks"> Tasks</a></li>
-        <li><a href="goals.html"><img src="../icons/goals.svg" alt="Goals"> Goals</a></li>
-        <li><a href="projects.html"><img src="../icons/projects.svg" alt="Projects"> Projects</a></li>
-        <li><a href="assistant.html"><img src="../icons/chat.svg" alt="Assistant"> Assistant</a></li>
-        <li><a href="settings.html" class="active"><img src="../icons/settings.svg" alt="Settings"> Settings</a></li>
-        <li><a href="#" id="logoutBtn"><img src="../icons/logout.svg" alt="Logout"> Logout</a></li>
-      </ul>
-    </nav>
+  <!-- Header -->
+  <header class="app-header">
+    <a href="../index.html" class="back-btn">← Back</a>
+    <h1>Settings</h1>
   </header>
 
-  <main class="content">
-    <h1>Settings</h1>
+  <!-- Content -->
+  <main class="content settings-page">
 
-    <section class="appearance-settings">
-      <h2>Appearance</h2>
+    <!-- Display Settings -->
+    <section class="settings-card">
+      <h2>Display</h2>
+      <div class="option">
+        <label for="darkModeToggle">🌙 Dark Mode</label>
+        <input type="checkbox" id="darkModeToggle">
+      </div>
+      <div class="option theme-colors">
+        <p>🎨 Theme Color</p>
+        <div class="color-swatches">
+          <span class="swatch blue active" data-color="blue"></span>
+          <span class="swatch green" data-color="green"></span>
+          <span class="swatch red" data-color="red"></span>
+          <span class="swatch purple" data-color="purple"></span>
+          <span class="swatch orange" data-color="orange"></span>
+          <span class="swatch teal" data-color="teal"></span>
+        </div>
+      </div>
+    </section>
 
-      <label class="toggle">
-        <input type="checkbox" id="theme-toggle">
-        Enable Dark Mode
-      </label>
+    <!-- Language -->
+    <section class="settings-card">
+      <h2>Language</h2>
+      <select id="languageSelect">
+        <option value="en">English</option>
+        <option value="es">Español</option>
+        <option value="fr">Français</option>
+        <option value="ar">العربية</option>
+        <option value="zh">中文</option>
+        <option value="hi">हिंदी</option>
+      </select>
+    </section>
 
-      <div class="theme-color">
-        <label for="color-picker">Theme Color:</label>
-        <input type="color" id="color-picker" value="#3b82f6">
+    <!-- Profile & Account -->
+    <section class="settings-card">
+      <h2>Profile & Account</h2>
+      <p><strong>Name:</strong> Jeff</p>
+      <p><strong>Email:</strong> jeff@example.com</p>
+      <button class="btn">Change Password</button>
+      <button class="btn danger">Logout</button>
+    </section>
+
+    <!-- Assistant Options -->
+    <section class="settings-card">
+      <h2>Assistant</h2>
+      <div class="option">
+        <label for="assistantToggle">Show Floating Assistant</label>
+        <input type="checkbox" id="assistantToggle">
       </div>
     </section>
   </main>
 
-  <script src="../js/app.js"></script>
+  <!-- Footer -->
+  <footer>
+    <p>GoalSync v2.4 • Powered by Jeff & AI</p>
+  </footer>
+
+  <!-- JS -->
+  <script src="../js/settings.js"></script>
 </body>
 </html>

@@ -1,55 +1,71 @@
-import { db, auth } from "./firebase-config.js";
-import { doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-import { signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-
-function userDoc(uid) {
-  return doc(db, "users", uid);
-}
-
-async function loadSettings(uid) {
-  const snap = await getDoc(userDoc(uid));
-  if (snap.exists()) {
-    const data = snap.data();
-    document.getElementById("profileName").value = data.name || "";
-    document.getElementById("profileEmail").value = data.email || "";
-    document.getElementById("darkMode").checked = data.darkMode || false;
-    document.getElementById("largeText").checked = data.largeText || false;
+// Load saved preferences
+window.addEventListener("DOMContentLoaded", () => {
+  // Dark mode
+  if (localStorage.getItem("themeMode") === "dark") {
+    document.body.classList.add("dark");
+    document.getElementById("darkModeToggle").checked = true;
   }
-}
 
-async function saveSettings(uid) {
-  await setDoc(userDoc(uid), {
-    name: document.getElementById("profileName").value,
-    email: document.getElementById("profileEmail").value,
-    darkMode: document.getElementById("darkMode").checked,
-    largeText: document.getElementById("largeText").checked
-  }, { merge: true });
+  // Theme color
+  const savedTheme = localStorage.getItem("themeColor");
+  if (savedTheme) {
+    document.body.classList.add("theme-" + savedTheme);
+    document.querySelectorAll(".swatch").forEach(s => {
+      s.classList.remove("active");
+      if (s.dataset.color === savedTheme) s.classList.add("active");
+    });
+  }
 
-  applyTheme(
-    document.getElementById("darkMode").checked,
-    document.getElementById("largeText").checked
-  );
-}
+  // Language
+  const savedLang = localStorage.getItem("language");
+  if (savedLang) {
+    document.getElementById("languageSelect").value = savedLang;
+  }
 
-function applyTheme(dark, large) {
-  document.body.classList.toggle("dark-mode", dark);
-  document.body.classList.toggle("large-text", large);
-}
-
-document.querySelector(".btn.save")?.addEventListener("click", () => {
-  const user = auth.currentUser;
-  if (user) saveSettings(user.uid);
+  // Assistant FAB toggle
+  if (localStorage.getItem("assistantFAB") === "on") {
+    document.getElementById("assistantToggle").checked = true;
+    const fab = document.querySelector(".assistant-fab");
+    if (fab) fab.style.display = "block";
+  }
 });
 
-document.getElementById("logoutBtn")?.addEventListener("click", async () => {
-  await signOut(auth);
-  window.location.href = "login.html";
-});
-
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    loadSettings(user.uid);
+// Dark Mode Toggle
+document.getElementById("darkModeToggle").addEventListener("change", function () {
+  if (this.checked) {
+    document.body.classList.add("dark");
+    localStorage.setItem("themeMode", "dark");
   } else {
-    console.log("Not logged in");
+    document.body.classList.remove("dark");
+    localStorage.setItem("themeMode", "light");
+  }
+});
+
+// Theme Color
+document.querySelectorAll(".swatch").forEach(swatch => {
+  swatch.addEventListener("click", function () {
+    document.body.classList.remove("theme-blue","theme-green","theme-red","theme-purple","theme-orange","theme-teal");
+    document.body.classList.add("theme-" + this.dataset.color);
+    localStorage.setItem("themeColor", this.dataset.color);
+    document.querySelectorAll(".swatch").forEach(s => s.classList.remove("active"));
+    this.classList.add("active");
+  });
+});
+
+// Language
+document.getElementById("languageSelect").addEventListener("change", function () {
+  localStorage.setItem("language", this.value);
+  alert("Language set to " + this.options[this.selectedIndex].text + " (translations coming soon)");
+});
+
+// Assistant FAB
+document.getElementById("assistantToggle").addEventListener("change", function () {
+  const fab = document.querySelector(".assistant-fab");
+  if (this.checked) {
+    if (fab) fab.style.display = "block";
+    localStorage.setItem("assistantFAB", "on");
+  } else {
+    if (fab) fab.style.display = "none";
+    localStorage.setItem("assistantFAB", "off");
   }
 });
