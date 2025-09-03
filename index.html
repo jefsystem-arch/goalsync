@@ -16,74 +16,40 @@
   <!-- Top Navigation (Desktop/Tablet) -->
   <nav class="top-nav">
     <ul>
-      <li class="active"><a href="#"><img src="icons/tasks.svg" alt=""> <span>Tasks</span></a></li>
-      <li><a href="#"><img src="icons/goals.svg" alt=""> <span>Goals</span></a></li>
-      <li><a href="#"><img src="icons/projects.svg" alt=""> <span>Projects</span></a></li>
-      <li><a href="#"><img src="icons/chat.svg" alt=""> <span>Chat</span></a></li>
-      <li><a href="#"><img src="icons/dashboard.svg" alt=""> <span>Dashboard</span></a></li>
-      <li><a href="#"><img src="icons/history.svg" alt=""> <span>History</span></a></li>
-      <li><a href="#"><img src="icons/invite.svg" alt=""> <span>Invite</span></a></li>
-      <li><a href="#"><img src="icons/assistant.svg" alt=""> <span>Assistant</span></a></li>
-      <li><a href="pages/settings.html"><img src="icons/settings.svg" alt=""> <span>Settings</span></a></li>
+      <li class="active"><a href="#" data-page="tasks"><img src="icons/tasks.svg" alt=""> <span>Tasks</span></a></li>
+      <li><a href="#" data-page="goals"><img src="icons/goals.svg" alt=""> <span>Goals</span></a></li>
+      <li><a href="#" data-page="projects"><img src="icons/projects.svg" alt=""> <span>Projects</span></a></li>
+      <li><a href="#" data-page="chat"><img src="icons/chat.svg" alt=""> <span>Chat</span></a></li>
+      <li><a href="#" data-page="dashboard"><img src="icons/dashboard.svg" alt=""> <span>Dashboard</span></a></li>
+      <li><a href="#" data-page="history"><img src="icons/history.svg" alt=""> <span>History</span></a></li>
+      <li><a href="#" data-page="invite"><img src="icons/invite.svg" alt=""> <span>Invite</span></a></li>
+      <li><a href="#" data-page="assistant"><img src="icons/assistant.svg" alt=""> <span>Assistant</span></a></li>
+      <li><a href="#" data-page="settings"><img src="icons/settings.svg" alt=""> <span>Settings</span></a></li>
     </ul>
   </nav>
 
-  <!-- Content -->
-  <main class="content">
-    <section class="tasks">
-      <h2>Your Tasks</h2>
-      <form class="task-form">
-        <input type="text" placeholder="Task title">
-        <input type="date">
-        <input type="time">
-        <select>
-          <option>No repeat</option>
-          <option>Daily</option>
-          <option>Weekly</option>
-        </select>
-        <input type="text" placeholder="Assign to Goal">
-        <textarea placeholder="Details (optional)"></textarea>
-        <input type="email" placeholder="Participants (emails)">
-        <button type="submit">Add Task</button>
-      </form>
-
-      <ul class="task-list">
-        <li><input type="checkbox" checked> Work on presentation — 10:30 AM</li>
-        <li><input type="checkbox" checked> Respond to emails — 9:00 AM</li>
-        <li><input type="checkbox"> Exercise at gym — 5:30 PM</li>
-      </ul>
-    </section>
+  <!-- Content area -->
+  <main class="content" id="content">
+    <!-- Content will load here -->
   </main>
 
   <!-- Bottom Navigation (Mobile only) -->
   <nav class="bottom-nav">
     <ul>
-      <li><a href="#"><img src="icons/dashboard.svg" alt=""> <span>Dashboard</span></a></li>
-      <li><a href="#"><img src="icons/history.svg" alt=""> <span>History</span></a></li>
-      <li class="assistant"><a href="#"><img src="icons/assistant.svg" alt=""></a></li>
-      <li><a href="#"><img src="icons/invite.svg" alt=""> <span>Invite</span></a></li>
-      <li><a href="pages/settings.html"><img src="icons/settings.svg" alt=""> <span>Settings</span></a></li>
+      <li><a href="#" data-page="dashboard"><img src="icons/dashboard.svg" alt=""> <span>Dashboard</span></a></li>
+      <li><a href="#" data-page="history"><img src="icons/history.svg" alt=""> <span>History</span></a></li>
+      <li class="assistant"><a href="#" data-page="assistant"><img src="icons/assistant.svg" alt=""></a></li>
+      <li><a href="#" data-page="invite"><img src="icons/invite.svg" alt=""> <span>Invite</span></a></li>
+      <li><a href="#" data-page="settings"><img src="icons/settings.svg" alt=""> <span>Settings</span></a></li>
     </ul>
   </nav>
 
   <!-- Footer -->
   <footer>
-    <p>v2.3+ • Project by Team Jeff & AI</p>
+    <p>v2.4 • Project by Team Jeff & AI</p>
   </footer>
 
-  <!-- JS for Active Nav -->
-  <script>
-    function setActiveNav(selector) {
-      const items = document.querySelectorAll(`${selector} li`);
-      items.forEach(item => {
-        item.addEventListener('click', function () {
-          items.forEach(li => li.classList.remove('active'));
-          this.classList.add('active');
-        });
-      });
-    }
-    setActiveNav('.top-nav ul');
-    setActiveNav('.bottom-nav ul');
-  </script>
+  <!-- JS -->
+  <script src="js/main.js"></script>
 </body>
 </html>
