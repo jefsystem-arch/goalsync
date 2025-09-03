@@ -4,43 +4,63 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GoalSync</title>
-  <link rel="stylesheet" href="styles.css" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- JS -->
+  <script src="js/script.js" defer></script>
 </head>
 <body>
+  <!-- Header -->
   <header>
     <h1>GoalSync</h1>
     <p>Plan smart. Stay on track. Achieve more.</p>
-    <nav class="nav-links">
-      <a href="#" class="active" data-page="tasks">Tasks</a>
-      <a href="#" data-page="goals">Goals</a>
-      <a href="#" data-page="projects">Projects</a>
-      <a href="#" data-page="chat">Chat</a>
-      <a href="#" data-page="dashboard">Dashboard</a>
-      <a href="#" data-page="invite">Invite</a>
-      <a href="#" data-page="history">History</a>
-      <a href="#" data-page="assistant">Assistant</a>
-      <a href="#" data-page="settings">Settings</a>
-      <div class="nav-underline"></div>
-    </nav>
   </header>
 
-  <main id="content">
-    <!-- Default page is Tasks -->
+  <!-- Top Navigation -->
+  <nav class="top-nav">
+    <ul>
+      <li><a href="#" data-page="tasks" class="active"><img src="icons/tasks.svg" alt="">Tasks</a></li>
+      <li><a href="#" data-page="goals"><img src="icons/goals.svg" alt="">Goals</a></li>
+      <li><a href="#" data-page="projects"><img src="icons/projects.svg" alt="">Projects</a></li>
+      <li><a href="#" data-page="chat"><img src="icons/chat.svg" alt="">Chat</a></li>
+      <li><a href="#" data-page="dashboard"><img src="icons/dashboard.svg" alt="">Dashboard</a></li>
+      <li><a href="#" data-page="invite"><img src="icons/invite.svg" alt="">Invite</a></li>
+      <li><a href="#" data-page="history"><img src="icons/history.svg" alt="">History</a></li>
+      <li><a href="#" data-page="assistant"><img src="icons/assistant.svg" alt="">Assistant</a></li>
+      <li><a href="#" data-page="settings"><img src="icons/settings.svg" alt="">Settings</a></li>
+    </ul>
+    <div class="nav-underline"></div>
+  </nav>
+
+  <!-- Main Content -->
+  <main id="main-content">
+    <!-- Tasks Page -->
     <section id="tasks" class="page active">
       <h2>Your Tasks</h2>
-      <form class="task-form">
-        <input type="text" placeholder="Task title" />
-        <input type="date" />
-        <input type="time" />
+      <form id="task-form">
+        <input type="text" id="task-title" placeholder="Task title" required />
+        <input type="date" id="task-date" />
+        <input type="time" id="task-time" />
+        <select id="task-repeat">
+          <option value="none">No repeat</option>
+          <option value="daily">Daily</option>
+          <option value="weekly">Weekly</option>
+        </select>
+        <input type="text" id="task-goal" placeholder="Assign to Goal" />
+        <textarea id="task-details" placeholder="Details (optional)"></textarea>
+        <input type="text" id="task-participants" placeholder="Participants (emails)" />
         <button type="submit">Add Task</button>
       </form>
-      <ul class="task-list">
-        <li><input type="checkbox" checked /> Work on presentation — 10:30 AM</li>
-        <li><input type="checkbox" checked /> Respond to emails — 9:00 AM</li>
-        <li><input type="checkbox" /> Exercise at gym — 5:30 PM</li>
+      <ul id="task-list">
+        <li><input type="checkbox" checked> Work on presentation — 10:30 AM</li>
+        <li><input type="checkbox" checked> Respond to emails — 9:00 AM</li>
+        <li><input type="checkbox"> Exercise at gym — 5:30 PM</li>
       </ul>
     </section>
-    <!-- Placeholder for other pages -->
+
+    <!-- Other pages placeholders -->
     <section id="goals" class="page"><h2>Your Goals</h2></section>
     <section id="projects" class="page"><h2>Your Projects</h2></section>
     <section id="chat" class="page"><h2>Chat</h2></section>
@@ -51,10 +71,9 @@
     <section id="settings" class="page"><h2>Settings</h2></section>
   </main>
 
+  <!-- Footer -->
   <footer>
     <p>v2.3+ • Project by Team Jeff & AI</p>
   </footer>
-
-  <script src="script.js"></script>
 </body>
 </html>
