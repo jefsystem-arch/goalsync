@@ -15,19 +15,19 @@
 /* Mobile layout */
 @media (max-width: 767px) {
   body {
-    padding-top: 124px;   /* adjust space for header + nav */
+    padding-top: 124px;   /* space for header + nav */
     padding-bottom: 80px; /* space for bottom nav */
     background: #f9f9f9;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   }
 
-  /* Top Header (Logo + tagline always visible) */
+  /* Top Header */
   .top-header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background: #007bff; /* blue header like desktop */
+    background: #007bff;
     text-align: center;
     padding: 10px 0 8px;
     z-index: 1100;
@@ -35,24 +35,24 @@
   }
 
   .top-header h1 {
-    font-size: 1.35rem; /* slightly larger logo */
+    font-size: 1.35rem;
     margin: 0;
     font-weight: 700;
-    color: #fff; /* white logo */
-    letter-spacing: -0.2px; /* crisper text */
+    color: #fff;
+    letter-spacing: -0.2px;
   }
 
   .top-header p {
     margin: 2px 0 0;
-    font-size: 0.8rem; /* slightly larger tagline */
-    color: rgba(255,255,255,0.95); /* stronger white contrast */
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.95);
     font-weight: 400;
   }
 
-  /* Top Nav (immediately below logo/tagline, no gap) */
+  /* Top Nav */
   .top-nav {
     position: fixed;
-    top: 56px; /* exact bottom of header */
+    top: 56px;
     left: 0;
     width: 100%;
     height: 64px;
@@ -79,7 +79,8 @@
     text-align: center;
     flex: 1;
     font-size: 0.75rem;
-    color: #999;
+    color: #555; /* darker label color */
+    position: relative;
   }
 
   .top-nav li img {
@@ -92,10 +93,20 @@
   .top-nav li.active {
     color: #007bff;
     font-weight: 600;
-    border-bottom: 2px solid #007bff;
   }
 
-  /* Bottom Nav (mobile only) */
+  /* Underline sits at bottom of nav bar */
+  .top-nav li.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #007bff;
+  }
+
+  /* Bottom Nav */
   .bottom-nav {
     position: fixed;
     bottom: 0;
@@ -122,7 +133,7 @@
     flex: 1;
     text-align: center;
     font-size: 0.7rem;
-    color: #999;
+    color: #555; /* match top nav label color */
   }
 
   .bottom-nav li img {
@@ -137,17 +148,15 @@
     font-weight: 600;
   }
 
-  /* Assistant with label visible */
   .bottom-nav li.assistant span {
     display: block;
   }
 
-  /* Content area adjustments */
+  /* Content */
   main {
-    padding: 1rem 14px 6rem; /* room for both nav bars */
+    padding: 1rem 14px 6rem;
   }
 
-  /* Task Cards */
   .task-card {
     padding: 14px;
     margin-bottom: 14px;
@@ -165,7 +174,6 @@
     font-weight: 500;
   }
 
-  /* Form elements */
   form input,
   form select,
   form textarea,
