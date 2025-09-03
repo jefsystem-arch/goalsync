@@ -8,7 +8,7 @@ body {
 
 /* Header */
 .app-header {
-  background: #2563eb;
+  background: var(--primary-color);
   color: white;
   text-align: center;
   padding: 12px;
@@ -69,11 +69,12 @@ body {
 }
 .top-nav li.active a::after,
 .bottom-nav li.active a::after {
-  background: #2563eb;
+  background: var(--primary-color);
   width: 100%;
 }
-.top-nav li.active a {
-  color: #2563eb;
+.top-nav li.active a,
+.bottom-nav li.active a {
+  color: var(--primary-color);
 }
 
 /* Bottom Nav */
@@ -117,9 +118,6 @@ body {
 .bottom-nav li.assistant span {
   display: none;
 }
-.bottom-nav li.active a {
-  color: #2563eb;
-}
 
 /* Content */
 .content {
@@ -139,7 +137,7 @@ body {
 }
 .task-form button {
   width: 100%;
-  background: #2563eb;
+  background: var(--primary-color);
   color: white;
   border: none;
   border-radius: 12px;
@@ -149,7 +147,7 @@ body {
   cursor: pointer;
 }
 .task-form button:hover {
-  background: #1e4fbd;
+  background: color-mix(in srgb, var(--primary-color) 80%, black);
 }
 .task-list {
   list-style: none;
@@ -171,20 +169,6 @@ footer {
   font-size: 12px;
   color: #666;
   margin: 20px 0 100px;
-}
-
-/* RESPONSIVE RULES */
-@media (min-width: 1024px) {
-  .bottom-nav { display: none; }
-  .top-nav ul { justify-content: center; }
-}
-@media screen and (max-width: 900px) {
-  .top-nav ul {
-    justify-content: space-around;
-  }
-  .top-nav li:nth-child(n+5) {
-    display: none; /* Hide extra buttons after 4th on mobile */
-  }
 }
 
 /* Settings Page */
@@ -241,10 +225,18 @@ body.theme-purple { --primary-color: #9333ea; }
 body.theme-orange { --primary-color: #f97316; }
 body.theme-teal { --primary-color: #0d9488; }
 
-/* Dark mode */
+/* Dark mode global */
 body.dark {
   background: #111;
   color: #eee;
+}
+body.dark .app-header,
+body.dark .top-nav,
+body.dark .bottom-nav,
+body.dark footer {
+  background: #1e1e1e;
+  color: #eee;
+  border-color: #333;
 }
 body.dark .settings-card {
   background: #1e1e1e;
