@@ -108,6 +108,18 @@ body {
 .bottom-nav li.assistant span {
   display: none;
 }
+.bottom-nav li.active a {
+  color: #2563eb;
+}
+.bottom-nav li.active a::after {
+  content: "";
+  display: block;
+  margin-top: 2px;
+  height: 3px;
+  background: #2563eb;
+  width: 100%;
+  border-radius: 2px;
+}
 
 /* Content */
 .content {
@@ -164,7 +176,13 @@ footer {
 /* RESPONSIVE RULES */
 @media (min-width: 1024px) {
   .bottom-nav { display: none; }
+  .top-nav ul { justify-content: center; }
 }
 @media (max-width: 767px) {
-  .top-nav ul { justify-content: space-around; }
+  .top-nav ul {
+    justify-content: space-around;
+  }
+  .top-nav li:nth-child(n+5) {
+    display: none; /* Hide extra buttons on mobile top nav */
+  }
 }

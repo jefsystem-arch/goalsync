@@ -13,7 +13,7 @@
     <p>Plan smart. Stay on track. Achieve more.</p>
   </header>
 
-  <!-- Top Navigation (Desktop/Tablet) -->
+  <!-- Top Navigation -->
   <nav class="top-nav">
     <ul>
       <li class="active"><a href="#"><img src="icons/tasks.svg" alt=""> <span>Tasks</span></a></li>
@@ -70,5 +70,20 @@
   <footer>
     <p>v2.3+ • Project by Team Jeff & AI</p>
   </footer>
+
+  <!-- JS for Active Nav -->
+  <script>
+    function setActiveNav(selector) {
+      const items = document.querySelectorAll(`${selector} li`);
+      items.forEach(item => {
+        item.addEventListener('click', function () {
+          items.forEach(li => li.classList.remove('active'));
+          this.classList.add('active');
+        });
+      });
+    }
+    setActiveNav('.top-nav ul');
+    setActiveNav('.bottom-nav ul');
+  </script>
 </body>
 </html>
