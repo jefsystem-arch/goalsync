@@ -1,59 +1,19 @@
-// ===== Task Management =====
-const taskForm = document.querySelector(".task-form");
-const taskList = document.querySelector(".task-list");
+document.addEventListener("DOMContentLoaded", () => {
+  const navLinks = document.querySelectorAll(".top-nav a");
+  const pages = document.querySelectorAll(".page");
 
-if (taskForm) {
-  taskForm.addEventListener("submit", (e) => {
-    e.preventDefault();
+  navLinks.forEach(link => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
 
-    const title = taskForm.querySelector('input[name="title"]').value.trim();
-    if (!title) return;
+      // Remove active from all links and pages
+      navLinks.forEach(l => l.classList.remove("active"));
+      pages.forEach(p => p.classList.remove("active"));
 
-    const li = document.createElement("div");
-    li.classList.add("task-item");
-
-    const checkbox = document.createElement("input");
-    checkbox.type = "checkbox";
-
-    const span = document.createElement("span");
-    span.textContent = title;
-
-    li.appendChild(checkbox);
-    li.appendChild(span);
-
-    taskList.appendChild(li);
-    taskForm.reset();
-  });
-}
-
-// ===== Navigation Switching =====
-const navLinks = document.querySelectorAll("nav a");
-const sections = document.querySelectorAll(".page-section");
-
-function showSection(id) {
-  sections.forEach((section) => {
-    section.style.display = section.id === id ? "block" : "none";
-  });
-
-  navLinks.forEach((link) => {
-    if (link.getAttribute("href") === `#${id}`) {
+      // Add active to clicked link and its target section
       link.classList.add("active");
-    } else {
-      link.classList.remove("active");
-    }
-  });
-}
-
-// Default page: Tasks
-if (sections.length > 0) {
-  showSection("tasks");
-}
-
-// Handle clicks
-navLinks.forEach((link) => {
-  link.addEventListener("click", (e) => {
-    e.preventDefault();
-    const target = link.getAttribute("href").substring(1);
-    showSection(target);
+      const targetId = link.getAttribute("href").substring(1);
+      document.getElementById(targetId).classList.add("active");
+    });
   });
 });
