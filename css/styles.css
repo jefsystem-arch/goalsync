@@ -27,30 +27,31 @@
     top: 0;
     left: 0;
     width: 100%;
-    background: #fff;
+    background: #007bff; /* blue header like desktop */
     text-align: center;
-    padding: 8px 0 4px;
+    padding: 8px 0 6px;
     z-index: 1100;
-    border-bottom: 1px solid #e5e5e5;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.08);
   }
 
   .top-header h1 {
     font-size: 1.2rem;
     margin: 0;
     font-weight: 700;
-    color: #007bff;
+    color: #fff; /* white logo */
   }
 
   .top-header p {
     margin: 0;
     font-size: 0.7rem;
-    color: #666;
+    color: rgba(255,255,255,0.9); /* white tagline, softer */
+    font-weight: 400;
   }
 
   /* Top Nav (below logo/tagline) */
   .top-nav {
     position: fixed;
-    top: 48px; /* below logo */
+    top: 60px; /* adjust for header height */
     left: 0;
     width: 100%;
     height: 64px;
