@@ -1,137 +1,122 @@
-/* Reset + Base */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
+/* General Layout */
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  margin: 0;
   background: #fff;
   color: #111;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
 }
 
 header {
   background: #2979ff;
-  color: white;
+  color: #fff;
   text-align: center;
-  padding: 1rem;
-}
-
-/* Nav Bar */
-.top-nav {
-  background: #fff;
-  border-bottom: 1px solid #eee;
-  position: relative;
+  padding: 10px 0;
 }
 
 .top-nav ul {
-  list-style: none;
   display: flex;
   justify-content: center;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0 0;
 }
 
-.top-nav li {
-  margin: 0 1rem;
-}
-
-.top-nav a {
+.top-nav ul li a {
   display: flex;
   align-items: center;
-  padding: 1rem 0.5rem;
+  gap: 6px;
   text-decoration: none;
-  color: #333;
-  font-size: 0.95rem;
+  color: #000;
+  font-weight: 500;
+  padding: 6px 8px;
   position: relative;
 }
 
-.top-nav a img {
-  width: 18px;
-  height: 18px;
-  margin-right: 6px;
-}
-
-.top-nav a.active {
+.top-nav ul li a.active {
   color: #2979ff;
 }
 
 .nav-underline {
-  position: absolute;
-  bottom: 0;
-  left: 0;
   height: 2px;
   background: #2979ff;
-  width: 0;
+  width: 60px;
+  position: absolute;
+  bottom: 0;
   transition: all 0.3s ease;
 }
 
-/* Main Content */
-main {
-  flex: 1;
-  max-width: 800px;
-  margin: 2rem auto;
-  padding: 0 1rem;
+/* ✅ Content Wrapper */
+.content {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-.page {
-  display: none;
-}
-
-.page.active {
-  display: block;
-}
-
-form {
+/* Task Form */
+#task-form {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
+  gap: 10px;
 }
 
-form input,
-form select,
-form textarea,
-form button {
-  padding: 0.6rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 0.9rem;
+#task-form input,
+#task-form select,
+#task-form textarea,
+#task-form button {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
 }
 
-form button {
+#task-form button {
   background: #2979ff;
   color: #fff;
   font-weight: bold;
   cursor: pointer;
-  border: none;
+  transition: background 0.2s;
 }
 
-form button:hover {
+#task-form button:hover {
   background: #1565d8;
 }
 
 #task-list {
+  margin-top: 20px;
   list-style: none;
+  padding: 0;
 }
 
 #task-list li {
-  padding: 0.8rem;
-  margin-bottom: 0.5rem;
-  border-radius: 10px;
-  background: #f8f9fa;
+  background: #f9f9f9;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 8px;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 10px;
 }
 
 /* Footer */
 footer {
   text-align: center;
-  padding: 0.8rem;
-  font-size: 0.8rem;
+  padding: 12px;
+  font-size: 12px;
+  color: #666;
   border-top: 1px solid #eee;
-  color: #555;
+  margin-top: 20px;
+}
+
+/* ✅ Responsive */
+@media (max-width: 768px) {
+  .content {
+    max-width: 100%;
+    padding: 10px;
+  }
+
+  .top-nav ul {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
 }
