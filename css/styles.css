@@ -6,7 +6,7 @@
 @media (max-width: 1023px) and (min-width: 768px) {
   .top-nav ul {
     gap: 1.5rem;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
   }
   .top-nav li img {
     width: 22px;
@@ -81,6 +81,7 @@
     list-style: none;
     margin: 0;
     padding: 0;
+    height: 100%;
   }
 
   .top-nav li {
@@ -89,7 +90,6 @@
     font-size: 0.75rem;
     color: #555;
     position: relative;
-    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -107,12 +107,12 @@
     font-weight: 600;
   }
 
-  /* Underline at bottom of nav bar */
+  /* Underline at very bottom of nav bar */
   .top-nav li.active::after {
     content: "";
     position: absolute;
     left: 0;
-    bottom: 0;
+    bottom: -1px; /* sits at bottom of nav bar */
     width: 100%;
     height: 2px;
     background-color: #007bff;
@@ -181,6 +181,43 @@
   .assistant-fab img {
     width: 28px;
     height: 28px;
-    filter: brightness(0) invert(1); /* make icon white */
+    filter: brightness(0) invert(1); /* white icon */
+  }
+
+  /* Task form inputs on mobile */
+  form input,
+  form select,
+  form textarea,
+  form button {
+    width: 100%;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    font-size: 0.9rem;
+    box-sizing: border-box;
+  }
+
+  form button {
+    background: #007bff;
+    color: white;
+    border: none;
+    font-weight: 600;
+  }
+
+  .task-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    padding: 12px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+  }
+
+  .task-card label {
+    margin-left: 10px;
+    font-size: 0.9rem;
+    color: #333;
   }
 }
