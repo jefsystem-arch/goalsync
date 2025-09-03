@@ -1,222 +1,147 @@
-/* Reset & base */
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  background: #fff;
-  color: #222;
-}
-
-/* Header */
-header {
-  background: #2979ff;
-  color: #fff;
-  text-align: center;
-  padding: 1rem 0;
-}
-
-header h1 {
-  margin: 0;
-  font-size: 1.8rem;
-}
-
-header p {
-  margin: 0.2rem 0 1rem;
-  font-size: 0.9rem;
-}
-
-/* Navigation */
-.top-nav {
-  position: relative;
-  background: #fff;
-  border-bottom: 1px solid #eee;
-}
-
-.top-nav ul {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  margin: 0;
-  padding: 0;
-}
-
-.top-nav li {
-  display: flex;
-  align-items: center;
-  padding: 1rem;
-  cursor: pointer;
-  font-size: 0.9rem;
-  color: #333;
-  transition: color 0.2s ease;
-}
-
-.top-nav li img {
-  width: 18px;
-  height: 18px;
-  margin-right: 6px;
-}
-
-.top-nav li.active {
-  color: #2979ff;
-}
-
-.nav-underline {
-  position: absolute;
-  bottom: 0;
-  height: 2px;
-  background: #2979ff;
-  width: 0;
-  left: 0;
-  transition: all 0.3s ease;
-}
-
-/* Main content */
-main {
-  max-width: 700px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-}
-
-h2 {
-  margin-bottom: 1rem;
-}
-
-/* Form */
-form input,
-form select,
-form textarea,
-form button {
-  display: block;
-  width: 100%;
-  margin-bottom: 0.8rem;
-  padding: 0.6rem;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  font-size: 0.9rem;
-}
-
-form button {
-  background: #2979ff;
-  color: white;
-  border: none;
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-
-form button:hover {
-  background: #125dff;
-}
-
-/* Task list */
-#task-list {
-  list-style: none;
-  padding: 0;
-}
-
-#task-list li {
-  background: #f8f8f8;
-  margin-bottom: 0.6rem;
-  padding: 0.8rem;
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-}
-
-#task-list input[type="checkbox"] {
-  margin-right: 0.8rem;
-}
-
-/* Footer */
-footer {
-  text-align: center;
-  padding: 1rem;
-  font-size: 0.8rem;
-  color: #555;
-}
+/* Existing styles remain above */
 
 /* ------------------------- */
-/* Responsive Layouts v2.3+  */
+/* GoalSync v2.3+ Responsive */
 /* ------------------------- */
 
-/* Tablet and below */
-@media (max-width: 1024px) {
-  main {
-    max-width: 90%;
-    margin: 1.5rem auto;
+/* Tablet adjustments */
+@media (max-width: 1023px) {
+  .top-nav ul {
+    gap: 1.2rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Mobile layout */
+@media (max-width: 767px) {
+  body {
+    padding-top: 56px;   /* space for top nav */
+    padding-bottom: 64px; /* space for bottom nav */
+  }
+
+  /* Top Nav (mobile) */
+  .top-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 56px;
+    background: #fff;
+    border-bottom: 1px solid #e5e5e5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+
+  .top-nav .logo {
+    text-align: center;
+    margin-bottom: 2px;
+  }
+
+  .top-nav .logo h1 {
+    font-size: 1rem;
+    margin: 0;
+  }
+
+  .top-nav .logo p {
+    font-size: 0.65rem;
+    margin: 0;
+    color: #555;
   }
 
   .top-nav ul {
-    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .top-nav li {
+    text-align: center;
+    flex: 1;
+    font-size: 0.7rem;
+  }
+
+  .top-nav li img {
+    display: block;
+    margin: 0 auto 2px;
+    width: 20px;
+    height: 20px;
+  }
+
+  .top-nav li.active {
+    color: #007bff;
+    border-bottom: 2px solid #007bff;
+  }
+
+  /* Bottom Nav (mobile only) */
+  .bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 64px;
+    background: #fff;
+    border-top: 1px solid #e5e5e5;
+    z-index: 1000;
+  }
+
+  .bottom-nav ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    height: 100%;
+  }
+
+  .bottom-nav li {
+    flex: 1;
+    text-align: center;
+    font-size: 0.7rem;
+    color: #555;
+  }
+
+  .bottom-nav li img {
+    display: block;
+    margin: 0 auto 2px;
+    width: 22px;
+    height: 22px;
+  }
+
+  .bottom-nav li.active {
+    color: #007bff;
+  }
+
+  /* Assistant special (icon-only) */
+  .bottom-nav li.assistant span {
+    display: none;
+  }
+
+  /* Content area adjustments */
+  main {
+    padding: 1rem 14px 5rem; /* room for both nav bars */
+  }
+
+  .task-card {
+    width: 100%;
+    margin-bottom: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    padding: 0.5rem;
   }
 
   form input,
   form select,
   form textarea,
   form button {
-    font-size: 0.85rem;
-    padding: 0.5rem;
-  }
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-  header h1 {
-    font-size: 1.4rem;
-  }
-
-  header p {
-    font-size: 0.8rem;
-  }
-
-  .top-nav {
-    position: fixed;
-    bottom: 0;
     width: 100%;
-    border-top: 1px solid #eee;
-    border-bottom: none;
-    background: #fff;
-    z-index: 1000;
-  }
-
-  .top-nav ul {
-    justify-content: space-around;
-  }
-
-  .top-nav li span {
-    display: none; /* icons only for mobile */
-  }
-
-  main {
-    padding-bottom: 4rem; /* space for bottom nav */
-  }
-
-  #task-list li {
-    font-size: 0.9rem;
-    padding: 0.6rem;
-  }
-
-  form button {
-    width: 100%;
-  }
-}
-
-/* Small Mobile */
-@media (max-width: 480px) {
-  main {
-    padding: 0 0.5rem 4rem;
-  }
-
-  #task-list li {
-    font-size: 0.85rem;
-    padding: 0.5rem;
-  }
-
-  form input,
-  form select,
-  form textarea {
-    font-size: 0.8rem;
-  }
-
-  .add-task-btn {
-    width: 100%;
+    margin-bottom: 12px;
   }
 }
