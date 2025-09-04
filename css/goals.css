@@ -1,0 +1,47 @@
+.goal-card {
+  margin: 1rem auto;
+  padding: 1rem;
+  border-radius: 1rem;
+  background: var(--card-bg);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  text-align: left;
+}
+.goal-title {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.goal-deadline {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+.progress-container {
+  width: 100%;
+  background: #e5e5ea;
+  border-radius: 999px;
+  overflow: hidden;
+  height: 8px;
+  margin-bottom: 0.8rem;
+}
+.progress-bar {
+  height: 100%;
+  background: var(--accent-color);
+  width: 0;
+  transition: width 0.5s ease;
+}
+.milestones {
+  margin-top: 0.5rem;
+}
+.milestones li {
+  margin: 0.3rem 0;
+  font-size: 0.9rem;
+}
+.ai-suggest-btn {
+  margin-top: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.6rem;
+  background: var(--accent-color);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}

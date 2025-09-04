@@ -1,0 +1,37 @@
+<section class="page projects-page">
+  <header class="page-header">
+    <div class="page-icon">📂</div>
+    <h1 class="page-title">Projects</h1>
+  </header>
+
+  <div class="page-content">
+    <div class="card">
+      <h2>Kanban Boards</h2>
+      <p>Create boards, organize tasks, and move them across stages.</p>
+    </div>
+
+    <div class="kanban-board">
+      <div class="kanban-column" data-status="todo">
+        <h3>To Do</h3>
+        <div class="kanban-tasks" id="todoTasks"></div>
+      </div>
+
+      <div class="kanban-column" data-status="inprogress">
+        <h3>In Progress</h3>
+        <div class="kanban-tasks" id="inprogressTasks"></div>
+      </div>
+
+      <div class="kanban-column" data-status="done">
+        <h3>Done</h3>
+        <div class="kanban-tasks" id="doneTasks"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <form id="projectTaskForm">
+        <input type="text" id="projectTaskTitle" placeholder="New task..." required />
+        <button type="submit">Add</button>
+      </form>
+    </div>
+  </div>
+</section>

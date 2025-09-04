@@ -1,23 +1,20 @@
-<section class="tasks">
-  <h2>Your Tasks</h2>
-  <form class="task-form">
-    <input type="text" placeholder="Task title">
-    <input type="date">
-    <input type="time">
-    <select>
-      <option>No repeat</option>
-      <option>Daily</option>
-      <option>Weekly</option>
-    </select>
-    <input type="text" placeholder="Assign to Goal">
-    <textarea placeholder="Details (optional)"></textarea>
-    <input type="email" placeholder="Participants (emails)">
-    <button type="submit">Add Task</button>
-  </form>
-
-  <ul class="task-list">
-    <li><input type="checkbox" checked> Work on presentation — 10:30 AM</li>
-    <li><input type="checkbox" checked> Respond to emails — 9:00 AM</li>
-    <li><input type="checkbox"> Exercise at gym — 5:30 PM</li>
-  </ul>
+<section class="page tasks-page">
+  <header class="page-header">
+    <div class="page-icon">✅</div>
+    <h1 class="page-title">Tasks</h1>
+  </header>
+  <div class="page-content">
+    <div class="task-card">
+      <div class="task-content">
+        <p>Sample Task: Design Goals Page</p>
+      </div>
+      <button class="task-complete-btn">✔</button>
+    </div>
+    <div class="task-card">
+      <div class="task-content">
+        <p>Sample Task: Add Swipe Gestures</p>
+      </div>
+      <button class="task-complete-btn">✔</button>
+    </div>
+  </div>
 </section>

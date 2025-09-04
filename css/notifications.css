@@ -1,0 +1,29 @@
+#notificationList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+#notificationList li {
+  padding: 0.8rem;
+  margin-bottom: 0.5rem;
+  border-radius: 0.6rem;
+  background: #f2f2f7;
+  font-size: 0.9rem;
+}
+.toast {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  background: var(--accent-color);
+  color: #fff;
+  padding: 0.8rem 1.2rem;
+  border-radius: 0.8rem;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: translateY(20px);
+  z-index: 1000;
+}
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}

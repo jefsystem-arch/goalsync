@@ -1,0 +1,25 @@
+<section class="page goals-page">
+  <header class="page-header">
+    <div class="page-icon">🎯</div>
+    <h1 class="page-title">Goals</h1>
+  </header>
+  <div class="page-content">
+    <!-- Add Goal Form -->
+    <div class="card">
+      <h2>Add a Goal</h2>
+      <form id="goalForm">
+        <input type="text" id="goalTitle" placeholder="Goal title" required />
+        <input type="date" id="goalDeadline" required />
+        <select id="goalCategory">
+          <option value="personal">Personal</option>
+          <option value="work">Work</option>
+          <option value="health">Health</option>
+          <option value="learning">Learning</option>
+        </select>
+        <button type="submit">Add Goal</button>
+      </form>
+    </div>
+    <!-- Goals List -->
+    <div id="goalsList"></div>
+  </div>
+</section>

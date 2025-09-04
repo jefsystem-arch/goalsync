@@ -1,0 +1,42 @@
+.assistant-window {
+  height: 400px;
+  overflow-y: auto;
+  padding: 1rem;
+  background: #f2f2f7;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+}
+.assistant-message {
+  margin: 0.5rem 0;
+  padding: 0.8rem 1rem;
+  border-radius: 1rem;
+  max-width: 80%;
+  font-size: 0.9rem;
+}
+.assistant-message.system {
+  background: #e5e5ea;
+  align-self: flex-start;
+}
+.assistant-message.user {
+  background: var(--accent-color);
+  color: #fff;
+  align-self: flex-end;
+}
+.assistant-input-bar {
+  display: flex;
+  gap: 0.5rem;
+}
+.assistant-input-bar input {
+  flex: 1;
+  padding: 0.6rem;
+  border-radius: 0.6rem;
+  border: 1px solid #ccc;
+}
+.assistant-input-bar button {
+  padding: 0.6rem 1rem;
+  border-radius: 0.6rem;
+  background: var(--accent-color);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}

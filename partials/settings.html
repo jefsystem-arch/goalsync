@@ -1,53 +1,44 @@
-<section class="settings-page">
-
-  <!-- Display Settings -->
-  <div class="settings-card">
-    <h2>Display</h2>
-    <div class="option">
-      <label for="darkModeToggle">🌙 Dark Mode</label>
-      <input type="checkbox" id="darkModeToggle">
+<section class="page settings-page">
+  <header class="page-header">
+    <div class="page-icon">⚙️</div>
+    <h1 class="page-title" data-i18n="settings.title">Settings</h1>
+  </header>
+  <div class="page-content">
+    <div class="card">
+      <label>
+        <input type="checkbox" id="darkModeToggle" />
+        <span data-i18n="settings.darkMode">Dark Mode</span>
+      </label>
     </div>
-    <div class="option theme-colors">
-      <p>🎨 Theme Color</p>
-      <div class="color-swatches">
-        <span class="swatch blue active" data-color="blue"></span>
-        <span class="swatch green" data-color="green"></span>
-        <span class="swatch red" data-color="red"></span>
-        <span class="swatch purple" data-color="purple"></span>
-        <span class="swatch orange" data-color="orange"></span>
-        <span class="swatch teal" data-color="teal"></span>
+    <div class="card">
+      <h2 data-i18n="settings.theme">Theme Color</h2>
+      <div class="theme-options">
+        <button class="theme-btn blue" data-theme="theme-blue"></button>
+        <button class="theme-btn red" data-theme="theme-red"></button>
+        <button class="theme-btn orange" data-theme="theme-orange"></button>
+        <button class="theme-btn yellow" data-theme="theme-yellow"></button>
+        <button class="theme-btn green" data-theme="theme-green"></button>
+        <button class="theme-btn purple" data-theme="theme-purple"></button>
       </div>
     </div>
-  </div>
-
-  <!-- Language -->
-  <div class="settings-card">
-    <h2>Language</h2>
-    <select id="languageSelect">
-      <option value="en">English</option>
-      <option value="es">Español</option>
-      <option value="fr">Français</option>
-      <option value="ar">العربية</option>
-      <option value="zh">中文</option>
-      <option value="hi">हिंदी</option>
-    </select>
-  </div>
-
-  <!-- Profile & Account -->
-  <div class="settings-card">
-    <h2>Profile & Account</h2>
-    <p><strong>Name:</strong> Jeff</p>
-    <p><strong>Email:</strong> jeff@example.com</p>
-    <button class="btn">Change Password</button>
-    <button class="btn danger">Logout</button>
-  </div>
-
-  <!-- Assistant Options -->
-  <div class="settings-card">
-    <h2>Assistant</h2>
-    <div class="option">
-      <label for="assistantToggle">Show Floating Assistant</label>
-      <input type="checkbox" id="assistantToggle">
+    <div class="card">
+      <h2 data-i18n="settings.language">Language</h2>
+      <select id="languageSelect">
+        <option value="en">English</option>
+        <option value="fr">Français (soon)</option>
+        <option value="es">Español (soon)</option>
+      </select>
+    </div>
+    <div class="card">
+      <h2 data-i18n="settings.profile">Profile & Account</h2>
+      <p>Name: John Doe</p>
+      <p>Email: john@example.com</p>
+    </div>
+    <div class="card">
+      <label>
+        <input type="checkbox" id="fabToggle" />
+        <span data-i18n="settings.assistantFab">Assistant FAB</span>
+      </label>
     </div>
   </div>
 </section>
