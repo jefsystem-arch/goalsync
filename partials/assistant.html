@@ -5,12 +5,15 @@
   </header>
 
   <div class="page-content">
-    <div class="card placeholder-card">
-      <h2 class="placeholder-title">Your Smart Hub</h2>
-      <p class="placeholder-text">
-        Access AI-powered tools to plan, execute, and stay on track.
-      </p>
-      <span class="badge">Coming Soon</span>
+    <div class="card assistant-window" id="assistantWindow">
+      <div class="assistant-message system">
+        👋 Hi! I’m your GoalSync Assistant. How can I help you today?
+      </div>
+    </div>
+
+    <div class="assistant-input-bar">
+      <input type="text" id="assistantInput" placeholder="Ask me anything..." />
+      <button id="assistantSend">Send</button>
     </div>
   </div>
 </section>

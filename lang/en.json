@@ -1,0 +1,10 @@
+{
+  "settings": {
+    "title": "Settings",
+    "darkMode": "Dark Mode",
+    "theme": "Theme Color",
+    "language": "Language",
+    "profile": "Profile & Account",
+    "assistantFab": "Assistant FAB"
+  }
+}

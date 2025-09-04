@@ -1,31 +1,58 @@
-import { db, auth } from "./firebase-config.js";
-import { 
-  collection, addDoc, getDocs, updateDoc, deleteDoc, doc, query, where 
-} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+document.addEventListener("DOMContentLoaded", () => {
+  let projects = JSON.parse(localStorage.getItem("projects")) || {
+    todo: [], inprogress: [], done: []
+  };
 
-const projectsCol = collection(db, "projects");
+  const taskForm = document.getElementById("projectTaskForm");
 
-// --- Add Project ---
-export async function addProject(project) {
-  await addDoc(projectsCol, {
-    ...project,
-    ownerId: auth.currentUser.uid   // ✅
+  function saveProjects() {
+    localStorage.setItem("projects", JSON.stringify(projects));
+  }
+
+  function renderProjects() {
+    ["todo","inprogress","done"].forEach(status => {
+      const container = document.getElementById(status + "Tasks");
+      container.innerHTML = "";
+      projects[status].forEach((title, idx) => {
+        const task = document.createElement("div");
+        task.classList.add("kanban-task");
+        task.setAttribute("draggable","true");
+        task.innerText = title;
+
+        task.addEventListener("dragstart", e => {
+          e.dataTransfer.setData("text/plain", JSON.stringify({title, status, idx}));
+          task.classList.add("dragging");
+        });
+
+        task.addEventListener("dragend", () => task.classList.remove("dragging"));
+        container.appendChild(task);
+      });
+    });
+  }
+
+  if (taskForm) {
+    taskForm.addEventListener("submit", e => {
+      e.preventDefault();
+      const title = document.getElementById("projectTaskTitle").value;
+      projects.todo.push(title);
+      saveProjects();
+      renderProjects();
+      taskForm.reset();
+    });
+  }
+
+  document.querySelectorAll(".kanban-column").forEach(col => {
+    col.addEventListener("dragover", e => e.preventDefault());
+    col.addEventListener("drop", e => {
+      e.preventDefault();
+      const data = JSON.parse(e.dataTransfer.getData("text/plain"));
+      projects[data.status].splice(data.idx, 1);
+      const newStatus = col.getAttribute("data-status");
+      projects[newStatus].push(data.title);
+      saveProjects();
+      renderProjects();
+    });
   });
-}
 
-// --- Get Projects ---
-export async function getProjects() {
-  const q = query(projectsCol, where("ownerId", "==", auth.currentUser.uid));
-  const snapshot = await getDocs(q);
-  return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-}
-
-// --- Update Project ---
-export async function updateProject(id, updatedFields) {
-  await updateDoc(doc(db, "projects", id), updatedFields);
-}
-
-// --- Delete Project ---
-export async function deleteProject(id) {
-  await deleteDoc(doc(db, "projects", id));
-}
+  renderProjects();
+});

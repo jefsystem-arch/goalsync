@@ -1,0 +1,19 @@
+{
+  "settings": {
+    "title": "Configuración",
+    "darkMode": "Modo Oscuro",
+    "theme": "Color del Thème",
+    "language": "Idioma",
+    "profile": "Perfil & Cuenta",
+    "assistantFab": "Botón Flotante"
+  },
+  "upgrade": {
+    "title": "Mejorar",
+    "freePlan": "Plan Gratis",
+    "premiumPlan": "Plan Premium",
+    "upgradeBtn": "Mejorar a Premium"
+  },
+  "assistant": {
+    "welcome": "👋 ¡Hola! Soy tu Asistente GoalSync. ¿En qué puedo ayudarte hoy?"
+  }
+}

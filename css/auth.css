@@ -1,0 +1,18 @@
+.auth-page form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.auth-page input {
+  padding: 0.6rem;
+  border-radius: 0.6rem;
+  border: 1px solid #ccc;
+}
+.auth-page button {
+  padding: 0.6rem;
+  border-radius: 0.6rem;
+  background: var(--accent-color);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}

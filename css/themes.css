@@ -1,0 +1,7 @@
+:root { --accent-color: #007aff; }
+.theme-red { --accent-color: #ff3b30; }
+.theme-orange { --accent-color: #ff9500; }
+.theme-yellow { --accent-color: #ffcc00; }
+.theme-green { --accent-color: #34c759; }
+.theme-teal { --accent-color: #30b0c7; }
+.theme-purple { --accent-color: #af52de; }

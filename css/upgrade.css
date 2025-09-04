@@ -1,0 +1,16 @@
+.premium-card {
+  border: 2px solid var(--accent-color);
+  background: #f9f9ff;
+}
+.premium-card h2 {
+  color: var(--accent-color);
+}
+.premium-card button {
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.6rem;
+  background: var(--accent-color);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}

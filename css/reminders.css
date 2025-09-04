@@ -1,0 +1,12 @@
+#reminderList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+#reminderList li {
+  padding: 0.6rem;
+  margin-bottom: 0.4rem;
+  border-radius: 0.6rem;
+  background: #f2f2f7;
+  font-size: 0.9rem;
+}

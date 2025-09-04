@@ -5,12 +5,33 @@
   </header>
 
   <div class="page-content">
-    <div class="card placeholder-card">
-      <h2 class="placeholder-title">Organize Work</h2>
-      <p class="placeholder-text">
-        Group tasks into clean Kanban-style boards for focus & clarity.
-      </p>
-      <span class="badge">Coming Soon</span>
+    <div class="card">
+      <h2>Kanban Boards</h2>
+      <p>Create boards, organize tasks, and move them across stages.</p>
+    </div>
+
+    <div class="kanban-board">
+      <div class="kanban-column" data-status="todo">
+        <h3>To Do</h3>
+        <div class="kanban-tasks" id="todoTasks"></div>
+      </div>
+
+      <div class="kanban-column" data-status="inprogress">
+        <h3>In Progress</h3>
+        <div class="kanban-tasks" id="inprogressTasks"></div>
+      </div>
+
+      <div class="kanban-column" data-status="done">
+        <h3>Done</h3>
+        <div class="kanban-tasks" id="doneTasks"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <form id="projectTaskForm">
+        <input type="text" id="projectTaskTitle" placeholder="New task..." required />
+        <button type="submit">Add</button>
+      </form>
     </div>
   </div>
 </section>

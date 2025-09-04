@@ -1,0 +1,10 @@
+.profile-card {
+  text-align: center;
+  padding: 1.5rem;
+}
+.profile-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 0.8rem;
+}

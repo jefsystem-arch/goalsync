@@ -1,0 +1,29 @@
+.referral-box {
+  display: flex;
+  gap: 0.5rem;
+  margin: 0.8rem 0;
+}
+.referral-box input {
+  flex: 1;
+  padding: 0.6rem;
+  border-radius: 0.6rem;
+  border: 1px solid #ccc;
+  font-size: 0.9rem;
+}
+.referral-box button {
+  padding: 0.6rem 1rem;
+  border-radius: 0.6rem;
+  background: var(--accent-color);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+#rewardsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+#rewardsList li {
+  padding: 0.5rem 0;
+  font-size: 0.9rem;
+}

@@ -1,0 +1,18 @@
+/* Smooth global transition */
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+header, nav, .card, .page {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.task-card {
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.task-card.swipe-left { transform: translateX(-100%); opacity: 0; }
+.task-card.swipe-right { transform: translateX(100%); opacity: 0; }
+.task-complete { animation: bounce-check 0.4s ease forwards; }
+@keyframes bounce-check {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
