@@ -1,49 +1,55 @@
-// SETTINGS PAGE LOGIC
-function initSettings() {
-  console.log("⚙️ Settings page loaded");
-
-  // --- DARK MODE ---
+function settingsInit() {
   const darkModeToggle = document.getElementById("darkModeToggle");
-  if (localStorage.getItem("darkMode") === "true") {
-    document.body.classList.add("dark-mode");
-    if (darkModeToggle) darkModeToggle.checked = true;
-  }
+  const themeButtons = document.querySelectorAll(".theme-btn");
+  const languageSelect = document.getElementById("languageSelect");
+
+  // Load saved preferences
+  const savedDarkMode = localStorage.getItem("darkMode") === "true";
+  const savedTheme = localStorage.getItem("themeColor");
+  const savedLang = localStorage.getItem("language");
+
   if (darkModeToggle) {
+    darkModeToggle.checked = savedDarkMode;
+    toggleDarkMode(savedDarkMode);
     darkModeToggle.addEventListener("change", () => {
-      document.body.classList.toggle("dark-mode", darkModeToggle.checked);
+      toggleDarkMode(darkModeToggle.checked);
       localStorage.setItem("darkMode", darkModeToggle.checked);
     });
   }
 
-  // --- THEME COLORS ---
-  const colorButtons = document.querySelectorAll(".color-btn");
-  const savedTheme = localStorage.getItem("themeColor");
-  if (savedTheme) document.body.setAttribute("data-theme", savedTheme);
-
-  colorButtons.forEach((btn) => {
+  if (savedTheme) {
+    document.body.setAttribute("data-theme", savedTheme);
+  }
+  themeButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
-      const color = btn.dataset.color;
+      const color = btn.getAttribute("data-color");
       document.body.setAttribute("data-theme", color);
       localStorage.setItem("themeColor", color);
     });
   });
 
-  // --- LANGUAGE SELECTOR ---
-  const langSelect = document.getElementById("languageSelect");
-  const savedLang = localStorage.getItem("language") || "en";
-  if (langSelect) langSelect.value = savedLang;
-
-  if (langSelect) {
-    langSelect.addEventListener("change", () => {
-      localStorage.setItem("language", langSelect.value);
-      alert(`Language switched to: ${langSelect.value}`);
-      // TODO: later load translations dynamically
+  if (languageSelect) {
+    if (savedLang) languageSelect.value = savedLang;
+    languageSelect.addEventListener("change", () => {
+      localStorage.setItem("language", languageSelect.value);
     });
   }
+}
 
-  // --- PROFILE INFO ---
-  const profileName = document.getElementById("profileName");
-  const profileEmail = document.getElementById("profileEmail");
-  if (profileName) profileName.textContent = "Jeff";
-  if (profileEmail) profileEmail.textContent = "jeff@example.com";
+function toggleDarkMode(enabled) {
+  if (enabled) {
+    document.body.classList.add("dark-mode");
+  } else {
+    document.body.classList.remove("dark-mode");
+  }
+}
+
+function applySavedPreferences() {
+  const savedDarkMode = localStorage.getItem("darkMode") === "true";
+  toggleDarkMode(savedDarkMode);
+
+  const savedTheme = localStorage.getItem("themeColor");
+  if (savedTheme) {
+    document.body.setAttribute("data-theme", savedTheme);
+  }
 }

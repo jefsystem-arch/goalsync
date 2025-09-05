@@ -1,51 +1,55 @@
-// MAIN SPA CONTROLLER
+document.addEventListener("DOMContentLoaded", () => {
+  const navItems = document.querySelectorAll("#nav li");
+  const content = document.getElementById("content");
+  const underline = document.getElementById("nav-underline");
 
-// Load partial HTML into #pageContent
-async function loadPage(page) {
-  const container = document.getElementById("pageContent");
-  if (!container) return;
+  // Default load = Tasks
+  loadPage("tasks");
 
-  try {
-    const response = await fetch(`partials/${page}.html`);
-    if (!response.ok) throw new Error(`Missing partial: ${page}`);
-    const html = await response.text();
-    container.innerHTML = html;
+  // Restore saved theme + mode
+  applySavedPreferences();
 
-    // Run page-specific init if exists
-    const initFn = window[`init${capitalize(page)}`];
-    if (typeof initFn === "function") initFn();
-  } catch (err) {
-    container.innerHTML = `<p style="color:red;">Error loading ${page}: ${err.message}</p>`;
-  }
-}
-
-// Capitalize helper (for initSettings, initTasks, etc.)
-function capitalize(str) {
-  return str.charAt(0).toUpperCase() + str.slice(1);
-}
-
-// Setup navigation
-function setupNavigation() {
-  const links = document.querySelectorAll("[data-page]");
-  links.forEach((link) => {
-    link.addEventListener("click", (e) => {
-      e.preventDefault();
-      const page = link.getAttribute("data-page");
-
-      // Highlight active link
-      links.forEach((l) => l.classList.remove("active"));
-      link.classList.add("active");
-
-      // Load page
+  navItems.forEach((item) => {
+    item.addEventListener("click", () => {
+      const page = item.getAttribute("data-page");
       loadPage(page);
+      setActiveNav(item);
     });
   });
-}
 
-// Initialize app
-document.addEventListener("DOMContentLoaded", () => {
-  setupNavigation();
+  function setActiveNav(activeItem) {
+    navItems.forEach((item) => item.classList.remove("active"));
+    activeItem.classList.add("active");
 
-  // Load default page (Settings first for now)
-  loadPage("settings");
+    // Animate underline
+    const { offsetLeft, offsetWidth } = activeItem;
+    underline.style.width = `${offsetWidth}px`;
+    underline.style.left = `${offsetLeft}px`;
+  }
+
+  function loadPage(page) {
+    fetch(`partials/${page}.html`)
+      .then((res) => res.text())
+      .then((html) => {
+        content.innerHTML = html;
+
+        // Call JS for each page if needed
+        if (window[`${page}Init`]) {
+          window[`${page}Init`]();
+        }
+
+        // Restore theme after switching page
+        applySavedPreferences();
+      })
+      .catch((err) => {
+        content.innerHTML = `<p>Error loading page: ${page}</p>`;
+        console.error(err);
+      });
+
+    // Set underline to active nav item
+    const activeItem = document.querySelector(`#nav li[data-page="${page}"]`);
+    if (activeItem) setActiveNav(activeItem);
+  }
+
+  window.loadPage = loadPage;
 });

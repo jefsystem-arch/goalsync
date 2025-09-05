@@ -1,61 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GoalSync</title>
-  <!-- Global Styles -->
-  <link rel="stylesheet" href="css/styles.css">
-  <!-- Page-specific Styles -->
-  <link rel="stylesheet" href="css/settings.css">
+  <link rel="stylesheet" href="css/styles.css" />
+  <script defer src="js/main.js"></script>
+  <script defer src="js/settings.js"></script>
 </head>
 <body>
-  <!-- Header -->
-  <header class="app-header">
+  <header>
     <h1>GoalSync</h1>
-    <p>Plan smart. Stay on track. Achieve more.</p>
+    <p class="subtitle">Plan smart. Stay on track. Achieve more.</p>
+    <nav>
+      <ul id="nav">
+        <li data-page="tasks"><span>Tasks</span></li>
+        <li data-page="goals"><span>Goals</span></li>
+        <li data-page="projects"><span>Projects</span></li>
+        <li data-page="chat"><span>Chat</span></li>
+        <li data-page="dashboard"><span>Dashboard</span></li>
+        <li data-page="history"><span>History</span></li>
+        <li data-page="invite"><span>Invite</span></li>
+        <li data-page="assistant"><span>Assistant</span></li>
+        <li data-page="settings"><span>Settings</span></li>
+      </ul>
+      <div id="nav-underline"></div>
+    </nav>
   </header>
 
-  <!-- Top Navigation -->
-  <nav class="top-nav">
-    <ul>
-      <li><a href="#" data-page="tasks"><img src="icons/tasks.svg" alt=""> <span>Tasks</span></a></li>
-      <li><a href="#" data-page="goals"><img src="icons/goals.svg" alt=""> <span>Goals</span></a></li>
-      <li><a href="#" data-page="projects"><img src="icons/projects.svg" alt=""> <span>Projects</span></a></li>
-      <li><a href="#" data-page="chat"><img src="icons/chat.svg" alt=""> <span>Chat</span></a></li>
-      <li><a href="#" data-page="dashboard"><img src="icons/dashboard.svg" alt=""> <span>Dashboard</span></a></li>
-      <li><a href="#" data-page="history"><img src="icons/history.svg" alt=""> <span>History</span></a></li>
-      <li><a href="#" data-page="invite"><img src="icons/invite.svg" alt=""> <span>Invite</span></a></li>
-      <li><a href="#" data-page="assistant"><img src="icons/assistant.svg" alt=""> <span>Assistant</span></a></li>
-      <li><a href="#" data-page="settings" class="active"><img src="icons/settings.svg" alt=""> <span>Settings</span></a></li>
-    </ul>
-  </nav>
-
-  <!-- Content -->
-  <main class="content" id="content">
-    <!-- Default page is Settings -->
-    <div id="pageContent"></div>
+  <main id="content">
+    <!-- Pages will load dynamically -->
   </main>
 
-  <!-- Bottom Navigation -->
-  <nav class="bottom-nav">
-    <ul>
-      <li><a href="#" data-page="dashboard"><img src="icons/dashboard.svg" alt=""> <span>Dashboard</span></a></li>
-      <li><a href="#" data-page="history"><img src="icons/history.svg" alt=""> <span>History</span></a></li>
-      <li class="assistant"><a href="#" data-page="assistant"><img src="icons/assistant.svg" alt=""></a></li>
-      <li><a href="#" data-page="invite"><img src="icons/invite.svg" alt=""> <span>Invite</span></a></li>
-      <li><a href="#" data-page="settings"><img src="icons/settings.svg" alt=""> <span>Settings</span></a></li>
-    </ul>
-  </nav>
-
-  <!-- Footer -->
   <footer>
     <p>v4.2 • Project by Team Jeff & AI</p>
   </footer>
-
-  <!-- Core Scripts -->
-  <script src="js/main.js"></script>
-  <!-- Page Script -->
-  <script src="js/settings.js"></script>
 </body>
 </html>

@@ -1,271 +1,100 @@
-/* Apple-style Font */
+/* General Reset */
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   margin: 0;
-  background: #fafafa;
-  color: #111;
+  font-family: Arial, sans-serif;
+  background: #f9f9f9;
+  color: #333;
+  transition: background 0.3s, color 0.3s;
 }
 
-/* Header */
-.app-header {
-  background: var(--primary-color);
-  color: white;
+/* Dark Mode */
+body.dark-mode {
+  background: #121212;
+  color: #f1f1f1;
+}
+
+/* Header + Nav */
+header {
+  background: #2563eb;
+  color: #fff;
   text-align: center;
-  padding: 12px;
-}
-.app-header h1 {
-  margin: 0;
-  font-size: 20px;
-  font-weight: 700;
-}
-.app-header p {
-  margin: 4px 0 0;
-  font-size: 13px;
-  font-weight: 400;
-  opacity: 0.9;
+  padding: 0.5rem;
 }
 
-/* Top Nav */
-.top-nav {
-  background: #fff;
-  border-bottom: 1px solid #eee;
+.subtitle {
+  margin: 0;
+  font-size: 0.9rem;
 }
-.top-nav ul {
+
+nav {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
+  position: relative;
+  background: #fff;
+}
+
+nav ul {
+  list-style: none;
   margin: 0;
   padding: 0;
-  list-style: none;
-}
-.top-nav li {
-  padding: 6px 12px;
-}
-.top-nav a {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-decoration: none;
-  color: #444;
-  font-size: 13px;
-}
-.top-nav a img {
-  height: 20px;
-  margin-bottom: 4px;
-  filter: grayscale(100%);
 }
 
-/* Underline animation for active nav */
-.top-nav li a::after,
-.bottom-nav li a::after {
-  content: "";
-  display: block;
-  height: 3px;
-  background: transparent;
-  width: 0;
-  margin-top: 4px;
-  transition: all 0.3s ease;
-  border-radius: 2px;
-}
-.top-nav li.active a::after,
-.bottom-nav li.active a::after {
-  background: var(--primary-color);
-  width: 100%;
-}
-.top-nav li.active a,
-.bottom-nav li.active a {
-  color: var(--primary-color);
+nav li {
+  padding: 0.8rem 1.2rem;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.2s;
 }
 
-/* Bottom Nav */
-.bottom-nav {
-  position: fixed;
+nav li.active {
+  font-weight: bold;
+  color: #2563eb;
+}
+
+#nav-underline {
+  position: absolute;
   bottom: 0;
   left: 0;
-  right: 0;
-  background: #fff;
-  border-top: 1px solid #eee;
-}
-.bottom-nav ul {
-  display: flex;
-  justify-content: space-around;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.bottom-nav li {
-  flex: 1;
-  text-align: center;
-}
-.bottom-nav a {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 6px 0;
-  text-decoration: none;
-  color: #444;
-  font-size: 12px;
-}
-.bottom-nav a img {
-  height: 22px;
-  margin-bottom: 2px;
-  filter: grayscale(100%);
-}
-.bottom-nav li.assistant a img {
-  height: 32px;
-  filter: none;
-}
-.bottom-nav li.assistant span {
-  display: none;
+  height: 3px;
+  background: #2563eb;
+  transition: all 0.3s ease;
 }
 
-/* Content */
-.content {
-  padding: 20px;
-  padding-bottom: 80px;
-  max-width: 600px;
-  margin: auto;
+/* Dark mode nav */
+body.dark-mode nav {
+  background: #1f1f1f;
 }
-.task-form input,
-.task-form select,
-.task-form textarea {
-  display: block;
-  width: 100%;
-  margin-bottom: 10px;
-  padding: 10px;
-  border-radius: 12px;
-  border: 1px solid #ddd;
-  font-size: 14px;
+
+body.dark-mode nav li.active {
+  color: #4f9dff;
 }
-.task-form button {
-  width: 100%;
-  background: var(--primary-color);
-  color: white;
-  border: none;
-  border-radius: 12px;
-  padding: 12px;
-  font-size: 15px;
-  font-weight: 600;
+
+/* Theme Colors */
+body[data-theme="blue"] {
+  --theme-color: #2563eb;
+}
+body[data-theme="green"] {
+  --theme-color: #16a34a;
+}
+body[data-theme="purple"] {
+  --theme-color: #9333ea;
+}
+body[data-theme="orange"] {
+  --theme-color: #ea580c;
+}
+
+h2, h3 {
+  color: var(--theme-color, #2563eb);
+}
+
+button, .theme-btn {
   cursor: pointer;
-}
-.task-form button:hover {
-  background: color-mix(in srgb, var(--primary-color) 80%, black);
-}
-.task-list {
-  list-style: none;
-  padding: 0;
-  margin-top: 15px;
-}
-.task-list li {
-  background: #fff;
-  padding: 12px;
-  margin-bottom: 8px;
-  border-radius: 12px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-  font-size: 14px;
 }
 
 /* Footer */
 footer {
   text-align: center;
-  font-size: 12px;
-  color: #666;
-  margin: 20px 0 100px;
-}
-
-/* Settings Page */
-.settings-page {
-  max-width: 600px;
-  margin: auto;
-}
-.settings-card {
-  background: #fff;
-  padding: 16px;
-  margin-bottom: 16px;
-  border-radius: 12px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-}
-.settings-card h2 {
-  margin-top: 0;
-  font-size: 16px;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 8px;
-  margin-bottom: 12px;
-}
-.option {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 12px 0;
-}
-.theme-colors .color-swatches {
-  display: flex;
-  gap: 10px;
-}
-.theme-colors .swatch {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  border: 2px solid #ddd;
-  cursor: pointer;
-}
-.theme-colors .swatch.active {
-  border: 2px solid var(--primary-color);
-}
-
-/* Theme colors */
-:root {
-  --primary-color: #2563eb; /* default blue */
-}
-body.theme-green {
-  --primary-color: #16a34a;
-}
-body.theme-red {
-  --primary-color: #dc2626;
-}
-body.theme-purple {
-  --primary-color: #9333ea;
-}
-body.theme-orange {
-  --primary-color: #f97316;
-}
-body.theme-teal {
-  --primary-color: #0d9488;
-}
-
-/* Dark mode global */
-body.dark {
-  background: #111;
-  color: #eee;
-}
-body.dark .app-header,
-body.dark .top-nav,
-body.dark .bottom-nav,
-body.dark footer {
-  background: #1e1e1e;
-  color: #eee;
-  border-color: #333;
-}
-body.dark .settings-card {
-  background: #1e1e1e;
-  color: #eee;
-}
-
-/* Responsive Navigation */
-/* Desktop & Tablet: show top nav, hide bottom nav */
-@media screen and (min-width: 768px) {
-  .bottom-nav {
-    display: none;
-  }
-}
-
-/* Mobile: split nav */
-@media screen and (max-width: 767px) {
-  /* Show top nav but only first 4 items */
-  .top-nav li:nth-child(n+5) {
-    display: none;
-  }
-  .bottom-nav {
-    display: block;
-  }
+  font-size: 0.8rem;
+  margin: 1rem 0;
 }
