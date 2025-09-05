@@ -4,26 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GoalSync</title>
-
-  <!-- Core Styles -->
+  <!-- Global Styles -->
   <link rel="stylesheet" href="css/styles.css">
-
-  <!-- Section Styles -->
-  <link rel="stylesheet" href="css/animations.css">
-  <link rel="stylesheet" href="css/assistant.css">
-  <link rel="stylesheet" href="css/auth.css">
-  <link rel="stylesheet" href="css/dashboard.css">
-  <link rel="stylesheet" href="css/goals.css">
-  <link rel="stylesheet" href="css/history.css">
-  <link rel="stylesheet" href="css/integrations.css">
-  <link rel="stylesheet" href="css/invite.css">
-  <link rel="stylesheet" href="css/notifications.css">
-  <link rel="stylesheet" href="css/profile.css">
-  <link rel="stylesheet" href="css/projects.css">
-  <link rel="stylesheet" href="css/reminders.css">
-  <link rel="stylesheet" href="css/team.css">
-  <link rel="stylesheet" href="css/themes.css">
-  <link rel="stylesheet" href="css/upgrade.css">
+  <!-- Page-specific Styles -->
+  <link rel="stylesheet" href="css/settings.css">
 </head>
 <body>
   <!-- Header -->
@@ -32,10 +16,10 @@
     <p>Plan smart. Stay on track. Achieve more.</p>
   </header>
 
-  <!-- Top Navigation (Desktop/Tablet) -->
+  <!-- Top Navigation -->
   <nav class="top-nav">
     <ul>
-      <li class="active"><a href="#" data-page="tasks"><img src="icons/tasks.svg" alt=""> <span>Tasks</span></a></li>
+      <li><a href="#" data-page="tasks"><img src="icons/tasks.svg" alt=""> <span>Tasks</span></a></li>
       <li><a href="#" data-page="goals"><img src="icons/goals.svg" alt=""> <span>Goals</span></a></li>
       <li><a href="#" data-page="projects"><img src="icons/projects.svg" alt=""> <span>Projects</span></a></li>
       <li><a href="#" data-page="chat"><img src="icons/chat.svg" alt=""> <span>Chat</span></a></li>
@@ -43,16 +27,17 @@
       <li><a href="#" data-page="history"><img src="icons/history.svg" alt=""> <span>History</span></a></li>
       <li><a href="#" data-page="invite"><img src="icons/invite.svg" alt=""> <span>Invite</span></a></li>
       <li><a href="#" data-page="assistant"><img src="icons/assistant.svg" alt=""> <span>Assistant</span></a></li>
-      <li><a href="#" data-page="settings"><img src="icons/settings.svg" alt=""> <span>Settings</span></a></li>
+      <li><a href="#" data-page="settings" class="active"><img src="icons/settings.svg" alt=""> <span>Settings</span></a></li>
     </ul>
   </nav>
 
-  <!-- Content area -->
+  <!-- Content -->
   <main class="content" id="content">
-    <!-- Dynamic content will load here -->
+    <!-- Default page is Settings -->
+    <div id="pageContent"></div>
   </main>
 
-  <!-- Bottom Navigation (Mobile only) -->
+  <!-- Bottom Navigation -->
   <nav class="bottom-nav">
     <ul>
       <li><a href="#" data-page="dashboard"><img src="icons/dashboard.svg" alt=""> <span>Dashboard</span></a></li>
@@ -65,12 +50,12 @@
 
   <!-- Footer -->
   <footer>
-    <p>v4.1 • Project by Team Jeff & AI</p>
+    <p>v4.2 • Project by Team Jeff & AI</p>
   </footer>
 
-  <!-- JavaScript -->
-  <script src="js/main.js" defer></script>
-  <script src="js/app.js" defer></script>
+  <!-- Core Scripts -->
+  <script src="js/main.js"></script>
+  <!-- Page Script -->
+  <script src="js/settings.js"></script>
 </body>
 </html>
-"<!-- trigger rebuild $(date) -->" 

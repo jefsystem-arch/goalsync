@@ -1,59 +1,49 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const darkToggle = document.getElementById("darkModeToggle");
-  const themeButtons = document.querySelectorAll("[data-theme]");
-  const langSelect = document.getElementById("languageSelect");
-  const fabToggle = document.getElementById("fabToggle");
-  if (darkToggle) {
-    darkToggle.addEventListener("change", () => {
-      document.body.classList.toggle("dark-mode", darkToggle.checked);
-      localStorage.setItem("darkMode", darkToggle.checked);
-    });
-    if (localStorage.getItem("darkMode") === "true") {
-      darkToggle.checked = true;
-      document.body.classList.add("dark-mode");
-    }
+// SETTINGS PAGE LOGIC
+function initSettings() {
+  console.log("⚙️ Settings page loaded");
+
+  // --- DARK MODE ---
+  const darkModeToggle = document.getElementById("darkModeToggle");
+  if (localStorage.getItem("darkMode") === "true") {
+    document.body.classList.add("dark-mode");
+    if (darkModeToggle) darkModeToggle.checked = true;
   }
-  themeButtons.forEach(btn => {
+  if (darkModeToggle) {
+    darkModeToggle.addEventListener("change", () => {
+      document.body.classList.toggle("dark-mode", darkModeToggle.checked);
+      localStorage.setItem("darkMode", darkModeToggle.checked);
+    });
+  }
+
+  // --- THEME COLORS ---
+  const colorButtons = document.querySelectorAll(".color-btn");
+  const savedTheme = localStorage.getItem("themeColor");
+  if (savedTheme) document.body.setAttribute("data-theme", savedTheme);
+
+  colorButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
-      const theme = btn.dataset.theme;
-      document.body.className = theme;
-      localStorage.setItem("theme", theme);
+      const color = btn.dataset.color;
+      document.body.setAttribute("data-theme", color);
+      localStorage.setItem("themeColor", color);
     });
   });
-  const savedTheme = localStorage.getItem("theme");
-  if (savedTheme) document.body.classList.add(savedTheme);
+
+  // --- LANGUAGE SELECTOR ---
+  const langSelect = document.getElementById("languageSelect");
+  const savedLang = localStorage.getItem("language") || "en";
+  if (langSelect) langSelect.value = savedLang;
+
   if (langSelect) {
     langSelect.addEventListener("change", () => {
-      const lang = langSelect.value;
-      localStorage.setItem("language", lang);
-      loadLanguage(lang);
+      localStorage.setItem("language", langSelect.value);
+      alert(`Language switched to: ${langSelect.value}`);
+      // TODO: later load translations dynamically
     });
-    const savedLang = localStorage.getItem("language") || "en";
-    langSelect.value = savedLang;
-    loadLanguage(savedLang);
   }
-  if (fabToggle) {
-    fabToggle.addEventListener("change", () => {
-      const enabled = fabToggle.checked;
-      document.body.classList.toggle("fab-enabled", enabled);
-      localStorage.setItem("fabEnabled", enabled);
-    });
-    if (localStorage.getItem("fabEnabled") === "true") {
-      fabToggle.checked = true;
-      document.body.classList.add("fab-enabled");
-    }
-  }
-});
-function loadLanguage(lang) {
-  fetch(`lang/${lang}.json`)
-    .then(res => res.json())
-    .then(data => {
-      document.querySelectorAll("[data-i18n]").forEach(el => {
-        const keys = el.dataset.i18n.split(".");
-        let text = data;
-        keys.forEach(k => text = text[k]);
-        if (text) el.innerText = text;
-      });
-    })
-    .catch(err => console.error("Language load error:", err));
+
+  // --- PROFILE INFO ---
+  const profileName = document.getElementById("profileName");
+  const profileEmail = document.getElementById("profileEmail");
+  if (profileName) profileName.textContent = "Jeff";
+  if (profileEmail) profileEmail.textContent = "jeff@example.com";
 }
