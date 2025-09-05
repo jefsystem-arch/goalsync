@@ -1,9 +1,5 @@
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll(".connect-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const service = btn.dataset.service;
-      window.showNotification(`🌐 Connecting to ${service} (stub)...`);
-      // Later: trigger OAuth / API integration
-    });
-  });
-});
+function initIntegrations() {
+  const list = document.getElementById("integrationsList");
+  if (!list) return;
+  list.innerHTML = "<li>Fitness App 🔗</li><li>Learning App 📚</li><li>Finance App 💰</li>";
+}

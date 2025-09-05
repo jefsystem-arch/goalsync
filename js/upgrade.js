@@ -1,8 +1,5 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const btn = document.getElementById("upgradeBtn");
-  if (btn) {
-    btn.addEventListener("click", () => {
-      alert("Upgrade flow coming soon 🚀");
-    });
-  }
-});
+function initUpgrade() {
+  const container = document.getElementById("upgradeContainer");
+  if (!container) return;
+  container.innerHTML = "<p>Upgrade to Premium 🚀</p>";
+}
