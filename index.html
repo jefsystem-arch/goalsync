@@ -4,29 +4,35 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GoalSync</title>
+
+  <!-- Core Styles -->
   <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="css/tasks.css">
-  <link rel="stylesheet" href="css/goals.css">
-  <link rel="stylesheet" href="css/projects.css">
+
+  <!-- Section Styles -->
+  <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/assistant.css">
+  <link rel="stylesheet" href="css/auth.css">
   <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/goals.css">
   <link rel="stylesheet" href="css/history.css">
-  <link rel="stylesheet" href="css/invite.css">
-  <link rel="stylesheet" href="css/settings.css">
-  <link rel="stylesheet" href="css/reminders.css">
-  <link rel="stylesheet" href="css/team.css">
   <link rel="stylesheet" href="css/integrations.css">
+  <link rel="stylesheet" href="css/invite.css">
   <link rel="stylesheet" href="css/notifications.css">
   <link rel="stylesheet" href="css/profile.css">
-  <link rel="stylesheet" href="css/upgrade.css">
+  <link rel="stylesheet" href="css/projects.css">
+  <link rel="stylesheet" href="css/reminders.css">
+  <link rel="stylesheet" href="css/team.css">
   <link rel="stylesheet" href="css/themes.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="css/upgrade.css">
 </head>
 <body>
+  <!-- Header -->
   <header class="app-header">
     <h1>GoalSync</h1>
     <p>Plan smart. Stay on track. Achieve more.</p>
   </header>
+
+  <!-- Top Navigation (Desktop/Tablet) -->
   <nav class="top-nav">
     <ul>
       <li class="active"><a href="#" data-page="tasks"><img src="icons/tasks.svg" alt=""> <span>Tasks</span></a></li>
@@ -40,7 +46,13 @@
       <li><a href="#" data-page="settings"><img src="icons/settings.svg" alt=""> <span>Settings</span></a></li>
     </ul>
   </nav>
-  <main class="content" id="content"></main>
+
+  <!-- Content area -->
+  <main class="content" id="content">
+    <!-- Dynamic content will load here -->
+  </main>
+
+  <!-- Bottom Navigation (Mobile only) -->
   <nav class="bottom-nav">
     <ul>
       <li><a href="#" data-page="dashboard"><img src="icons/dashboard.svg" alt=""> <span>Dashboard</span></a></li>
@@ -50,21 +62,14 @@
       <li><a href="#" data-page="settings"><img src="icons/settings.svg" alt=""> <span>Settings</span></a></li>
     </ul>
   </nav>
-  <footer><p>v4.1 • Project by Team Jeff & AI</p></footer>
-  <script src="js/main.js"></script>
-  <script src="js/tasks.js"></script>
-  <script src="js/goals.js"></script>
-  <script src="js/projects.js"></script>
-  <script src="js/assistant.js"></script>
-  <script src="js/dashboard.js"></script>
-  <script src="js/history.js"></script>
-  <script src="js/invite.js"></script>
-  <script src="js/settings.js"></script>
-  <script src="js/reminders.js"></script>
-  <script src="js/team.js"></script>
-  <script src="js/integrations.js"></script>
-  <script src="js/notifications.js"></script>
-  <script src="js/profile.js"></script>
-  <script src="js/upgrade.js"></script>
+
+  <!-- Footer -->
+  <footer>
+    <p>v4.1 • Project by Team Jeff & AI</p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="js/main.js" defer></script>
+  <script src="js/app.js" defer></script>
 </body>
 </html>
